@@ -17,6 +17,5 @@ import Index from './components/Index';
 import '../css/app.css'
 
 if (document.getElementById('app')) {
-    var mailSender = document.getElementById('app').getAttribute('mailSender');
-    ReactDOM.render(<Index mailSender={mailSender}/>, document.getElementById('app'));
+    ReactDOM.render(<Index />, document.getElementById('app'));
 }

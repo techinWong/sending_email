@@ -14,8 +14,8 @@ class EmailController extends Controller
         
     // }
 
-    public function index(){
+    public function getEmailSender(){
         $mailSender = DB::table('tbl_mail_sender')->get();
-        return view('welcome')->with('mailSender',json_encode($mailSender));
+        return $mailSender;
     }
 }

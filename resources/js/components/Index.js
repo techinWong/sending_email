@@ -1,14 +1,10 @@
-import React , {useEffect} from 'react';
+import React , {useEffect,useState} from 'react';
 import ReactDOM from 'react-dom';
 
 
 
-const Index = ({mailSender}) => {
-    // const [mailSender,setMailSender] = useState({
-    //     id:'',
-    //     sender:'',
-    //     text:''
-    // })
+const Index = () => {
+    const [mailSender , setMailSender] = useState([]);
 
     // const fetchData = async () => {
     //     const api = await fetch("{{url}}/show");
@@ -20,11 +16,17 @@ const Index = ({mailSender}) => {
     // },[])
 
     // console.log(api);
+    const fetchData = async () => {
+        const api = await fetch('api/mailsender')
+        const data = await api.json();
+        setMailSender(data);
+    }
+
+    useEffect(() => {
+        fetchData();
+    },[]);
 
     
-
-
-
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -37,19 +39,16 @@ const Index = ({mailSender}) => {
                                 <div className="input">
                                     <label>ผู้ส่ง</label>
                                     <select id="sender" name="sender">
-                                        {JSON.parse(mailSender).map(item => (
-                                            <option value={item.id_mail_sender}>{item.mail_sender_name}</option>
+                                        {mailSender.map(sender => (
+                                            <option>{sender.mail_sender_name}</option>
                                         ))}
-                                       
                                     </select>
                                 </div>
                                 <div className='input'>
                                     <label>กลุ่มผู้ได้รับเมล์</label>
                                     <select id="receiver" name="receiver">
-                                        <option value="0">student1@gmail.com</option>
-                                        <option value="1">student2@gmail.com</option>
-                                        <option value="2">student3@gmail.com</option>
-                                        <option value="3">student4@gmail.com</option>
+                                         <option>Test1</option>
+                                        <option>Test1</option>  
                                     </select>
                                 </div>
                                 <div className='text-area'>

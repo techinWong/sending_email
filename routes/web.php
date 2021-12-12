@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\API\EmailController;
+use App\Http\Controllers\IndexPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,5 @@ use App\Http\Controllers\API\EmailController;
 */
 
 
-Route::get('/',[EmailController::class,'index']);
+Route::get('/',[IndexPage::class,'index']);
+
