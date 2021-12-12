@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 
 const Index = () => {
     const [mailSender , setMailSender] = useState([]);
+    const [mailAll , setMailAll] = useState([]);
 
     // const fetchData = async () => {
     //     const api = await fetch("{{url}}/show");
@@ -17,9 +18,14 @@ const Index = () => {
 
     // console.log(api);
     const fetchData = async () => {
-        const api = await fetch('api/mailsender')
-        const data = await api.json();
-        setMailSender(data);
+        const mailSenderApi = await fetch('api/mailsender')
+        const mailSenderApiResult = await mailSenderApi.json();
+
+        const mailAllApi = await fetch('api/mail/all')
+        const mailAllApiResult = await mailAllApi.json();
+
+        setMailSender(mailSenderApiResult);
+        setMailAll(mailAllApiResult);
     }
 
     useEffect(() => {
@@ -47,8 +53,9 @@ const Index = () => {
                                 <div className='input'>
                                     <label>กลุ่มผู้ได้รับเมล์</label>
                                     <select id="receiver" name="receiver">
-                                         <option>Test1</option>
-                                        <option>Test1</option>  
+                                         {mailAll.map(mail => (
+                                             <option>{mail.mail_name}</option>
+                                         ))}
                                     </select>
                                 </div>
                                 <div className='text-area'>

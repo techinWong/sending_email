@@ -5358,7 +5358,12 @@ var Index = function Index() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       mailSender = _useState2[0],
-      setMailSender = _useState2[1]; // const fetchData = async () => {
+      setMailSender = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      mailAll = _useState4[0],
+      setMailAll = _useState4[1]; // const fetchData = async () => {
   //     const api = await fetch("{{url}}/show");
   // }
   // useEffect(() => {
@@ -5369,7 +5374,7 @@ var Index = function Index() {
 
   var fetchData = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var api, data;
+      var mailSenderApi, mailSenderApiResult, mailAllApi, mailAllApiResult;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -5378,15 +5383,26 @@ var Index = function Index() {
               return fetch('api/mailsender');
 
             case 2:
-              api = _context.sent;
+              mailSenderApi = _context.sent;
               _context.next = 5;
-              return api.json();
+              return mailSenderApi.json();
 
             case 5:
-              data = _context.sent;
-              setMailSender(data);
+              mailSenderApiResult = _context.sent;
+              _context.next = 8;
+              return fetch('api/mail/all');
 
-            case 7:
+            case 8:
+              mailAllApi = _context.sent;
+              _context.next = 11;
+              return mailAllApi.json();
+
+            case 11:
+              mailAllApiResult = _context.sent;
+              setMailSender(mailSenderApiResult);
+              setMailAll(mailAllApiResult);
+
+            case 14:
             case "end":
               return _context.stop();
           }
@@ -5433,14 +5449,14 @@ var Index = function Index() {
                 className: "input",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
                   children: "\u0E01\u0E25\u0E38\u0E48\u0E21\u0E1C\u0E39\u0E49\u0E44\u0E14\u0E49\u0E23\u0E31\u0E1A\u0E40\u0E21\u0E25\u0E4C"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("select", {
                   id: "receiver",
                   name: "receiver",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                    children: "Test1"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                    children: "Test1"
-                  })]
+                  children: mailAll.map(function (mail) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                      children: mail.mail_name
+                    });
+                  })
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                 className: "text-area",
