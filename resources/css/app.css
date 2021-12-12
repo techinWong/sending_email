@@ -1,0 +1,44 @@
+
+
+.input{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left:3rem;
+    margin:1.5rem;
+}
+
+.input label{
+    font-weight: 600;
+}
+
+.input input{
+    margin-right:4rem;
+}
+
+.text-area{
+    display: flex;
+    flex-direction: column;
+    width:700px;
+    margin-left:4rem;
+}
+
+.text-area label{
+    margin-top:1.5rem;
+}
+
+button{
+    float:right;
+    padding:2rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+form{
+    padding-top:2rem;
+    margin-bottom:3rem;
+    background: grey;
+    padding-bottom:7rem;
+}
+
+
