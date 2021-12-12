@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 class MailSender extends Model
 {
     use HasFactory;
@@ -15,4 +16,5 @@ class MailSender extends Model
         'mail_sender_name',
         'mail_sender_send'
     ];
+
 }

@@ -14,9 +14,10 @@ class CreateMailSendersTable extends Migration
     public function up()
     {
         Schema::create('mail_senders', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_mail_sender');
             $table->string('mail_sender_name');
             $table->string('mail_sender_send');
+            $table->timestamps();
             $table->softDeletes();
         });
     }

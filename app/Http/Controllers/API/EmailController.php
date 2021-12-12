@@ -10,9 +10,7 @@ use Illuminate\Http\Request;
 
 class EmailController extends Controller
 {
-    // function getData(Request $request){
-        
-    // }
+    
 
     public function getEmailSender(){
         return MailSender::all();
