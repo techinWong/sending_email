@@ -20,6 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+
 Route::get('mailsender',[EmailController::class,'getEmailSender']);
 
 Route::get('mail/all',[EmailController::class,'getEmailAll']);
+
+Route::post('send',[EmailController::class,'saveHistory']);

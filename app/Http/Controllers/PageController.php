@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\logMail;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -13,4 +14,7 @@ class PageController extends Controller
     public function showHistory(){
         return view('history');
     }
+
+    
+    
 }
