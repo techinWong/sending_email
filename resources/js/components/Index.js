@@ -8,7 +8,6 @@ const Index = () => {
     const [mailSender , setMailSender] = useState([]);
     const [mailAll , setMailAll] = useState([]);
 
-    const url = "http://127.0.0.1:8000/send"
     const [mailData , setMailData] = useState({
         sender:"",
         receiver:"",
@@ -25,7 +24,11 @@ const Index = () => {
 
     const formSubmit = e => {
         e.preventDefault();
-        axios.post('api/send' , mailData).then(res => console.log(res)).catch(err => console.log(err.response));
+        axios.post('api/send' , mailData)
+        .then(res => console.log(res))
+        .catch(err => console.log(err.response));
+
+        setMailData({sender:'' , receiver:'' , topic:'', detail:''});
     }
 
     // const fetchData = async () => {
@@ -81,29 +84,29 @@ const Index = () => {
                             <form onSubmit={e => formSubmit(e)}>
                                 <div className="input">
                                     <label>ผู้ส่ง</label>
-                                    <select id="sender" name="sender" onChange={e => handleChange(e)}>
+                                    <select id="sender" name="sender" value={mailData.sender} onChange={e => handleChange(e)}>
                                     <option> -- select an E-mail -- </option>
                                         {mailSender.map(sender => (
-                                            <option value={sender.mail_sender_name}>{sender.mail_sender_name}</option>
+                                            <option key={sender.mail_sender_name}>{sender.mail_sender_name}</option>
                                         ))}
                                     </select>
                                 </div>
                                 <div className='input'>
                                     <label>กลุ่มผู้ได้รับเมล์</label>
-                                    <select id="receiver" name="receiver" onChange={e => handleChange(e)}>
+                                    <select id="receiver" name="receiver" value={mailData.receiver} onChange={e => handleChange(e)}>
                                     <option> -- select an E-mail -- </option>
                                          {mailAll.map(mail => (
-                                             <option value={mail.mail_name}>{mail.mail_name}</option>
+                                             <option key={mail.mail_name}>{mail.mail_name}</option>
                                          ))}
                                     </select>
                                 </div>
                                 <div className='text-area'>
                                     <label>หัวเรื่อง</label>
-                                    <textarea name="topic" id="" cols="30" rows="2" onChange={e => handleChange(e)}></textarea>
+                                    <textarea value={mailData.topic} name="topic" id="" cols="30" rows="2" onChange={e => handleChange(e)}></textarea>
                                 </div>
                                 <div className="text-area">
                                     <label>เนื้อหาในเมลล์</label>
-                                    <textarea name="detail" id="" cols="80" rows="10" onChange={e => handleChange(e)}></textarea>
+                                    <textarea value={mailData.detail} name="detail" id="" cols="80" rows="10" onChange={e => handleChange(e)}></textarea>
                                 </div>
                                 <input type="submit" value="ส่งเมล์"/>
                             </form>

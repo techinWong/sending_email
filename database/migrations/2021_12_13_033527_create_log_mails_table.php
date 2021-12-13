@@ -15,15 +15,15 @@ class CreateLogMailsTable extends Migration
     {
         Schema::create('log_mails', function (Blueprint $table) {
             $table->id('id_log_mail');
-            $table->integer('id_user');
-            $table->integer('id_mail_sender');
-            $table->integer('id_group');
+            $table->integer('id_user')->nullable();
+            $table->integer('id_mail_sender')->nullable();
+            $table->integer('id_group')->nullable();
             $table->string('sender_mail');
-            $table->string('group_name');
+            $table->string('group_name')->nullable();
             $table->string('topic_mail');
             $table->string('detail_mail');
             $table->string('user_send');
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

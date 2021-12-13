@@ -1,6 +1,21 @@
-import React from 'react'
+import React,{useEffect , useState} from 'react'
+
 
 const History = () => {
+
+    const [history,setHistory] = useState([]);
+
+    const fetchData = async () => {
+        const mailHistoryApi = await fetch('api/history');
+        const mailHistoryApiResult = await mailHistoryApi.json();
+        setHistory(mailHistoryApiResult);
+        console.log(mailHistoryApiResult);
+    }
+
+    useEffect(() => {
+        fetchData();
+    },[])
+
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -28,32 +43,23 @@ const History = () => {
                     <th scope="col">ผู้ส่ง</th>
                     <th scope="col">กลุ่มที่ส่ง</th>
                     <th scope="col">หัวเรื่อง</th>
-                    <th scope="col">จำนวณที่ส่ง</th>
+                    <th scope="col">จำนวนที่ส่ง</th>
                     <th scope="col">สำเร็จ/ล้มเหลว</th>
                     <th scope="col">สถานะ</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>6</td>
-                    <td>success</td>
-                    <td>200</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">3</th>
-                    <td colSpan={2}>Larry the Bird</td>
-                    <td>@twitter</td>
-                    </tr>
+                    {history.map((item,i) => (
+                        <tr>
+                            <th scope="row">{i+1}</th>
+                            <td>วันที่ส่ง</td>
+                            <td>{item.sender_mail}</td>
+                            <td>{item.user_send}</td>
+                            <td>จำนวนที่ส่ง</td>
+                            <td>status</td>
+                            <td>200</td>
+                        </tr>
+                    ))}
                 </tbody>
                 </table>
         </div>

@@ -40,6 +40,10 @@ class EmailController extends Controller
         ]);
     }
 
+    public function showHistory(){
+        return logMail::all();
+    }
+
     
 
 }

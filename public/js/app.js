@@ -5374,8 +5374,6 @@ var Index = function Index() {
       mailAll = _useState4[0],
       setMailAll = _useState4[1];
 
-  var url = "http://127.0.0.1:8000/send";
-
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
     sender: "",
     receiver: "",
@@ -5400,6 +5398,12 @@ var Index = function Index() {
       return console.log(res);
     })["catch"](function (err) {
       return console.log(err.response);
+    });
+    setMailData({
+      sender: '',
+      receiver: '',
+      topic: '',
+      detail: ''
     });
   }; // const fetchData = async () => {
   //     const api = await fetch("{{url}}/show");
@@ -5517,6 +5521,7 @@ var Index = function Index() {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
                   id: "sender",
                   name: "sender",
+                  value: mailData.sender,
                   onChange: function onChange(e) {
                     return handleChange(e);
                   },
@@ -5524,9 +5529,8 @@ var Index = function Index() {
                     children: " -- select an E-mail -- "
                   }), mailSender.map(function (sender) {
                     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                      value: sender.mail_sender_name,
                       children: sender.mail_sender_name
-                    });
+                    }, sender.mail_sender_name);
                   })]
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -5536,6 +5540,7 @@ var Index = function Index() {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
                   id: "receiver",
                   name: "receiver",
+                  value: mailData.receiver,
                   onChange: function onChange(e) {
                     return handleChange(e);
                   },
@@ -5543,9 +5548,8 @@ var Index = function Index() {
                     children: " -- select an E-mail -- "
                   }), mailAll.map(function (mail) {
                     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                      value: mail.mail_name,
                       children: mail.mail_name
-                    });
+                    }, mail.mail_name);
                   })]
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -5553,6 +5557,7 @@ var Index = function Index() {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
                   children: "\u0E2B\u0E31\u0E27\u0E40\u0E23\u0E37\u0E48\u0E2D\u0E07"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("textarea", {
+                  value: mailData.topic,
                   name: "topic",
                   id: "",
                   cols: "30",
@@ -5566,6 +5571,7 @@ var Index = function Index() {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
                   children: "\u0E40\u0E19\u0E37\u0E49\u0E2D\u0E2B\u0E32\u0E43\u0E19\u0E40\u0E21\u0E25\u0E25\u0E4C"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("textarea", {
+                  value: mailData.detail,
                   name: "detail",
                   id: "",
                   cols: "80",
