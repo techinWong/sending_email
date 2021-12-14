@@ -83,32 +83,36 @@ const Index = () => {
                         <div className="card-body">
                             <form onSubmit={e => formSubmit(e)}>
                                 <div className="input">
-                                    <label>ผู้ส่ง</label>
-                                    <select id="sender" name="sender" value={mailData.sender} onChange={e => handleChange(e)}>
+                                    <label htmlFor="formControlInput" className="form-label">ผู้ส่ง</label>
+                                    <div className="col-md-4">
+                                    <select id="sender" name="sender" style={{width:'50'}}class="form-select form-select-sm" aria-label="Small select" value={mailData.sender} onChange={e => handleChange(e)}>
                                     <option> -- select an E-mail -- </option>
                                         {mailSender.map(sender => (
                                             <option key={sender.mail_sender_name}>{sender.mail_sender_name}</option>
                                         ))}
                                     </select>
+                                    </div>
                                 </div>
                                 <div className='input'>
-                                    <label>กลุ่มผู้ได้รับเมล์</label>
-                                    <select id="receiver" name="receiver" value={mailData.receiver} onChange={e => handleChange(e)}>
-                                    <option> -- select an E-mail -- </option>
-                                         {mailAll.map(mail => (
-                                             <option key={mail.mail_name}>{mail.mail_name}</option>
-                                         ))}
-                                    </select>
+                                    <label htmlFor="formControlInput" className="form-label">กลุ่มผู้ได้รับเมล์</label>
+                                    <div className="col-md-4">
+                                        <select id="receiver" name="receiver" class="form-select form-select-sm" aria-label="Small select" value={mailData.receiver} onChange={e => handleChange(e)}>
+                                        <option> -- select an E-mail -- </option>
+                                            {mailAll.map(mail => (
+                                                <option key={mail.mail_name}>{mail.mail_name}</option>
+                                            ))}
+                                        </select>
+                                    </div>
                                 </div>
                                 <div className='text-area'>
-                                    <label>หัวเรื่อง</label>
-                                    <textarea value={mailData.topic} name="topic" id="" cols="30" rows="2" onChange={e => handleChange(e)}></textarea>
+                                    <label htmlFor="formControlInput" className="form-label">หัวเรื่อง</label>
+                                    <textarea class="form-control" value={mailData.topic} name="topic" id="" cols="30" rows="2" onChange={e => handleChange(e)}></textarea>
                                 </div>
                                 <div className="text-area">
                                     <label>เนื้อหาในเมลล์</label>
-                                    <textarea value={mailData.detail} name="detail" id="" cols="80" rows="10" onChange={e => handleChange(e)}></textarea>
+                                    <textarea class="form-control" value={mailData.detail} name="detail" id="" cols="80" rows="10" onChange={e => handleChange(e)}></textarea>
                                 </div>
-                                <input type="submit" value="ส่งเมล์"/>
+                                <button type="submit" className="btn btn-secondary">SEND</button>
                             </form>
                         </div>
                     </div>

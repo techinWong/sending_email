@@ -8,9 +8,6 @@
     margin:1.5rem;
 }
 
-.input label{
-    font-weight: 600;
-}
 
 .input input{
     margin-right:4rem;
@@ -27,17 +24,19 @@
     margin-top:1.5rem;
 }
 
-input{
+button{
     float:right;
     padding:2rem;
     margin-top: 1rem;
+    margin-right:2rem;
     text-align: center;
 }
 
 form{
     padding-top:2rem;
     margin-bottom:3rem;
-    background: grey;
+    background: #C7CCC5
+    ;
     padding-bottom:7rem;
 }
 
@@ -45,4 +44,11 @@ table{
     text-align: center;
 }
 
+select{
+    width:50px
+}
+
+label{
+    font-weight: 600;
+}
 

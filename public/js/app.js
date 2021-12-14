@@ -5517,46 +5517,66 @@ var Index = function Index() {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                 className: "input",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                  htmlFor: "formControlInput",
+                  className: "form-label",
                   children: "\u0E1C\u0E39\u0E49\u0E2A\u0E48\u0E07"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
-                  id: "sender",
-                  name: "sender",
-                  value: mailData.sender,
-                  onChange: function onChange(e) {
-                    return handleChange(e);
-                  },
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                    children: " -- select an E-mail -- "
-                  }), mailSender.map(function (sender) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                      children: sender.mail_sender_name
-                    }, sender.mail_sender_name);
-                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                  className: "col-md-4",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+                    id: "sender",
+                    name: "sender",
+                    style: {
+                      width: '50'
+                    },
+                    "class": "form-select form-select-sm",
+                    "aria-label": "Small select",
+                    value: mailData.sender,
+                    onChange: function onChange(e) {
+                      return handleChange(e);
+                    },
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                      children: " -- select an E-mail -- "
+                    }), mailSender.map(function (sender) {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                        children: sender.mail_sender_name
+                      }, sender.mail_sender_name);
+                    })]
+                  })
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                 className: "input",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                  htmlFor: "formControlInput",
+                  className: "form-label",
                   children: "\u0E01\u0E25\u0E38\u0E48\u0E21\u0E1C\u0E39\u0E49\u0E44\u0E14\u0E49\u0E23\u0E31\u0E1A\u0E40\u0E21\u0E25\u0E4C"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
-                  id: "receiver",
-                  name: "receiver",
-                  value: mailData.receiver,
-                  onChange: function onChange(e) {
-                    return handleChange(e);
-                  },
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                    children: " -- select an E-mail -- "
-                  }), mailAll.map(function (mail) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                      children: mail.mail_name
-                    }, mail.mail_name);
-                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                  className: "col-md-4",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+                    id: "receiver",
+                    name: "receiver",
+                    "class": "form-select form-select-sm",
+                    "aria-label": "Small select",
+                    value: mailData.receiver,
+                    onChange: function onChange(e) {
+                      return handleChange(e);
+                    },
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                      children: " -- select an E-mail -- "
+                    }), mailAll.map(function (mail) {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                        children: mail.mail_name
+                      }, mail.mail_name);
+                    })]
+                  })
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                 className: "text-area",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                  htmlFor: "formControlInput",
+                  className: "form-label",
                   children: "\u0E2B\u0E31\u0E27\u0E40\u0E23\u0E37\u0E48\u0E2D\u0E07"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("textarea", {
+                  "class": "form-control",
                   value: mailData.topic,
                   name: "topic",
                   id: "",
@@ -5571,6 +5591,7 @@ var Index = function Index() {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
                   children: "\u0E40\u0E19\u0E37\u0E49\u0E2D\u0E2B\u0E32\u0E43\u0E19\u0E40\u0E21\u0E25\u0E25\u0E4C"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("textarea", {
+                  "class": "form-control",
                   value: mailData.detail,
                   name: "detail",
                   id: "",
@@ -5580,9 +5601,10 @@ var Index = function Index() {
                     return handleChange(e);
                   }
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
                 type: "submit",
-                value: "\u0E2A\u0E48\u0E07\u0E40\u0E21\u0E25\u0E4C"
+                className: "btn btn-secondary",
+                children: "SEND"
               })]
             })
           })]
@@ -10640,7 +10662,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n\r\n.input{\r\n    display:flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    padding-left:3rem;\r\n    margin:1.5rem;\r\n}\r\n\r\n.input label{\r\n    font-weight: 600;\r\n}\r\n\r\n.input input{\r\n    margin-right:4rem;\r\n}\r\n\r\n.text-area{\r\n    display: flex;\r\n    flex-direction: column;\r\n    width:700px;\r\n    margin-left:4rem;\r\n}\r\n\r\n.text-area label{\r\n    margin-top:1.5rem;\r\n}\r\n\r\ninput{\r\n    float:right;\r\n    padding:2rem;\r\n    margin-top: 1rem;\r\n    text-align: center;\r\n}\r\n\r\nform{\r\n    padding-top:2rem;\r\n    margin-bottom:3rem;\r\n    background: grey;\r\n    padding-bottom:7rem;\r\n}\r\n\r\ntable{\r\n    text-align: center;\r\n}\r\n\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n\r\n.input{\r\n    display:flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    padding-left:3rem;\r\n    margin:1.5rem;\r\n}\r\n\r\n\r\n.input input{\r\n    margin-right:4rem;\r\n}\r\n\r\n.text-area{\r\n    display: flex;\r\n    flex-direction: column;\r\n    width:700px;\r\n    margin-left:4rem;\r\n}\r\n\r\n.text-area label{\r\n    margin-top:1.5rem;\r\n}\r\n\r\nbutton{\r\n    float:right;\r\n    padding:2rem;\r\n    margin-top: 1rem;\r\n    margin-right:2rem;\r\n    text-align: center;\r\n}\r\n\r\nform{\r\n    padding-top:2rem;\r\n    margin-bottom:3rem;\r\n    background: #C7CCC5\r\n    ;\r\n    padding-bottom:7rem;\r\n}\r\n\r\ntable{\r\n    text-align: center;\r\n}\r\n\r\nselect{\r\n    width:50px\r\n}\r\n\r\nlabel{\r\n    font-weight: 600;\r\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
