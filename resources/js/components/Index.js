@@ -2,14 +2,23 @@ import React , {useEffect,useState} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import * as yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
 
 const schema = yup.object({
+    sender:yup.string().email().required("กรุณาเลือกอีเมล์"),
+    receiver:yup.string().email().required(),
     topic: yup.string().required(),
+    detail: yup.string().required()
   }).required();
 
 const Index = () => {
     const [mailSender , setMailSender] = useState([]);
     const [mailAll , setMailAll] = useState([]);
+
+    const { register, handleSubmit, formState:{ errors } } = useForm({
+        resolver: yupResolver(schema)
+      });
 
     const [mailData , setMailData] = useState({
         sender:"",
@@ -59,7 +68,7 @@ const Index = () => {
         fetchData();
     },[]);
 
-    
+    console.log(mailData);
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -84,36 +93,54 @@ const Index = () => {
                     <div className="card">
                         <div className="card-header">Email Form</div>
                         <div className="card-body">
-                            <form onSubmit={e => formSubmit(e)}>
+                            <form onSubmit={handleSubmit(formSubmit)}>
                                 <div className="input">
                                     <label htmlFor="formControlInput" className="form-label">ผู้ส่ง</label>
                                     <div className="col-md-4">
-                                    <select id="sender" name="sender" style={{width:'50'}}class="form-select form-select-sm" aria-label="Small select" value={mailData.sender} onChange={e => handleChange(e)}>
-                                    <option> -- select an E-mail -- </option>
-                                        {mailSender.map(sender => (
-                                            <option key={sender.mail_sender_name}>{sender.mail_sender_name}</option>
-                                        ))}
-                                    </select>
-                                    </div>
-                                </div>
-                                <div className='input'>
-                                    <label htmlFor="formControlInput" className="form-label">กลุ่มผู้ได้รับเมล์</label>
-                                    <div className="col-md-4">
-                                        <select id="receiver" name="receiver" class="form-select form-select-sm" aria-label="Small select" value={mailData.receiver} onChange={e => handleChange(e)}>
+                                        <select {...register("sender")}id="sender" name="sender" style={{width:'50'}} className="form-select form-select-sm" aria-label="Small select" value={mailData.sender} onChange={e => handleChange(e)}>
                                         <option> -- select an E-mail -- </option>
-                                            {mailAll.map(mail => (
-                                                <option key={mail.mail_name}>{mail.mail_name}</option>
+                                            {mailSender.map(sender => (
+                                                <option key={sender.mail_sender_name}>{sender.mail_sender_name}</option>
                                             ))}
                                         </select>
                                     </div>
                                 </div>
-                                <div className='text-area'>
-                                    <label htmlFor="formControlInput" className="form-label">หัวเรื่อง</label>
-                                    <textarea class="form-control" value={mailData.topic} name="topic" id="" cols="30" rows="2" onChange={e => handleChange(e)}></textarea>
+                                <p style={{color:'red' , marginLeft:'4rem'}}>{errors.sender?.message}</p>
+                                <div className='input'>
+                                    <label htmlFor="formControlInput" className="form-label">กลุ่มผู้ได้รับเมล์</label>
+                                    <div className="col-md-4">
+                                        <select {...register("receiver")} id="receiver" name="receiver" className="form-select form-select-sm" aria-label="Small select" value={mailData.receiver} onChange={e => handleChange(e)}>
+                                        <option value=""> -- select an E-mail -- </option>
+                                            {mailAll.map(mail => (
+                                                <option key={mail.mail_name} value={mail.mail_name}>{mail.mail_name}</option>
+                                            ))}
+                                        </select>
+                                    </div>
                                 </div>
-                                <div className="text-area">
+                                <p style={{color:'red' , marginLeft:'4rem'}}>{errors.receiver?.message}</p>
+                                <div className='form-group'>
+                                    <label htmlFor="formControlInput" className="form-label">หัวเรื่อง</label>
+                                    <p style={{color:'red' }}>{errors.topic?.message}</p>
+                                    <textarea 
+                                    {...register("topic")}
+                                    className="form-control" 
+                                    value={mailData.topic} 
+                                    name="topic" 
+                                    cols="30" rows="1" 
+                                    onChange={e => handleChange(e)}
+                                    ></textarea>
+                                </div>
+                                <div className="form-group">
                                     <label>เนื้อหาในเมลล์</label>
-                                    <textarea class="form-control" value={mailData.detail} name="detail" id="" cols="80" rows="10" onChange={e => handleChange(e)}></textarea>
+                                    <p style={{color:'red'}}>{errors.detail?.message}</p>
+                                    <textarea 
+                                    {...register("detail")}
+                                    className="form-control" 
+                                    value={mailData.detail} 
+                                    name="detail" 
+                                    cols="80" rows="10" 
+                                    onChange={e => handleChange(e)}
+                                    ></textarea>
                                 </div>
                                 <button type="submit" className="btn btn-secondary">SEND</button>
                             </form>
