@@ -1,8 +1,11 @@
 import React , {useEffect,useState} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import * as yup from "yup";
 
-
+const schema = yup.object({
+    topic: yup.string().required(),
+  }).required();
 
 const Index = () => {
     const [mailSender , setMailSender] = useState([]);

@@ -26,6 +26,7 @@ class EmailController extends Controller
     public function saveHistory(Request $request){
 
         // $input = $request->all();
+
         
         $logMail = new logMail;
         $logMail->sender_mail = $request->input('sender');
