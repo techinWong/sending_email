@@ -7,14 +7,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 const schema = yup.object({
     sender:yup.string().email().required("กรุณาเลือกอีเมล์"),
-    receiver:yup.string().email().required(),
+    receiver:yup.string().required(),
     topic: yup.string().required(),
     detail: yup.string().required()
   }).required();
 
 const Index = () => {
     const [mailSender , setMailSender] = useState([]);
-    const [mailAll , setMailAll] = useState([]);
+    const [mailGroup , setMailGroup] = useState([]);
 
     const { register, handleSubmit, formState:{ errors } } = useForm({
         resolver: yupResolver(schema)
@@ -35,7 +35,7 @@ const Index = () => {
     }
 
     const formSubmit = e => {
-        e.preventDefault();
+        // e.preventDefault();
         axios.post('api/send' , mailData)
         .then(res => console.log(res))
         .catch(err => console.log(err.response));
@@ -57,11 +57,11 @@ const Index = () => {
         const mailSenderApi = await fetch('api/mailsender')
         const mailSenderApiResult = await mailSenderApi.json();
 
-        const mailAllApi = await fetch('api/mail/all')
-        const mailAllApiResult = await mailAllApi.json();
+        const mailGroupApi = await fetch('api/mailgroup')
+        const mailGroupApiResult = await mailGroupApi.json();
 
         setMailSender(mailSenderApiResult);
-        setMailAll(mailAllApiResult);
+        setMailGroup(mailGroupApiResult);
     }
 
     useEffect(() => {
@@ -111,8 +111,8 @@ const Index = () => {
                                     <div className="col-md-4">
                                         <select {...register("receiver")} id="receiver" name="receiver" className="form-select form-select-sm" aria-label="Small select" value={mailData.receiver} onChange={e => handleChange(e)}>
                                         <option value=""> -- select an E-mail -- </option>
-                                            {mailAll.map(mail => (
-                                                <option key={mail.mail_name} value={mail.mail_name}>{mail.mail_name}</option>
+                                            {mailGroup.map(mail => (
+                                                <option key={mail.group_name} value={mail.group_name}>{mail.group_name}</option>
                                             ))}
                                         </select>
                                     </div>

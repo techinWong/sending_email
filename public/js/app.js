@@ -5408,7 +5408,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var schema = yup__WEBPACK_IMPORTED_MODULE_4__.object({
   sender: yup__WEBPACK_IMPORTED_MODULE_4__.string().email().required("กรุณาเลือกอีเมล์"),
-  receiver: yup__WEBPACK_IMPORTED_MODULE_4__.string().email().required(),
+  receiver: yup__WEBPACK_IMPORTED_MODULE_4__.string().required(),
   topic: yup__WEBPACK_IMPORTED_MODULE_4__.string().required(),
   detail: yup__WEBPACK_IMPORTED_MODULE_4__.string().required()
 }).required();
@@ -5423,8 +5423,8 @@ var Index = function Index() {
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState4 = _slicedToArray(_useState3, 2),
-      mailAll = _useState4[0],
-      setMailAll = _useState4[1];
+      mailGroup = _useState4[0],
+      setMailGroup = _useState4[1];
 
   var _useForm = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_5__.useForm)({
     resolver: (0,_hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_6__.yupResolver)(schema)
@@ -5452,7 +5452,7 @@ var Index = function Index() {
   };
 
   var formSubmit = function formSubmit(e) {
-    e.preventDefault();
+    // e.preventDefault();
     axios__WEBPACK_IMPORTED_MODULE_3___default().post('api/send', mailData).then(function (res) {
       return console.log(res);
     })["catch"](function (err) {
@@ -5475,7 +5475,7 @@ var Index = function Index() {
 
   var fetchData = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var mailSenderApi, mailSenderApiResult, mailAllApi, mailAllApiResult;
+      var mailSenderApi, mailSenderApiResult, mailGroupApi, mailGroupApiResult;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -5491,17 +5491,17 @@ var Index = function Index() {
             case 5:
               mailSenderApiResult = _context.sent;
               _context.next = 8;
-              return fetch('api/mail/all');
+              return fetch('api/mailgroup');
 
             case 8:
-              mailAllApi = _context.sent;
+              mailGroupApi = _context.sent;
               _context.next = 11;
-              return mailAllApi.json();
+              return mailGroupApi.json();
 
             case 11:
-              mailAllApiResult = _context.sent;
+              mailGroupApiResult = _context.sent;
               setMailSender(mailSenderApiResult);
-              setMailAll(mailAllApiResult);
+              setMailGroup(mailGroupApiResult);
 
             case 14:
             case "end":
@@ -5627,11 +5627,11 @@ var Index = function Index() {
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
                       value: "",
                       children: " -- select an E-mail -- "
-                    }), mailAll.map(function (mail) {
+                    }), mailGroup.map(function (mail) {
                       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                        value: mail.mail_name,
-                        children: mail.mail_name
-                      }, mail.mail_name);
+                        value: mail.group_name,
+                        children: mail.group_name
+                      }, mail.group_name);
                     })]
                   }))
                 })]
