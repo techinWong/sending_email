@@ -36,10 +36,10 @@ class EmailController extends Controller
         $receiver = $request->input('receiver');
         $mailSendTo = DB::table('mail_alls')->where('mail_type',$receiver)->pluck('mail_name');
         
-        foreach($mailSendTo as $mailSend){
+        
         $logMail = new logMail;
         $logMail->sender_mail = $request->input('sender');
-        $logMail->user_send = $mailSend;
+        $logMail->user_send = $receiver;
         $logMail->topic_mail = $request->input('topic');
         $logMail->detail_mail = $request->input('detail');
         $logMail->save();
@@ -48,8 +48,9 @@ class EmailController extends Controller
             'title' => 'This is test mail From Txchin',
             'body' => 'This is for testing test loop mail using gmail'
         ];
-    
 
+    foreach($mailSendTo as $mailSend){
+    
         \Mail::to($mailSend)->send(new TestMail($details));
     }
         

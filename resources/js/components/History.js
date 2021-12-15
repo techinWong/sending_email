@@ -39,6 +39,7 @@ const History = () => {
             <table className="table table-striped">
                 <thead>
                     <tr>
+                    <th scope="col">#</th>
                     <th scope="col">วันที่ส่ง</th>
                     <th scope="col">ผู้ส่ง</th>
                     <th scope="col">กลุ่มที่ส่ง</th>
@@ -55,6 +56,7 @@ const History = () => {
                             <td>วันที่ส่ง</td>
                             <td>{item.sender_mail}</td>
                             <td>{item.user_send}</td>
+                            <td>{item.topic_mail}</td>
                             <td>จำนวนที่ส่ง</td>
                             <td>status</td>
                             <td>200</td>
