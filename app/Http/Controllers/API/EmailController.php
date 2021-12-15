@@ -25,9 +25,11 @@ class EmailController extends Controller
         return MailAll::all();
     }
 
-    // public function sendEmail(){
+    public function sendEmail($details ,$mailSend){
+        \Mail::to($mailSend)->send(new TestMail($details));
+    }
 
-    // }
+
 
     public function saveHistory(Request $request){
 
@@ -35,7 +37,6 @@ class EmailController extends Controller
 
         $receiver = $request->input('receiver');
         $mailSendTo = DB::table('mail_alls')->where('mail_type',$receiver)->pluck('mail_name');
-        
         
         $logMail = new logMail;
         $logMail->sender_mail = $request->input('sender');
@@ -45,13 +46,13 @@ class EmailController extends Controller
         $logMail->save();
 
         $details = [
-            'title' => 'This is test mail From Txchin',
+            'title' => 'This is test mail Loop From Txchin',
             'body' => 'This is for testing test loop mail using gmail'
         ];
 
     foreach($mailSendTo as $mailSend){
-    
-        \Mail::to($mailSend)->send(new TestMail($details));
+        $this->sendEmail($details , $mailSend);
+        // \Mail::to($mailSend)->send(new TestMail($details));
     }
         
         
