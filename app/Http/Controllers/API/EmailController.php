@@ -37,6 +37,9 @@ class EmailController extends Controller
 
         $receiver = $request->input('receiver');
         $mailSendTo = DB::table('mail_alls')->where('mail_type',$receiver)->pluck('mail_name');
+        if($receiver == 'ทั้งหมด'){
+            $mailSendTo = DB::table('mail_alls')->pluck('mail_name');
+        }
         
         $logMail = new logMail;
         $logMail->sender_mail = $request->input('sender');
