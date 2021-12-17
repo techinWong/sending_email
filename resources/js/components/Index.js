@@ -6,15 +6,17 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 
 const schema = yup.object({
-    sender:yup.string().email().required("กรุณาเลือกอีเมล์"),
-    receiver:yup.string().required(),
-    topic: yup.string().required(),
-    detail: yup.string().required()
+    sender:yup.string().email("กรุณาเลือกอีเมล์").required(),
+    receiver:yup.string().required("กรุณาเลือกกลุ่มผู้รับ"),
+    topic: yup.string().required("กรุณาใส่หัวข้อเรื่อง"),
+    detail: yup.string().required("กรุณาใส่เนื้อหา")
   }).required();
 
 const Index = () => {
     const [mailSender , setMailSender] = useState([]);
     const [mailGroup , setMailGroup] = useState([]);
+    const [resData , setResData] = useState([]);
+    const [waitData , setWaitData] = useState(false);
 
     const { register, handleSubmit, formState:{ errors } } = useForm({
         resolver: yupResolver(schema)
@@ -36,8 +38,13 @@ const Index = () => {
 
     const formSubmit = e => {
         // e.preventDefault();
+        setResData("Emails are on pending ! Please wait for a sec")
         axios.post('api/send' , mailData)
-        .then(res => console.log(res))
+        .then(res => {
+            console.log(res)
+            setWaitData(true);
+            setResData(res.data.message);
+         } )
         .catch(err => console.log(err.response));
 
         setMailData({sender:'' , receiver:'' , topic:'', detail:''});
@@ -92,6 +99,13 @@ const Index = () => {
                 <div className="col-md-8">
                     <div className="card">
                         <div className="card-header">Email Form</div>
+
+                        {resData.length > 0 &&
+                                    <div className={waitData ? "alert alert-success " : "alert alert-warning"} role="alert">
+                                    {resData}
+                                  </div>
+                        }
+                        
                         <div className="card-body">
                             <form onSubmit={handleSubmit(formSubmit)}>
                                 <div className="input">

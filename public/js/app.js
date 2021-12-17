@@ -5407,10 +5407,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var schema = yup__WEBPACK_IMPORTED_MODULE_4__.object({
-  sender: yup__WEBPACK_IMPORTED_MODULE_4__.string().email().required("กรุณาเลือกอีเมล์"),
-  receiver: yup__WEBPACK_IMPORTED_MODULE_4__.string().required(),
-  topic: yup__WEBPACK_IMPORTED_MODULE_4__.string().required(),
-  detail: yup__WEBPACK_IMPORTED_MODULE_4__.string().required()
+  sender: yup__WEBPACK_IMPORTED_MODULE_4__.string().email("กรุณาเลือกอีเมล์").required(),
+  receiver: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาเลือกกลุ่มผู้รับ"),
+  topic: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาใส่หัวข้อเรื่อง"),
+  detail: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาใส่เนื้อหา")
 }).required();
 
 var Index = function Index() {
@@ -5426,6 +5426,16 @@ var Index = function Index() {
       mailGroup = _useState4[0],
       setMailGroup = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState6 = _slicedToArray(_useState5, 2),
+      resData = _useState6[0],
+      setResData = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      waitData = _useState8[0],
+      setWaitData = _useState8[1];
+
   var _useForm = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_5__.useForm)({
     resolver: (0,_hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_6__.yupResolver)(schema)
   }),
@@ -5433,15 +5443,15 @@ var Index = function Index() {
       handleSubmit = _useForm.handleSubmit,
       errors = _useForm.formState.errors;
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
     sender: "",
     receiver: "",
     topic: "",
     detail: ""
   }),
-      _useState6 = _slicedToArray(_useState5, 2),
-      mailData = _useState6[0],
-      setMailData = _useState6[1];
+      _useState10 = _slicedToArray(_useState9, 2),
+      mailData = _useState10[0],
+      setMailData = _useState10[1];
 
   var handleChange = function handleChange(e) {
     var data = _objectSpread({}, mailData);
@@ -5453,8 +5463,11 @@ var Index = function Index() {
 
   var formSubmit = function formSubmit(e) {
     // e.preventDefault();
+    setResData("Emails are on pending ! Please wait for a sec");
     axios__WEBPACK_IMPORTED_MODULE_3___default().post('api/send', mailData).then(function (res) {
-      return console.log(res);
+      console.log(res);
+      setWaitData(true);
+      setResData(res.data.message);
     })["catch"](function (err) {
       return console.log(err.response);
     });
@@ -5568,6 +5581,10 @@ var Index = function Index() {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "card-header",
             children: "Email Form"
+          }), resData.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+            className: waitData ? "alert alert-success " : "alert alert-warning",
+            role: "alert",
+            children: resData
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "card-body",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("form", {

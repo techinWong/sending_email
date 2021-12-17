@@ -27,6 +27,8 @@ class EmailController extends Controller
 
     public function sendEmail($details ,$mailSend){
         \Mail::to($mailSend)->send(new TestMail($details));
+
+        
     }
 
 
@@ -49,21 +51,23 @@ class EmailController extends Controller
         $logMail->save();
 
         $details = [
-            'title' => 'This is test mail Loop From Txchin',
-            'body' => 'This is for testing test loop mail using gmail'
+            'title' => $request->input('topic'),
+            'body' => $request->input('detail')
         ];
 
     foreach($mailSendTo as $mailSend){
         $this->sendEmail($details , $mailSend);
         // \Mail::to($mailSend)->send(new TestMail($details));
     }
+
+    return response()->json([
+        'status' => 200 ,
+        'message'=> 'Success Email have been sent',
+        'mailSendto' => $mailSendTo
+    ]);
+    
         
         
-        return response()->json([
-            'status' => 200 ,
-            'message'=> 'Success Email have been sent',
-            'mailSendto' => $mailSendTo
-        ]);
     }
 
     public function showHistory(){
