@@ -1,4 +1,5 @@
 import React,{useEffect , useState} from 'react'
+import Moment from 'react-moment';
 
 
 const History = () => {
@@ -53,7 +54,7 @@ const History = () => {
                     {history.map((item,i) => (
                         <tr>
                             <th scope="row">{i+1}</th>
-                            <td>วันที่ส่ง</td>
+                            <td><Moment format="YYYY/MM/DD">{item.updated_at}</Moment></td>
                             <td>{item.sender_mail}</td>
                             <td>{item.user_send}</td>
                             <td>{item.topic_mail}</td>

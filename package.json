@@ -25,7 +25,9 @@
     },
     "dependencies": {
         "@hookform/resolvers": "^2.8.5",
+        "moment": "^2.29.1",
         "react-hook-form": "^7.22.0",
+        "react-moment": "^1.1.1",
         "yup": "^0.32.11"
     }
 }
