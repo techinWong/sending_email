@@ -48,6 +48,7 @@ class EmailController extends Controller
         $logMail->user_send = $receiver;
         $logMail->topic_mail = $request->input('topic');
         $logMail->detail_mail = $request->input('detail');
+        $logMail->status = '200';
         $logMail->save();
 
         $details = [
@@ -55,18 +56,20 @@ class EmailController extends Controller
             'body' => $request->input('detail')
         ];
 
-    foreach($mailSendTo as $mailSend){
-        $this->sendEmail($details , $mailSend);
-        // \Mail::to($mailSend)->send(new TestMail($details));
-    }
+        foreach($mailSendTo as $mailSend){
+            $this->sendEmail($details , $mailSend);
+            // \Mail::to($mailSend)->send(new TestMail($details));
+            
+        }
 
-    return response()->json([
-        'status' => 200 ,
-        'message'=> 'Success Email have been sent',
-        'mailSendto' => $mailSendTo
-    ]);
-    
+        return response()->json([
+            'status' => 200 ,
+            'message'=> 'Success Email have been sent',
+            'mailSendto' => $mailSend
+        ]);
+
         
+    
         
     }
 

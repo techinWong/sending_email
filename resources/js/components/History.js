@@ -59,8 +59,8 @@ const History = () => {
                             <td>{item.user_send}</td>
                             <td>{item.topic_mail}</td>
                             <td>จำนวนที่ส่ง</td>
-                            <td>status</td>
-                            <td>200</td>
+                            <td>{item.status === '200' ? 'success' : 'failed'}</td>
+                            <td>{item.status}</td>
                         </tr>
                     ))}
                 </tbody>
