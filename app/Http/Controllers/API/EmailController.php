@@ -25,10 +25,13 @@ class EmailController extends Controller
         return MailAll::all();
     }
 
-    public function sendEmail($details ,$mailSend){
-        \Mail::to($mailSend)->send(new TestMail($details));
-
+    
+    public function sendEmail($details ,$mailSendTo){
         
+        
+        foreach($mailSendTo as $mailSend){
+            \Mail::to($mailSend)->send(new TestMail($details));
+        }
     }
 
 
@@ -56,16 +59,17 @@ class EmailController extends Controller
             'body' => $request->input('detail')
         ];
 
-        foreach($mailSendTo as $mailSend){
-            $this->sendEmail($details , $mailSend);
-            // \Mail::to($mailSend)->send(new TestMail($details));
-            
-        }
+        $this->sendEmail($details,$mailSendTo);
+    
+        // foreach($mailSendTo as $mailSend){
+        //     $this->sendEmail($details , $mailSend);
+        //     // \Mail::to($mailSend)->send(new TestMail($details));
+        // }
 
         return response()->json([
             'status' => 200 ,
             'message'=> 'Success Email have been sent',
-            'mailSendto' => $mailSend
+            'mailSendto' => $mailSendTo
         ]);
 
         
