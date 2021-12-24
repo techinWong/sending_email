@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('mailgroup',[EmailController::class,'getEmailGroup']);
 
-Route::get('history',[EmailController::class,'showHistory']);
+Route::post('history',[EmailController::class,'showHistory']);
 
 Route::get('mailsender',[EmailController::class,'getEmailSender']);
 

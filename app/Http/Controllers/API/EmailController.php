@@ -71,14 +71,22 @@ class EmailController extends Controller
             'message'=> 'Success Email have been sent',
             'mailSendto' => $mailSendTo
         ]);
-
-        
     
-        
     }
 
-    public function showHistory(){
-        return logMail::all();
+    public function showHistory(Request $request){
+        $select = $request->input('value');
+        if($select === '1' || $select === '0'){
+            return logMail::all();
+        }
+        else{
+            return logMail::latest()->get();
+        }
+       
+        // return logMail::all();
+        // return response()->json([
+        //     'value' => $select,
+        // ]);
     }
 
     public function getEmailGroup(){

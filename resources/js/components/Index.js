@@ -75,6 +75,7 @@ const Index = () => {
         fetchData();
     },[]);
 
+
     console.log(mailData);
     return (
         <div className="container">
@@ -94,6 +95,9 @@ const Index = () => {
                         </div>
                      </div>
             </nav>
+
+            
+
 
 
                 <div className="col-md-8">
