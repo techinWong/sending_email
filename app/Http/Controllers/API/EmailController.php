@@ -27,18 +27,11 @@ class EmailController extends Controller
     }
 
     
-    public function sendEmail($details ,$mailSendTo,$count){
+    public function sendEmail($details ,$mailSendTo){
         
         
         foreach($mailSendTo as $mailSend){
-            if($count === 2){
-                \Mail::to($mailSend)->later(now()->addMinutes(1),new TestMail($details));
-            }
-            else{
-                \Mail::to($mailSend)->send(new TestMail($details));
-            }
-            
-            $count++;
+            \Mail::to($mailSend)->send(new TestMail($details));
         }
     }
 
@@ -62,23 +55,23 @@ class EmailController extends Controller
         $logMail->status = '200';
         $logMail->save();
 
-        // $details = [
-        //     'title' => $request->input('topic'),
-        //     'body' => $request->input('detail')
-        // ];
-
         $details = [
-            'email' => 'easterzoda@gmail.com' ,
             'title' => $request->input('topic'),
             'body' => $request->input('detail')
         ];
 
-        SendEmail::dispatch($details);
+        // $details = [
+        //     'email' => 'easterzoda@gmail.com' ,
+        //     'title' => $request->input('topic'),
+        //     'body' => $request->input('detail')
+        // ];
+
+        // SendEmail::dispatch($details);
 
 
         // $count = 0;
 
-        // $this->sendEmail($details,$mailSendTo,$count);
+        $this->sendEmail($details,$mailSendTo);
     
         // foreach($mailSendTo as $mailSend){
         //     $this->sendEmail($details , $mailSend);
