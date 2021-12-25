@@ -10,6 +10,7 @@ use App\Models\logMail;
 use App\Models\MailGroup;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
+use App\Jobs\SendEmail;
 
 use Illuminate\Http\Request;
 
@@ -26,11 +27,18 @@ class EmailController extends Controller
     }
 
     
-    public function sendEmail($details ,$mailSendTo){
+    public function sendEmail($details ,$mailSendTo,$count){
         
         
         foreach($mailSendTo as $mailSend){
-            \Mail::to($mailSend)->send(new TestMail($details));
+            if($count === 2){
+                \Mail::to($mailSend)->later(now()->addMinutes(1),new TestMail($details));
+            }
+            else{
+                \Mail::to($mailSend)->send(new TestMail($details));
+            }
+            
+            $count++;
         }
     }
 
@@ -54,12 +62,23 @@ class EmailController extends Controller
         $logMail->status = '200';
         $logMail->save();
 
+        // $details = [
+        //     'title' => $request->input('topic'),
+        //     'body' => $request->input('detail')
+        // ];
+
         $details = [
+            'email' => 'easterzoda@gmail.com' ,
             'title' => $request->input('topic'),
             'body' => $request->input('detail')
         ];
 
-        $this->sendEmail($details,$mailSendTo);
+        SendEmail::dispatch($details);
+
+
+        // $count = 0;
+
+        // $this->sendEmail($details,$mailSendTo,$count);
     
         // foreach($mailSendTo as $mailSend){
         //     $this->sendEmail($details , $mailSend);
@@ -82,11 +101,6 @@ class EmailController extends Controller
         else{
             return logMail::latest()->get();
         }
-       
-        // return logMail::all();
-        // return response()->json([
-        //     'value' => $select,
-        // ]);
     }
 
     public function getEmailGroup(){
