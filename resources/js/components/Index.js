@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 
 const schema = yup.object({
-    sender:yup.string().email("กรุณาเลือกอีเมล์").required(),
+    sender:yup.string().required("กรุณาเลือกกลุ่มผู้ส่ง"),
     receiver:yup.string().required("กรุณาเลือกกลุ่มผู้รับ"),
     topic: yup.string().required("กรุณาใส่หัวข้อเรื่อง"),
     detail: yup.string().required("กรุณาใส่เนื้อหา")
@@ -67,6 +67,8 @@ const Index = () => {
         const mailGroupApi = await fetch('api/mailgroup')
         const mailGroupApiResult = await mailGroupApi.json();
 
+        console.log(mailSenderApiResult);
+        console.log(mailGroupApiResult)
         setMailSender(mailSenderApiResult);
         setMailGroup(mailGroupApiResult);
     }
@@ -90,7 +92,7 @@ const Index = () => {
                         <div className="collapse navbar-collapse show" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
                             <a className="nav-link active" aria-current="page" href="#">Home</a>
-                            <a className="nav-link" href="http://127.0.0.1:8000/history">History</a>
+                            <a className="nav-link" href="/history">History</a>
                          </div>
                         </div>
                      </div>
@@ -118,7 +120,7 @@ const Index = () => {
                                         <select {...register("sender")}id="sender" name="sender" style={{width:'50'}} className="form-select form-select-sm" aria-label="Small select" value={mailData.sender} onChange={e => handleChange(e)}>
                                         <option> -- select an E-mail -- </option>
                                             {mailSender.map(sender => (
-                                                <option key={sender.mail_sender_name}>{sender.mail_sender_name}</option>
+                                                <option key={sender.mail_sender_name} value={sender.id_mail_sender}>{sender.mail_sender_name}</option>
                                             ))}
                                         </select>
                                     </div>
@@ -130,7 +132,7 @@ const Index = () => {
                                         <select {...register("receiver")} id="receiver" name="receiver" className="form-select form-select-sm" aria-label="Small select" value={mailData.receiver} onChange={e => handleChange(e)}>
                                         <option value=""> -- select an E-mail -- </option>
                                             {mailGroup.map(mail => (
-                                                <option key={mail.group_name} value={mail.group_name}>{mail.group_name}</option>
+                                                <option key={mail.group_name} value={mail.id_group}>{mail.group_name}</option>
                                             ))}
                                         </select>
                                     </div>

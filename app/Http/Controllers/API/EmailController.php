@@ -41,17 +41,24 @@ class EmailController extends Controller
 
         // $input = $request->all();
 
-        $receiver = $request->input('receiver');
-        $mailSendTo = DB::table('mail_alls')->where('mail_type',$receiver)->pluck('mail_name');
-        if($receiver == 'ทั้งหมด'){
+        $id_receiver = $request->input('receiver');
+        $id_sender = $request->input('sender');
+
+        $mailSendTo = DB::table('mail_alls')->where('mail_type',$id_receiver)->pluck('mail_name');
+        if($id_receiver == '1'){
             $mailSendTo = DB::table('mail_alls')->pluck('mail_name');
         }
         
         $logMail = new logMail;
-        $logMail->sender_mail = $request->input('sender');
-        $logMail->user_send = $receiver;
+        $logMail->sender_mail = DB::table('mail_senders')->where('id_mail_sender',$id_sender)->pluck('mail_sender_send')->first();
+        $logMail->group_name = DB::table('mail_senders')->where('id_mail_sender',$id_sender)->pluck('mail_sender_name')->first();
+
+        // $logMail->user_send = $receiver;
+        $logMail->user_send = DB::table('mail_groups')->where('id_group',$id_receiver)->pluck('group_name')->first();
         $logMail->topic_mail = $request->input('topic');
         $logMail->detail_mail = $request->input('detail');
+        $logMail->id_mail_sender = $id_sender;
+        $logMail->id_group = $id_receiver;
         $logMail->status = '200';
         $logMail->save();
 

@@ -89,7 +89,7 @@ const History = () => {
                             <tr>
                                 <th scope="row">{i+1}</th>
                                 <td><Moment format="YYYY/MM/DD">{item.updated_at}</Moment></td>
-                                <td>{item.sender_mail}</td>
+                                <td>{item.group_name}</td>
                                 <td>{item.user_send}</td>
                                 <td>{item.topic_mail}</td>
                                 <td>จำนวนที่ส่ง</td>

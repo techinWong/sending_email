@@ -5407,7 +5407,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var schema = yup__WEBPACK_IMPORTED_MODULE_4__.object({
-  sender: yup__WEBPACK_IMPORTED_MODULE_4__.string().email("กรุณาเลือกอีเมล์").required(),
+  sender: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาเลือกกลุ่มผู้ส่ง"),
   receiver: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาเลือกกลุ่มผู้รับ"),
   topic: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาใส่หัวข้อเรื่อง"),
   detail: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาใส่เนื้อหา")
@@ -5513,10 +5513,12 @@ var Index = function Index() {
 
             case 11:
               mailGroupApiResult = _context.sent;
+              console.log(mailSenderApiResult);
+              console.log(mailGroupApiResult);
               setMailSender(mailSenderApiResult);
               setMailGroup(mailGroupApiResult);
 
-            case 14:
+            case 16:
             case "end":
               return _context.stop();
           }
@@ -5568,7 +5570,7 @@ var Index = function Index() {
                 children: "Home"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("a", {
                 className: "nav-link",
-                href: "http://127.0.0.1:8000/history",
+                href: "/history",
                 children: "History"
               })]
             })
@@ -5613,6 +5615,7 @@ var Index = function Index() {
                       children: " -- select an E-mail -- "
                     }), mailSender.map(function (sender) {
                       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                        value: sender.id_mail_sender,
                         children: sender.mail_sender_name
                       }, sender.mail_sender_name);
                     })]
@@ -5646,7 +5649,7 @@ var Index = function Index() {
                       children: " -- select an E-mail -- "
                     }), mailGroup.map(function (mail) {
                       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                        value: mail.group_name,
+                        value: mail.id_group,
                         children: mail.group_name
                       }, mail.group_name);
                     })]
