@@ -115,7 +115,7 @@ class EmailController extends Controller
             return $logMail->whereBetween('created_at',[$fromDate,$toDate])->get();
         }
         else {
-            return logMail::all();
+            return $logMail->whereYear('created_at',$year)->get();
         }
     }
 

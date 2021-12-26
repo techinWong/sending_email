@@ -28,7 +28,13 @@ const History = () => {
     
     
     const fetchData = async () => {
-        const mailHisToryApi = await axios.post('api/history',data)
+        const mailHisToryApi = await axios.post('api/history',{
+            fromDate:data.fromDate,
+            toDate:data.toDate,
+            year:data.year.getFullYear(),
+            dateChecked:data.dateChecked,
+            yearChecked:data.yearChecked
+        })
         setHistory(mailHisToryApi.data);
     }
 
@@ -37,7 +43,6 @@ const History = () => {
         fetchData();
     },[data])
 
-    console.log(data);
  
     return (
         <div className="container">
