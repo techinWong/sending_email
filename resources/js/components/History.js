@@ -15,7 +15,8 @@ import {
 
 const History = () => {
 
-    
+    let today = new Date();
+    let year = today.getFullYear();
     const [history,setHistory] = useState([]);
     const [data,setData] = useState({
         fromDate:new Date(),
@@ -70,6 +71,7 @@ const History = () => {
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker
+                        disabled={data.yearChecked && true}
                         label="FROM"
                         value={data.fromDate}
                         onChange={(newDateValue) => {
@@ -83,6 +85,7 @@ const History = () => {
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker
+                        disabled={data.yearChecked && true}
                         label="TO"
                         value={data.toDate}
                         onChange={(newDateValue) => {
@@ -106,6 +109,7 @@ const History = () => {
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
                             <DatePicker
+                                disabled={data.dateChecked && true}
                                 views={["year"]}
                                 label="Year only"
                                 value={data.year}
