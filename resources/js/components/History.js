@@ -1,40 +1,43 @@
 import axios from 'axios';
 import React,{useEffect , useState} from 'react'
-import Moment from 'react-moment';
+import moment from 'moment'
+import TextField from '@mui/material/TextField';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    DatePicker,
+    MuiPickersUtilsProvider,
+  } from '@material-ui/pickers';
+
+
 
 
 const History = () => {
 
-    const [history,setHistory] = useState([]);
-    const [selectValue,setSelectValue] = useState({
-        value:'0'
-    });
     
-
+    const [history,setHistory] = useState([]);
+    const [data,setData] = useState({
+        fromDate:new Date(),
+        toDate:new Date(),
+        year:new Date(),
+        dateChecked:false,
+        yearChecked:true
+    })
+    
+    
     const fetchData = async () => {
-        const mailHisToryApi = await axios.post('api/history',selectValue)
-        // setHistory(mailHisToryApi.data);
+        const mailHisToryApi = await axios.post('api/history',data)
         setHistory(mailHisToryApi.data);
-        // .then(res => {
-        //     console.log(res)
-        //     setHistory(res.data);
-        // })
-        // const mailHistoryApi = await fetch('api/history');
-        // const mailHistoryApiResult = await mailHistoryApi.json();
-        
-        // console.log(mailHistoryApiResult);
     }
+
 
     useEffect(() => {
         fetchData();
-    },[selectValue])
+    },[data])
 
-    const handleSelectChange = (e) => {
-        setSelectValue({value:e.target.value})
-    }
-
-    console.log(selectValue);
-
+    console.log(data);
+ 
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -54,22 +57,66 @@ const History = () => {
                      </div>
             </nav>
 
-            <div className="form-floating">
-                <select 
-                className="form-select" 
-                id="floatingSelect" 
-                aria-label="Floating label select example"
-                onChange={e => handleSelectChange(e)}
-                value={selectValue.value}
-                >
-                    <option value={0} selected>Open this select menu</option>
-                    <option value={1}>Newest</option>
-                    <option value={2}>Oldest</option>
-                </select>
-                <label htmlFor="floatingSelect">Filter By Date</label>
-            </div>
+            <div>
+                <div className="form-check">
+                    <input 
+                        className="form-check-input" 
+                        type="checkbox" 
+                        defaultValue 
+                        id="formCheckDefault" 
+                        checked={data.dateChecked} 
+                        onChange={() => {setData({...data,dateChecked:!data.dateChecked , yearChecked:false})}}
+                        />
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <DatePicker
+                        label="FROM"
+                        value={data.fromDate}
+                        onChange={(newDateValue) => {
+                        setData({...data,fromDate:newDateValue});
+                        }}
+                        renderInput={(params) => <TextField {...params} />}
+                    />
+                    </LocalizationProvider>
+                </MuiPickersUtilsProvider>
+                
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <DatePicker
+                        label="TO"
+                        value={data.toDate}
+                        onChange={(newDateValue) => {
+                        setData({...data,toDate:newDateValue});
+                        }}
+                        renderInput={(params) => <TextField {...params} />}
+                    />
+                    </LocalizationProvider>
+                </MuiPickersUtilsProvider>
+                </div>
 
-        {selectValue.value !== '0' && 
+                <div className="form-check">
+                    <input 
+                    className="form-check-input" 
+                    type="checkbox" 
+                    defaultValue 
+                    id="formCheckChecked" 
+                    checked={data.yearChecked} 
+                    onChange={() => {setData({...data,yearChecked:!data.yearChecked , dateChecked:false})}}
+                    />
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                                views={["year"]}
+                                label="Year only"
+                                value={data.year}
+                                onChange={newYearValue => setData({...data,year:newYearValue})}
+                            />
+                        </LocalizationProvider>    
+                    </MuiPickersUtilsProvider>
+                </div>
+            </div>
+            
+                    
                 <div>
                 <table className="table table-striped">
                     <thead>
@@ -88,7 +135,7 @@ const History = () => {
                         {history.map((item,i) => (
                             <tr>
                                 <th scope="row">{i+1}</th>
-                                <td><Moment format="YYYY/MM/DD">{item.updated_at}</Moment></td>
+                                <td>{moment(item.created_at).format('DD-MM-YYYY')}</td>
                                 <td>{item.group_name}</td>
                                 <td>{item.user_send}</td>
                                 <td>{item.topic_mail}</td>
@@ -100,7 +147,7 @@ const History = () => {
                     </tbody>
                     </table>
             </div>
-        }
+        {/* } */}
 
         
      </div>

@@ -94,12 +94,27 @@ class EmailController extends Controller
     }
 
     public function showHistory(Request $request){
-        $select = $request->input('value');
-        if($select === '1' || $select === '0'){
-            return logMail::all();
+        // $select = $request->input('value');
+        // if($select === '1' || $select === '0'){
+        //     return logMail::all();
+        // }
+        // else{
+        //     return logMail::latest()->get();
+        // }
+
+        $fromDate = $request->input('fromDate');
+        $toDate = $request->input('toDate');
+        $year = $request->input('year');
+        $yearChecked = $request->input('yearChecked');
+        $dateChecked = $request->input('dateChecked');
+
+        $logMail = new logMail;
+
+        if($dateChecked === true){
+            return $logMail->whereBetween('created_at',[$fromDate,$toDate])->get();
         }
-        else{
-            return logMail::latest()->get();
+        else {
+            return logMail::all();
         }
     }
 
