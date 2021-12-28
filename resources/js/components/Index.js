@@ -118,7 +118,7 @@ const Index = () => {
                                     <label htmlFor="formControlInput" className="form-label">ผู้ส่ง</label>
                                     <div className="col-md-4">
                                         <select {...register("sender")}id="sender" name="sender" style={{width:'50'}} className="form-select form-select-sm" aria-label="Small select" value={mailData.sender} onChange={e => handleChange(e)}>
-                                        <option> -- select an E-mail -- </option>
+                                        <option value=""> -- select an E-mail -- </option>
                                             {mailSender.map(sender => (
                                                 <option key={sender.mail_sender_name} value={sender.id_mail_sender}>{sender.mail_sender_name}</option>
                                             ))}

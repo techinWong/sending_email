@@ -64,6 +64,28 @@ const History = () => {
             </nav>
 
             <div>
+            <div className="form-check">
+                    <input 
+                    className="form-check-input" 
+                    type="checkbox" 
+                    defaultValue 
+                    id="formCheckChecked" 
+                    checked={data.yearChecked} 
+                    onChange={() => {setData({...data,yearChecked:!data.yearChecked , dateChecked:false})}}
+                    />
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                                disabled={data.dateChecked && true}
+                                views={["year"]}
+                                label="Year only"
+                                value={data.year}
+                                onChange={newYearValue => setData({...data,year:newYearValue})}
+                            />
+                        </LocalizationProvider>    
+                    </MuiPickersUtilsProvider>
+                </div>
+
                 <div className="form-check">
                     <input 
                         className="form-check-input" 
@@ -102,27 +124,7 @@ const History = () => {
                 </MuiPickersUtilsProvider>
                 </div>
 
-                <div className="form-check">
-                    <input 
-                    className="form-check-input" 
-                    type="checkbox" 
-                    defaultValue 
-                    id="formCheckChecked" 
-                    checked={data.yearChecked} 
-                    onChange={() => {setData({...data,yearChecked:!data.yearChecked , dateChecked:false})}}
-                    />
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <DatePicker
-                                disabled={data.dateChecked && true}
-                                views={["year"]}
-                                label="Year only"
-                                value={data.year}
-                                onChange={newYearValue => setData({...data,year:newYearValue})}
-                            />
-                        </LocalizationProvider>    
-                    </MuiPickersUtilsProvider>
-                </div>
+                
             </div>
             
                     

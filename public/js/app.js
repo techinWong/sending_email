@@ -5612,6 +5612,7 @@ var Index = function Index() {
                       return handleChange(e);
                     },
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                      value: "",
                       children: " -- select an E-mail -- "
                     }), mailSender.map(function (sender) {
                       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
