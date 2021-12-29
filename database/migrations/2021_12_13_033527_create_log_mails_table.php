@@ -22,6 +22,7 @@ class CreateLogMailsTable extends Migration
             $table->string('group_name')->nullable();
             $table->string('topic_mail');
             $table->string('detail_mail');
+            $table->integer('file_id')->nullable();
             $table->string('user_send');
             $table->string('status')->nullable();
             $table->timestamps();
