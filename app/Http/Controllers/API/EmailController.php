@@ -8,6 +8,7 @@ use App\Models\MailSender;
 use App\Models\MailAll;
 use App\Models\logMail;
 use App\Models\MailGroup;
+use App\Models\files;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 use App\Jobs\SendEmail;
@@ -41,6 +42,13 @@ class EmailController extends Controller
     public function saveHistory(Request $request){
 
         // $input = $request->all();
+        $files = new files;
+        
+        $file = $request->input('file');
+        // $fileRequest = json_decode($fileRequest,true);
+        // $files->name = $fileRequest['name'];
+        // $files->type = $request->input('file')->getMimeType();
+        // $files->size = $request->input('file')->getSize();
 
         $id_receiver = $request->input('receiver');
         $id_sender = $request->input('sender');
@@ -89,7 +97,8 @@ class EmailController extends Controller
         return response()->json([
             'status' => 200 ,
             'message'=> 'Success Email have been sent',
-            'mailSendto' => $mailSendTo
+            'mailSendto' => $mailSendTo,
+            'files' => $file
         ]);
     
     }

@@ -26,8 +26,15 @@ const Index = () => {
         sender:"",
         receiver:"",
         topic:"",
-        detail:""
+        detail:"",
+        file:""
     });
+
+    const handleFileChange = e => {
+        const data = {...mailData}
+        data.file = e.target.files[0]
+        setMailData(data)
+    }
 
     const handleChange = e => {
         const data = {...mailData}
@@ -47,7 +54,7 @@ const Index = () => {
          } )
         .catch(err => console.log(err.response));
 
-        setMailData({sender:'' , receiver:'' , topic:'', detail:''});
+        setMailData({sender:'' , receiver:'' , topic:'', detail:'', file:''});
     }
 
     // const fetchData = async () => {
@@ -162,7 +169,15 @@ const Index = () => {
                                     onChange={e => handleChange(e)}
                                     ></textarea>
                                 </div>
+                                
+
+                                <div className="form-group">
+                                    <label htmlFor="formFile" className="form-label">เพิ่มไฟล์</label>
+                                    <input onChange={e => handleFileChange(e)} className="form-control" type="file" id="formFile" name="file"/>
+                                </div>
+
                                 <button type="submit" className="btn btn-secondary">SEND</button>
+
                             </form>
                         </div>
                     </div>

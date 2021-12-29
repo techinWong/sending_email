@@ -5447,11 +5447,19 @@ var Index = function Index() {
     sender: "",
     receiver: "",
     topic: "",
-    detail: ""
+    detail: "",
+    file: ""
   }),
       _useState10 = _slicedToArray(_useState9, 2),
       mailData = _useState10[0],
       setMailData = _useState10[1];
+
+  var handleFileChange = function handleFileChange(e) {
+    var data = _objectSpread({}, mailData);
+
+    data.file = e.target.files[0];
+    setMailData(data);
+  };
 
   var handleChange = function handleChange(e) {
     var data = _objectSpread({}, mailData);
@@ -5475,7 +5483,8 @@ var Index = function Index() {
       sender: '',
       receiver: '',
       topic: '',
-      detail: ''
+      detail: '',
+      file: ''
     });
   }; // const fetchData = async () => {
   //     const api = await fetch("{{url}}/show");
@@ -5702,6 +5711,21 @@ var Index = function Index() {
                     return handleChange(e);
                   }
                 }))]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                className: "form-group",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
+                  htmlFor: "formFile",
+                  className: "form-label",
+                  children: "\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E44\u0E1F\u0E25\u0E4C"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+                  onChange: function onChange(e) {
+                    return handleFileChange(e);
+                  },
+                  className: "form-control",
+                  type: "file",
+                  id: "formFile",
+                  name: "file"
+                })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
                 type: "submit",
                 className: "btn btn-secondary",
