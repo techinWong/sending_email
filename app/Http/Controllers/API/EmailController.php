@@ -124,7 +124,6 @@ class EmailController extends Controller
             'fileName' => $request->file('file')->getClientOriginalName(),
             'type' => $request->file->getMimeType(),
             'size' => $request->file->getSize(),
-            'hash' => $hash
             // 'hash' => $hash
         ]);
     
