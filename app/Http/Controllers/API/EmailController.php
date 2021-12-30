@@ -67,9 +67,10 @@ class EmailController extends Controller
         $originalName = $request->file->getClientOriginalName();
         $name = $filename . '_' . time() . '.' . $request->file->extension();
         // $path = '/storage/' . $request->file('file')->storeAs('uploads', $name, 'public');
+        $path = $request->file('file')->store('public/files');
         $size = $request->file->getSize();
         $type = $request->file->getMimeType();
-        // $hash = hash_file('sha256', Storage::path('public/uploads/' . $name));
+        // $hash = hash_file('sha256', $path);
 
 
         $id_receiver = $request->input('receiver');
@@ -120,10 +121,11 @@ class EmailController extends Controller
             'status' => 200 ,
             'message'=> 'Success Email have been sent',
             'mailSendto' => $mailSendTo,
-            'fileName' => $request->file->getClientOriginalName(),
+            'fileName' => $request->file('file')->getClientOriginalName(),
             'type' => $request->file->getMimeType(),
             'size' => $request->file->getSize(),
             'hash' => $hash
+            // 'hash' => $hash
         ]);
     
     }
