@@ -5455,10 +5455,9 @@ var Index = function Index() {
       setMailData = _useState10[1];
 
   var handleFileChange = function handleFileChange(e) {
-    var data = _objectSpread({}, mailData);
-
-    data.file = e.target.files[0];
-    setMailData(data);
+    setMailData(_objectSpread(_objectSpread({}, mailData), {}, {
+      file: e.target.files[0]
+    }));
   };
 
   var handleChange = function handleChange(e) {
@@ -5471,8 +5470,19 @@ var Index = function Index() {
 
   var formSubmit = function formSubmit(e) {
     // e.preventDefault();
+    var formData = new FormData();
+    formData.append('receiver', mailData.receiver);
+    formData.append('sender', mailData.sender);
+    formData.append('topic', mailData.topic);
+    formData.append('detail', mailData.detail);
+    formData.append('file', mailData.file);
     setResData("Emails are on pending ! Please wait for a sec");
-    axios__WEBPACK_IMPORTED_MODULE_3___default().post('api/send', mailData).then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_3___default().post('api/send', formData, {
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }).then(function (res) {
       console.log(res);
       setWaitData(true);
       setResData(res.data.message);

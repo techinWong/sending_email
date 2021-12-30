@@ -31,9 +31,7 @@ const Index = () => {
     });
 
     const handleFileChange = e => {
-        const data = {...mailData}
-        data.file = e.target.files[0]
-        setMailData(data)
+        setMailData({...mailData , file:e.target.files[0]})
     }
 
     const handleChange = e => {
@@ -43,10 +41,21 @@ const Index = () => {
         console.log(data)
     }
 
+    
+
     const formSubmit = e => {
         // e.preventDefault();
+        let formData = new FormData()
+        formData.append('receiver',mailData.receiver)
+        formData.append('sender',mailData.sender)
+        formData.append('topic',mailData.topic)
+        formData.append('detail',mailData.detail)
+        formData.append('file',mailData.file)
         setResData("Emails are on pending ! Please wait for a sec")
-        axios.post('api/send' , mailData)
+        axios.post('api/send' , formData , {
+            mode: 'cors',
+            headers: { 'Content-Type':  'multipart/form-data' }
+      })
         .then(res => {
             console.log(res)
             setWaitData(true);

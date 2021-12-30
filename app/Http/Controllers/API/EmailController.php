@@ -11,6 +11,7 @@ use App\Models\MailGroup;
 use App\Models\files;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Jobs\SendEmail;
 use Carbon\Carbon;
 
@@ -41,14 +42,35 @@ class EmailController extends Controller
 
     public function saveHistory(Request $request){
 
-        // $input = $request->all();
+        $validated = $request->validate([
+            'file' => 'required|mimes:jpg,png,pdf|max:2048'
+        ]);
+
         $files = new files;
+        // $input = $request->all();
+        // $files = new files;
         
-        $file = $request->input('file');
+        // $file = $request->input('file');
+
         // $fileRequest = json_decode($fileRequest,true);
         // $files->name = $fileRequest['name'];
         // $files->type = $request->input('file')->getMimeType();
         // $files->size = $request->input('file')->getSize();
+
+        // $fileName = time().'.'.$request->file->extension();  
+        $inputs = $request->all();
+        $filename = $inputs['file'] ?? $request->file->getClientOriginalName();
+        if (isset($inputs['file']) && !empty($inputs['file'])) {
+            $filename = $inputs['file'];
+        }
+
+        $originalName = $request->file->getClientOriginalName();
+        $name = $filename . '_' . time() . '.' . $request->file->extension();
+        // $path = '/storage/' . $request->file('file')->storeAs('uploads', $name, 'public');
+        $size = $request->file->getSize();
+        $type = $request->file->getMimeType();
+        // $hash = hash_file('sha256', Storage::path('public/uploads/' . $name));
+
 
         $id_receiver = $request->input('receiver');
         $id_sender = $request->input('sender');
@@ -98,7 +120,10 @@ class EmailController extends Controller
             'status' => 200 ,
             'message'=> 'Success Email have been sent',
             'mailSendto' => $mailSendTo,
-            'files' => $file
+            'fileName' => $request->file->getClientOriginalName(),
+            'type' => $request->file->getMimeType(),
+            'size' => $request->file->getSize(),
+            'hash' => $hash
         ]);
     
     }
