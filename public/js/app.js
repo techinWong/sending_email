@@ -5730,7 +5730,8 @@ var Index = function Index() {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
                   onChange: function onChange(e) {
                     return handleFileChange(e);
-                  },
+                  } // value={mailData.file.name}
+                  ,
                   className: "form-control",
                   type: "file",
                   id: "formFile",

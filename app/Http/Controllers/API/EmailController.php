@@ -47,6 +47,16 @@ class EmailController extends Controller
         ]);
 
         $files = new files;
+
+        $fileName = time().'_'.$request->file->getClientOriginalName();
+        $filePath = '/storage/' .$request->file('file')->storeAs('uploads', $fileName, 'public');
+        $fileSize = $request->file->getSize();
+        $fileType = $request->file->getMimeType();
+        $hash = hash_file('sha256', Storage::path('public/uploads/' . $fileName));
+
+
+        // $fileModel->name = time().'_'.$req->file->getClientOriginalName();
+        // $fileModel->file_path = '/storage/' . $filePath;
         // $input = $request->all();
         // $files = new files;
         
@@ -58,18 +68,19 @@ class EmailController extends Controller
         // $files->size = $request->input('file')->getSize();
 
         // $fileName = time().'.'.$request->file->extension();  
-        $inputs = $request->all();
-        $filename = $inputs['file'] ?? $request->file->getClientOriginalName();
-        if (isset($inputs['file']) && !empty($inputs['file'])) {
-            $filename = $inputs['file'];
-        }
+        // $inputs = $request->all();
+        // $filename = $inputs['file'] ?? $request->file->getClientOriginalName();
+        // if (isset($inputs['file']) && !empty($inputs['file'])) {
+        //     $filename = $inputs['file'];
+        // }
 
-        $originalName = $request->file->getClientOriginalName();
-        $name = $filename . '_' . time() . '.' . $request->file->extension();
-        // $path = '/storage/' . $request->file('file')->storeAs('uploads', $name, 'public');
-        $path = $request->file('file')->store('public/files');
-        $size = $request->file->getSize();
-        $type = $request->file->getMimeType();
+        // $originalName = $request->file->getClientOriginalName();
+        // $name = $filename . '_' . time() . '.' . $request->file->extension();
+        // $path = $request->file('file')->storeAs('files' , $filename, 'public');
+        // // $path = '/storage/' . $request->file('file')->storeAs('uploads', $name, 'public');
+        // // $path = $request->file('file')->store('public/files');
+        // $size = $request->file->getSize();
+        // $type = $request->file->getMimeType();
         // $hash = hash_file('sha256', $path);
 
 
@@ -96,7 +107,8 @@ class EmailController extends Controller
 
         $details = [
             'title' => $request->input('topic'),
-            'body' => $request->input('detail')
+            'body' => $request->input('detail'),
+            'filePath' => $filePath
         ];
 
         // $details = [
@@ -124,7 +136,8 @@ class EmailController extends Controller
             'fileName' => $request->file('file')->getClientOriginalName(),
             'type' => $request->file->getMimeType(),
             'size' => $request->file->getSize(),
-            // 'hash' => $hash
+            'hash' => $hash,
+            'path' => $filePath
         ]);
     
     }

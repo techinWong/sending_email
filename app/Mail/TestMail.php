@@ -29,6 +29,6 @@ class TestMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('This is Mail From Txchin')->view('emails.TestMail');
+        return $this->subject('This is Mail From Txchin')->attach(public_path($this->details['filePath']))->view('emails.TestMail');
     }
 }

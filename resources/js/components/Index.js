@@ -182,7 +182,13 @@ const Index = () => {
 
                                 <div className="form-group">
                                     <label htmlFor="formFile" className="form-label">เพิ่มไฟล์</label>
-                                    <input onChange={e => handleFileChange(e)} className="form-control" type="file" id="formFile" name="file"/>
+                                    <input 
+                                    onChange={e => handleFileChange(e)} 
+                                    // value={mailData.file.name}
+                                    className="form-control" 
+                                    type="file" 
+                                    id="formFile" 
+                                    name="file"/>
                                 </div>
 
                                 <button type="submit" className="btn btn-secondary">SEND</button>
