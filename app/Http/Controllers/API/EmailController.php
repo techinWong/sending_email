@@ -65,6 +65,13 @@ class EmailController extends Controller
             $hash = hash_file('sha256', Storage::path('public/uploads/' . $fileName));
             $fileCheck = true;
 
+            $files->name = $fileName;
+            $files->size = $fileSize;
+            $files->type = $fileType;
+            $files->path = $filePath;
+            $files->hash = $hash;
+            $files->owner_id = '0';
+            $files->save();
         }
 
         
@@ -118,6 +125,9 @@ class EmailController extends Controller
         $logMail->id_mail_sender = $id_sender;
         $logMail->id_group = $id_receiver;
         $logMail->status = '200';
+        if($fileCheck === true){
+            $logMail->file_id = DB::table('files')->where('name',$fileName)->pluck('id')->first();
+        }
         $logMail->save();
 
         if($fileCheck === true){
