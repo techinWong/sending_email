@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Mail\TestMail;
+use App\Mail\TestMailAttachment;
 use App\Http\Controllers\Controller;
 use App\Models\MailSender;
 use App\Models\MailAll;
@@ -30,29 +31,43 @@ class EmailController extends Controller
     }
 
     
-    public function sendEmail($details ,$mailSendTo){
+    public function sendEmail($details ,$mailSendTo,$fileCheck){
         
-        
+       
         foreach($mailSendTo as $mailSend){
-            \Mail::to($mailSend)->send(new TestMail($details));
+            if($fileCheck === true){
+            \Mail::to($mailSend)->send(new TestMailAttachment($details));
+            }
+            else{
+                \Mail::to($mailSend)->send(new TestMail($details));
+            }
         }
+        
     }
 
 
 
     public function saveHistory(Request $request){
 
-        $validated = $request->validate([
-            'file' => 'required|mimes:jpg,png,pdf|max:2048'
-        ]);
+        $fileCheck = false;
 
-        $files = new files;
+        if($request->file('file')){
+            $validated = $request->validate([
+                'file' => 'mimes:jpg,png,pdf|max:2048'
+            ]);
+    
+            $files = new files;
+    
+            $fileName = time().'_'.$request->file->getClientOriginalName();
+            $filePath = '/storage/' .$request->file('file')->storeAs('uploads', $fileName, 'public');
+            $fileSize = $request->file->getSize();
+            $fileType = $request->file->getMimeType();
+            $hash = hash_file('sha256', Storage::path('public/uploads/' . $fileName));
+            $fileCheck = true;
 
-        $fileName = time().'_'.$request->file->getClientOriginalName();
-        $filePath = '/storage/' .$request->file('file')->storeAs('uploads', $fileName, 'public');
-        $fileSize = $request->file->getSize();
-        $fileType = $request->file->getMimeType();
-        $hash = hash_file('sha256', Storage::path('public/uploads/' . $fileName));
+        }
+
+        
 
 
         // $fileModel->name = time().'_'.$req->file->getClientOriginalName();
@@ -105,11 +120,19 @@ class EmailController extends Controller
         $logMail->status = '200';
         $logMail->save();
 
-        $details = [
-            'title' => $request->input('topic'),
-            'body' => $request->input('detail'),
-            'filePath' => $filePath
-        ];
+        if($fileCheck === true){
+            $details = [
+                'title' => $request->input('topic'),
+                'body' => $request->input('detail'),
+                'filePath' => $filePath
+            ];
+        }
+        else{
+            $details = [
+                'title' => $request->input('topic'),
+                'body' => $request->input('detail')
+            ];
+        }
 
         // $details = [
         //     'email' => 'easterzoda@gmail.com' ,
@@ -122,7 +145,7 @@ class EmailController extends Controller
 
         // $count = 0;
 
-        $this->sendEmail($details,$mailSendTo);
+        $this->sendEmail($details,$mailSendTo,$fileCheck);
     
         // foreach($mailSendTo as $mailSend){
         //     $this->sendEmail($details , $mailSend);
@@ -133,11 +156,6 @@ class EmailController extends Controller
             'status' => 200 ,
             'message'=> 'Success Email have been sent',
             'mailSendto' => $mailSendTo,
-            'fileName' => $request->file('file')->getClientOriginalName(),
-            'type' => $request->file->getMimeType(),
-            'size' => $request->file->getSize(),
-            'hash' => $hash,
-            'path' => $filePath
         ]);
     
     }
