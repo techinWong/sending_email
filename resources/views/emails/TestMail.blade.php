@@ -8,7 +8,7 @@
 </head>
 <body>
         <h1>{{$details['title']}}</h1>
-        <p>{{$details['body']}}</p>
+        <p>{!! $details['body'] !!}</p>
         <h1>Thank you</h1>
 </body>
 </html>

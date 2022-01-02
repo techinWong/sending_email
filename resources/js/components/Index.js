@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ReactHtmlParser from 'react-html-parser';
 // import Editor from 'ckeditor5-custom-build/build/ckeditor';
 
 
@@ -44,7 +45,7 @@ const Index = () => {
         topic:"",
         detail:"",
         file:"",
-        editortest:""
+        // editortest:""
     });
 
     const handleFileChange = e => {
@@ -82,17 +83,8 @@ const Index = () => {
 
         setMailData({sender:'' , receiver:'' , topic:'', detail:'', file:''});
     }
+    
 
-    // const fetchData = async () => {
-    //     const api = await fetch("{{url}}/show");
-        
-    // }
-
-    // useEffect(() => {
-    //     fetchData();
-    // },[])
-
-    // console.log(api);
     const fetchData = async () => {
         const mailSenderApi = await fetch('api/mailsender')
         const mailSenderApiResult = await mailSenderApi.json();
@@ -185,7 +177,23 @@ const Index = () => {
                                     onChange={e => handleChange(e)}
                                     ></textarea>
                                 </div>
+
                                 <div className="form-group">
+                                    <label>เนื้อหาในเมลล์</label>
+                                    <p style={{color:'red'}}>{errors.detail?.message}</p>
+                                    <CKEditor 
+                                        {...register("detail")}
+                                        editor ={ClassicEditor}
+                                        config={editorConfiguration}
+                                        data={mailData.detail}
+                                        name="detail"
+                                        onChange={(event,editor) => {
+                                            const data = editor.getData();
+                                            setMailData({...mailData, detail:data})
+                                        }}
+                                    />
+                                </div>
+                                {/* <div className="form-group">
                                     <label>เนื้อหาในเมลล์</label>
                                     <p style={{color:'red'}}>{errors.detail?.message}</p>
                                     <textarea 
@@ -196,7 +204,7 @@ const Index = () => {
                                     cols="80" rows="10" 
                                     onChange={e => handleChange(e)}
                                     ></textarea>
-                                </div>
+                                </div> */}
                                 
 
                                 <div className="form-group">
@@ -210,18 +218,7 @@ const Index = () => {
                                     name="file"/>
                                 </div>
 
-                                <div className="form-group">
-                                    <h1>Article</h1>
-                                    <CKEditor 
-                                        editor ={ClassicEditor}
-                                        config={editorConfiguration}
-                                        data={mailData.editortest}
-                                        onChange={(event,editor) => {
-                                            const data = editor.getData();
-                                            setMailData({...mailData, editortest:data})
-                                        }}
-                                    />
-                                </div>
+                                
 
                                 <button type="submit" className="btn btn-secondary">SEND</button>
 
