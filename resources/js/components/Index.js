@@ -4,6 +4,10 @@ import axios from 'axios';
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import Editor from 'ckeditor5-custom-build/build/ckeditor';
+
 
 const schema = yup.object({
     sender:yup.string().required("กรุณาเลือกกลุ่มผู้ส่ง"),
@@ -11,6 +15,18 @@ const schema = yup.object({
     topic: yup.string().required("กรุณาใส่หัวข้อเรื่อง"),
     detail: yup.string().required("กรุณาใส่เนื้อหา")
   }).required();
+
+  const editorConfiguration = {
+    removePlugins:["EasyImage","ImageUpload","MediaEmbed"]
+    // toolbar: [ 'bold', 'italic' , 'link', 'bulletedList', 'numberedList', 'blockQuote' ] ,
+    // heading: {
+    //     options: [
+    //         { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+    //         { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+    //         { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
+    //     ]
+    // }
+}
 
 const Index = () => {
     const [mailSender , setMailSender] = useState([]);
@@ -27,7 +43,8 @@ const Index = () => {
         receiver:"",
         topic:"",
         detail:"",
-        file:""
+        file:"",
+        editortest:""
     });
 
     const handleFileChange = e => {
@@ -88,6 +105,8 @@ const Index = () => {
         setMailSender(mailSenderApiResult);
         setMailGroup(mailGroupApiResult);
     }
+
+   
 
     useEffect(() => {
         fetchData();
@@ -191,7 +210,22 @@ const Index = () => {
                                     name="file"/>
                                 </div>
 
+                                <div className="form-group">
+                                    <h1>Article</h1>
+                                    <CKEditor 
+                                        editor ={ClassicEditor}
+                                        config={editorConfiguration}
+                                        data={mailData.editortest}
+                                        onChange={(event,editor) => {
+                                            const data = editor.getData();
+                                            setMailData({...mailData, editortest:data})
+                                        }}
+                                    />
+                                </div>
+
                                 <button type="submit" className="btn btn-secondary">SEND</button>
+
+                                
 
                             </form>
                         </div>
