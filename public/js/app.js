@@ -5448,8 +5448,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var schema = yup__WEBPACK_IMPORTED_MODULE_4__.object({
   sender: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาเลือกกลุ่มผู้ส่ง"),
   receiver: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาเลือกกลุ่มผู้รับ"),
-  topic: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาใส่หัวข้อเรื่อง"),
-  detail: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาใส่เนื้อหา")
+  topic: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาใส่หัวข้อเรื่อง") // detail: yup.string().required("กรุณาใส่เนื้อหา")
+
 }).required();
 var editorConfiguration = {
   removePlugins: ["EasyImage", "ImageUpload", "MediaEmbed"] // toolbar: [ 'bold', 'italic' , 'link', 'bulletedList', 'numberedList', 'blockQuote' ] ,
@@ -5516,7 +5516,6 @@ var Index = function Index() {
 
     data[e.target.name] = e.target.value;
     setMailData(data);
-    console.log(data);
   };
 
   var formSubmit = function formSubmit(e) {
@@ -5527,6 +5526,13 @@ var Index = function Index() {
     formData.append('topic', mailData.topic);
     formData.append('detail', mailData.detail);
     formData.append('file', mailData.file);
+    setMailData({
+      sender: '',
+      receiver: '',
+      topic: '',
+      detail: '',
+      file: ''
+    });
     setResData("Emails are on pending ! Please wait for a sec");
     axios__WEBPACK_IMPORTED_MODULE_3___default().post('api/send', formData, {
       mode: 'cors',
@@ -5534,18 +5540,10 @@ var Index = function Index() {
         'Content-Type': 'multipart/form-data'
       }
     }).then(function (res) {
-      console.log(res);
       setWaitData(true);
       setResData(res.data.message);
     })["catch"](function (err) {
       return console.log(err.response);
-    });
-    setMailData({
-      sender: '',
-      receiver: '',
-      topic: '',
-      detail: '',
-      file: ''
     });
   };
 
@@ -5576,12 +5574,10 @@ var Index = function Index() {
 
             case 11:
               mailGroupApiResult = _context.sent;
-              console.log(mailSenderApiResult);
-              console.log(mailGroupApiResult);
               setMailSender(mailSenderApiResult);
               setMailGroup(mailGroupApiResult);
 
-            case 16:
+            case 14:
             case "end":
               return _context.stop();
           }
@@ -5755,7 +5751,8 @@ var Index = function Index() {
                     color: 'red'
                   },
                   children: (_errors$detail = errors.detail) === null || _errors$detail === void 0 ? void 0 : _errors$detail.message
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_7__.CKEditor, _objectSpread(_objectSpread({}, register("detail")), {}, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_7__.CKEditor // {...register("detail")}
+                , {
                   editor: (_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_8___default()),
                   config: editorConfiguration,
                   data: mailData.detail,
@@ -5766,7 +5763,7 @@ var Index = function Index() {
                       detail: data
                     }));
                   }
-                }))]
+                })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
                 className: "form-group",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {

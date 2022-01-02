@@ -14,7 +14,7 @@ const schema = yup.object({
     sender:yup.string().required("กรุณาเลือกกลุ่มผู้ส่ง"),
     receiver:yup.string().required("กรุณาเลือกกลุ่มผู้รับ"),
     topic: yup.string().required("กรุณาใส่หัวข้อเรื่อง"),
-    detail: yup.string().required("กรุณาใส่เนื้อหา")
+    // detail: yup.string().required("กรุณาใส่เนื้อหา")
   }).required();
 
   const editorConfiguration = {
@@ -56,7 +56,6 @@ const Index = () => {
         const data = {...mailData}
         data[e.target.name] = e.target.value
         setMailData(data);
-        console.log(data)
     }
 
     
@@ -69,19 +68,17 @@ const Index = () => {
         formData.append('topic',mailData.topic)
         formData.append('detail',mailData.detail)
         formData.append('file',mailData.file)
+        setMailData({sender:'' , receiver:'' , topic:'', detail:'', file:''});
         setResData("Emails are on pending ! Please wait for a sec")
         axios.post('api/send' , formData , {
             mode: 'cors',
             headers: { 'Content-Type':  'multipart/form-data' }
       })
         .then(res => {
-            console.log(res)
             setWaitData(true);
             setResData(res.data.message);
          } )
         .catch(err => console.log(err.response));
-
-        setMailData({sender:'' , receiver:'' , topic:'', detail:'', file:''});
     }
     
 
@@ -92,8 +89,6 @@ const Index = () => {
         const mailGroupApi = await fetch('api/mailgroup')
         const mailGroupApiResult = await mailGroupApi.json();
 
-        console.log(mailSenderApiResult);
-        console.log(mailGroupApiResult)
         setMailSender(mailSenderApiResult);
         setMailGroup(mailGroupApiResult);
     }
@@ -182,7 +177,7 @@ const Index = () => {
                                     <label>เนื้อหาในเมลล์</label>
                                     <p style={{color:'red'}}>{errors.detail?.message}</p>
                                     <CKEditor 
-                                        {...register("detail")}
+                                        // {...register("detail")}
                                         editor ={ClassicEditor}
                                         config={editorConfiguration}
                                         data={mailData.detail}
