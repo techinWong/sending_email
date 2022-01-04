@@ -5519,21 +5519,24 @@ var Index = function Index() {
     setMailData(data);
   };
 
+  var resetForm = function resetForm() {
+    setMailData({
+      sender: '',
+      topic: '',
+      receiver: '',
+      detail: '',
+      file: ''
+    });
+  };
+
   var formSubmit = function formSubmit(e) {
-    // e.preventDefault();
     var formData = new FormData();
     formData.append('receiver', mailData.receiver);
     formData.append('sender', mailData.sender);
     formData.append('topic', mailData.topic);
     formData.append('detail', mailData.detail);
     formData.append('file', mailData.file);
-    setMailData({
-      sender: '',
-      receiver: '',
-      topic: '',
-      detail: '',
-      file: ''
-    });
+    resetForm();
     setResData("Emails are on pending ! Please wait for a sec");
     axios__WEBPACK_IMPORTED_MODULE_3___default().post('api/send', formData, {
       mode: 'cors',
@@ -5594,7 +5597,6 @@ var Index = function Index() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchData();
   }, []);
-  console.log(mailData);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
     className: "container",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {

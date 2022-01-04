@@ -35,7 +35,7 @@ const Index = () => {
     const [resData , setResData] = useState([]);
     const [waitData , setWaitData] = useState(false);
 
-    const { register, handleSubmit, setValue, formState:{ errors } } = useForm({
+    const { register, handleSubmit, setValue,formState:{ errors } } = useForm({
         resolver: yupResolver(schema)
       });
 
@@ -57,18 +57,22 @@ const Index = () => {
         data[e.target.name] = e.target.value
         setMailData(data);
     }
+    
+    const resetForm = () => {
+       setMailData({sender:'',topic:'',receiver:'',detail:'',file:''})
+    }
 
     
 
     const formSubmit = e => {
-        // e.preventDefault();
         let formData = new FormData()
         formData.append('receiver',mailData.receiver)
         formData.append('sender',mailData.sender)
         formData.append('topic',mailData.topic)
         formData.append('detail',mailData.detail)
         formData.append('file',mailData.file)
-        setMailData({sender:'' , receiver:'' , topic:'', detail:'', file:''});
+        
+        resetForm()
         setResData("Emails are on pending ! Please wait for a sec")
         axios.post('api/send' , formData , {
             mode: 'cors',
@@ -79,6 +83,7 @@ const Index = () => {
             setResData(res.data.message);
          } )
         .catch(err => console.log(err.response));
+        
     }
     
 
@@ -100,7 +105,7 @@ const Index = () => {
     },[]);
 
 
-    console.log(mailData);
+    
     return (
         <div className="container">
             <div className="row justify-content-center">
