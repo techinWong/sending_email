@@ -14,7 +14,7 @@ const schema = yup.object({
     sender:yup.string().required("กรุณาเลือกกลุ่มผู้ส่ง"),
     receiver:yup.string().required("กรุณาเลือกกลุ่มผู้รับ"),
     topic: yup.string().required("กรุณาใส่หัวข้อเรื่อง"),
-    // detail: yup.string().required("กรุณาใส่เนื้อหา")
+    detail: yup.string().required("กรุณาใส่เนื้อหา")
   }).required();
 
   const editorConfiguration = {
@@ -35,7 +35,7 @@ const Index = () => {
     const [resData , setResData] = useState([]);
     const [waitData , setWaitData] = useState(false);
 
-    const { register, handleSubmit, formState:{ errors } } = useForm({
+    const { register, handleSubmit, setValue, formState:{ errors } } = useForm({
         resolver: yupResolver(schema)
       });
 
@@ -185,6 +185,7 @@ const Index = () => {
                                         onChange={(event,editor) => {
                                             const data = editor.getData();
                                             setMailData({...mailData, detail:data})
+                                            setValue('detail',data);
                                         }}
                                     />
                                 </div>

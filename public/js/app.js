@@ -5448,8 +5448,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var schema = yup__WEBPACK_IMPORTED_MODULE_4__.object({
   sender: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาเลือกกลุ่มผู้ส่ง"),
   receiver: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาเลือกกลุ่มผู้รับ"),
-  topic: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาใส่หัวข้อเรื่อง") // detail: yup.string().required("กรุณาใส่เนื้อหา")
-
+  topic: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาใส่หัวข้อเรื่อง"),
+  detail: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาใส่เนื้อหา")
 }).required();
 var editorConfiguration = {
   removePlugins: ["EasyImage", "ImageUpload", "MediaEmbed"] // toolbar: [ 'bold', 'italic' , 'link', 'bulletedList', 'numberedList', 'blockQuote' ] ,
@@ -5491,6 +5491,7 @@ var Index = function Index() {
   }),
       register = _useForm.register,
       handleSubmit = _useForm.handleSubmit,
+      setValue = _useForm.setValue,
       errors = _useForm.formState.errors;
 
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
@@ -5762,6 +5763,7 @@ var Index = function Index() {
                     setMailData(_objectSpread(_objectSpread({}, mailData), {}, {
                       detail: data
                     }));
+                    setValue('detail', data);
                   }
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
