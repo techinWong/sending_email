@@ -9,7 +9,6 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import ReactHtmlParser from 'react-html-parser';
 // import Editor from 'ckeditor5-custom-build/build/ckeditor';
 
-
 const schema = yup.object({
     sender:yup.string().required("กรุณาเลือกกลุ่มผู้ส่ง"),
     receiver:yup.string().required("กรุณาเลือกกลุ่มผู้รับ"),
@@ -17,8 +16,12 @@ const schema = yup.object({
     detail: yup.string().required("กรุณาใส่เนื้อหา")
   }).required();
 
+
+
   const editorConfiguration = {
-    removePlugins:["EasyImage","ImageUpload","MediaEmbed"]
+    removePlugins:["EasyImage","ImageUpload","MediaEmbed"],
+    height:'350px'
+   
     // toolbar: [ 'bold', 'italic' , 'link', 'bulletedList', 'numberedList', 'blockQuote' ] ,
     // heading: {
     //     options: [
@@ -27,7 +30,7 @@ const schema = yup.object({
     //         { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
     //     ]
     // }
-}
+    }
 
 const Index = () => {
     const [mailSender , setMailSender] = useState([]);
@@ -71,7 +74,6 @@ const Index = () => {
         formData.append('topic',mailData.topic)
         formData.append('detail',mailData.detail)
         formData.append('file',mailData.file)
-        
         resetForm()
         setResData("Emails are on pending ! Please wait for a sec")
         axios.post('api/send' , formData , {
@@ -182,7 +184,6 @@ const Index = () => {
                                     <label>เนื้อหาในเมลล์</label>
                                     <p style={{color:'red'}}>{errors.detail?.message}</p>
                                     <CKEditor 
-                                        // {...register("detail")}
                                         editor ={ClassicEditor}
                                         config={editorConfiguration}
                                         data={mailData.detail}

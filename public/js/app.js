@@ -5452,7 +5452,8 @@ var schema = yup__WEBPACK_IMPORTED_MODULE_4__.object({
   detail: yup__WEBPACK_IMPORTED_MODULE_4__.string().required("กรุณาใส่เนื้อหา")
 }).required();
 var editorConfiguration = {
-  removePlugins: ["EasyImage", "ImageUpload", "MediaEmbed"] // toolbar: [ 'bold', 'italic' , 'link', 'bulletedList', 'numberedList', 'blockQuote' ] ,
+  removePlugins: ["EasyImage", "ImageUpload", "MediaEmbed"],
+  height: '350px' // toolbar: [ 'bold', 'italic' , 'link', 'bulletedList', 'numberedList', 'blockQuote' ] ,
   // heading: {
   //     options: [
   //         { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
@@ -5754,8 +5755,7 @@ var Index = function Index() {
                     color: 'red'
                   },
                   children: (_errors$detail = errors.detail) === null || _errors$detail === void 0 ? void 0 : _errors$detail.message
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_7__.CKEditor // {...register("detail")}
-                , {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_7__.CKEditor, {
                   editor: (_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_8___default()),
                   config: editorConfiguration,
                   data: mailData.detail,
@@ -12806,7 +12806,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n\r\n.input{\r\n    display:flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    padding-left:3rem;\r\n    margin:1rem;\r\n}\r\n\r\n\r\n.input input{\r\n    margin-right:4rem;\r\n}\r\n\r\n/* .form-group{\r\n    display: flex;\r\n    flex-direction: column;\r\n    width:700px;\r\n    margin-left:4rem;\r\n} */\r\n.form-group{\r\n    max-width: 700px;\r\n    margin-left:4rem;\r\n    margin-top:1rem;\r\n}\r\n\r\n.text-area label{\r\n    margin-top:1.5rem;\r\n}\r\n\r\nbutton{\r\n    float:right;\r\n    padding:2rem;\r\n    margin-top: 1rem;\r\n    margin-right:2rem;\r\n    text-align: center;\r\n}\r\n\r\nform{\r\n    padding-top:2rem;\r\n    margin-bottom:3rem;\r\n    background: #C7CCC5;\r\n    padding-bottom:7rem;\r\n}\r\n\r\ntable{\r\n    text-align: center;\r\n}\r\n\r\nselect{\r\n    width:50px\r\n}\r\n\r\nlabel{\r\n    font-weight: 600;\r\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n\r\n.input{\r\n    display:flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    padding-left:3rem;\r\n    margin:1rem;\r\n}\r\n\r\n\r\n.input input{\r\n    margin-right:4rem;\r\n}\r\n\r\n/* .form-group{\r\n    display: flex;\r\n    flex-direction: column;\r\n    width:700px;\r\n    margin-left:4rem;\r\n} */\r\n.form-group{\r\n    max-width: 700px;\r\n    margin-left:4rem;\r\n    margin-top:1rem;\r\n}\r\n\r\n.text-area label{\r\n    margin-top:1.5rem;\r\n}\r\n\r\nbutton{\r\n    float:right;\r\n    padding:2rem;\r\n    margin-top: 1rem;\r\n    margin-right:2rem;\r\n    text-align: center;\r\n}\r\n\r\nform{\r\n    padding-top:2rem;\r\n    margin-bottom:3rem;\r\n    background: #C7CCC5;\r\n    padding-bottom:7rem;\r\n}\r\n\r\ntable{\r\n    text-align: center;\r\n}\r\n\r\nselect{\r\n    width:50px\r\n}\r\n\r\nlabel{\r\n    font-weight: 600;\r\n}\r\n\r\n.ck-editor__editable\r\n {\r\n    min-height:800px !important;\r\n }\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
