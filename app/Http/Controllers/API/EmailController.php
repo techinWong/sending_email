@@ -21,6 +21,10 @@ use Illuminate\Http\Request;
 class EmailController extends Controller
 {
     
+    public function saveTemplate(){
+        
+    }
+
 
     public function getEmailSender(){
         return MailSender::all();

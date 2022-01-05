@@ -5407,8 +5407,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var react_html_parser__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-html-parser */ "./node_modules/react-html-parser/lib/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _SaveTemplate__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./SaveTemplate */ "./resources/js/components/SaveTemplate.js");
+/* harmony import */ var react_html_parser__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-html-parser */ "./node_modules/react-html-parser/lib/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -5432,6 +5433,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -5487,6 +5489,11 @@ var Index = function Index() {
       waitData = _useState8[0],
       setWaitData = _useState8[1];
 
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      isClickSaveTemplate = _useState10[0],
+      setIsClickSaveTemplate = _useState10[1];
+
   var _useForm = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_5__.useForm)({
     resolver: (0,_hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_6__.yupResolver)(schema)
   }),
@@ -5495,7 +5502,7 @@ var Index = function Index() {
       setValue = _useForm.setValue,
       errors = _useForm.formState.errors;
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
     sender: "",
     receiver: "",
     topic: "",
@@ -5503,9 +5510,9 @@ var Index = function Index() {
     file: "" // editortest:""
 
   }),
-      _useState10 = _slicedToArray(_useState9, 2),
-      mailData = _useState10[0],
-      setMailData = _useState10[1];
+      _useState12 = _slicedToArray(_useState11, 2),
+      mailData = _useState12[0],
+      setMailData = _useState12[1];
 
   var handleFileChange = function handleFileChange(e) {
     setMailData(_objectSpread(_objectSpread({}, mailData), {}, {
@@ -5598,19 +5605,19 @@ var Index = function Index() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchData();
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
     className: "container",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
       className: "row justify-content-center",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("nav", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("nav", {
         className: "navbar navbar-expand-lg navbar-light bg-light",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
           className: "container-fluid",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("a", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("a", {
             className: "navbar-brand",
             href: "#",
             children: "Email Form"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
             className: "navbar-toggler",
             type: "button",
             "data-bs-toggle": "collapse",
@@ -5618,20 +5625,20 @@ var Index = function Index() {
             "aria-controls": "navbarNavAltMarkup",
             "aria-expanded": "false",
             "aria-label": "Toggle navigation",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
               className: "navbar-toggler-icon"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
             className: "collapse navbar-collapse show",
             id: "navbarNavAltMarkup",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
               className: "navbar-nav",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("a", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("a", {
                 className: "nav-link active",
                 "aria-current": "page",
                 href: "#",
                 children: "Home"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("a", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("a", {
                 className: "nav-link",
                 href: "/history",
                 children: "History"
@@ -5639,30 +5646,31 @@ var Index = function Index() {
             })
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
         className: "col-md-8",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
           className: "card",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
             className: "card-header",
             children: "Email Form"
-          }), resData.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+          }), resData.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
             className: waitData ? "alert alert-success " : "alert alert-warning",
             role: "alert",
             children: resData
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
             className: "card-body",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("form", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("form", {
               onSubmit: handleSubmit(formSubmit),
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+              id: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
                 className: "input",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("label", {
                   htmlFor: "formControlInput",
                   className: "form-label",
                   children: "\u0E1C\u0E39\u0E49\u0E2A\u0E48\u0E07"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
                   className: "col-md-4",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("select", _objectSpread(_objectSpread({}, register("sender")), {}, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("select", _objectSpread(_objectSpread({}, register("sender")), {}, {
                     id: "sender",
                     name: "sender",
                     style: {
@@ -5674,32 +5682,32 @@ var Index = function Index() {
                     onChange: function onChange(e) {
                       return handleChange(e);
                     },
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
                       value: "",
                       children: " -- select an E-mail -- "
                     }), mailSender.map(function (sender) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
                         value: sender.id_mail_sender,
                         children: sender.mail_sender_name
                       }, sender.mail_sender_name);
                     })]
                   }))
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("p", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
                 style: {
                   color: 'red',
                   marginLeft: '4rem'
                 },
                 children: (_errors$sender = errors.sender) === null || _errors$sender === void 0 ? void 0 : _errors$sender.message
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
                 className: "input",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("label", {
                   htmlFor: "formControlInput",
                   className: "form-label",
                   children: "\u0E01\u0E25\u0E38\u0E48\u0E21\u0E1C\u0E39\u0E49\u0E44\u0E14\u0E49\u0E23\u0E31\u0E1A\u0E40\u0E21\u0E25\u0E4C"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
                   className: "col-md-4",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("select", _objectSpread(_objectSpread({}, register("receiver")), {}, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("select", _objectSpread(_objectSpread({}, register("receiver")), {}, {
                     id: "receiver",
                     name: "receiver",
                     className: "form-select form-select-sm",
@@ -5708,35 +5716,35 @@ var Index = function Index() {
                     onChange: function onChange(e) {
                       return handleChange(e);
                     },
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
                       value: "",
                       children: " -- select an E-mail -- "
                     }), mailGroup.map(function (mail) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
                         value: mail.id_group,
                         children: mail.group_name
                       }, mail.group_name);
                     })]
                   }))
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("p", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
                 style: {
                   color: 'red',
                   marginLeft: '4rem'
                 },
                 children: (_errors$receiver = errors.receiver) === null || _errors$receiver === void 0 ? void 0 : _errors$receiver.message
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
                 className: "form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("label", {
                   htmlFor: "formControlInput",
                   className: "form-label",
                   children: "\u0E2B\u0E31\u0E27\u0E40\u0E23\u0E37\u0E48\u0E2D\u0E07"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("p", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
                   style: {
                     color: 'red'
                   },
                   children: (_errors$topic = errors.topic) === null || _errors$topic === void 0 ? void 0 : _errors$topic.message
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("textarea", _objectSpread(_objectSpread({}, register("topic")), {}, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("textarea", _objectSpread(_objectSpread({}, register("topic")), {}, {
                   className: "form-control",
                   value: mailData.topic,
                   name: "topic",
@@ -5746,16 +5754,35 @@ var Index = function Index() {
                     return handleChange(e);
                   }
                 }))]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+              }), isClickSaveTemplate && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_SaveTemplate__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                setClick: setIsClickSaveTemplate
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
                 className: "form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("label", {
                   children: "\u0E40\u0E19\u0E37\u0E49\u0E2D\u0E2B\u0E32\u0E43\u0E19\u0E40\u0E21\u0E25\u0E25\u0E4C"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("p", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
                   style: {
                     color: 'red'
                   },
                   children: (_errors$detail = errors.detail) === null || _errors$detail === void 0 ? void 0 : _errors$detail.message
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_7__.CKEditor, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h6", {
+                  className: "notice",
+                  children: "*\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49 link \u0E01\u0E23\u0E38\u0E13\u0E32\u0E43\u0E2A\u0E48 https:// \u0E14\u0E49\u0E27\u0E22 \u0E40\u0E0A\u0E48\u0E19 https://www.google.com"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+                  className: "template-form",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+                    type: "button",
+                    className: "btn btn-warning",
+                    children: "Select Template"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+                    onClick: function onClick() {
+                      return setIsClickSaveTemplate(true);
+                    },
+                    type: "button",
+                    className: "btn btn-primary",
+                    children: "Save Template"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_7__.CKEditor, {
                   editor: (_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_8___default()),
                   config: editorConfiguration,
                   data: mailData.detail,
@@ -5768,13 +5795,13 @@ var Index = function Index() {
                     setValue('detail', data);
                   }
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
                 className: "form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("label", {
                   htmlFor: "formFile",
                   className: "form-label",
                   children: "\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E44\u0E1F\u0E25\u0E4C"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("input", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("input", {
                   onChange: function onChange(e) {
                     return handleFileChange(e);
                   } // value={mailData.file.name}
@@ -5784,9 +5811,10 @@ var Index = function Index() {
                   id: "formFile",
                   name: "file"
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
                 type: "submit",
                 className: "btn btn-secondary",
+                id: "send",
                 children: "SEND"
               })]
             })
@@ -5798,6 +5826,126 @@ var Index = function Index() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Index);
+
+/***/ }),
+
+/***/ "./resources/js/components/SaveTemplate.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/SaveTemplate.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
+/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.mjs");
+/* harmony import */ var _hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @hookform/resolvers/yup */ "./node_modules/@hookform/resolvers/yup/dist/yup.module.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+var schema = yup__WEBPACK_IMPORTED_MODULE_1__.object({
+  name: yup__WEBPACK_IMPORTED_MODULE_1__.string().required("กรุณาใส่ชื่อ")
+}).required();
+
+var SaveTemplate = function SaveTemplate(_ref) {
+  var _errors$name;
+
+  var setClick = _ref.setClick;
+
+  var _useForm = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_2__.useForm)({
+    resolver: (0,_hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_3__.yupResolver)(schema)
+  }),
+      register = _useForm.register,
+      handleSubmit = _useForm.handleSubmit,
+      errors = _useForm.formState.errors;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    name: ""
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      template = _useState2[0],
+      setTemplate = _useState2[1];
+
+  var formSubmit = function formSubmit(e) {
+    e.preventDefault();
+  };
+
+  console.log(template);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    className: "toast toast-demo fade show",
+    role: "alert",
+    "aria-live": "assertive",
+    "aria-atomic": "true",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
+      onSubmit: handleSubmit(formSubmit),
+      id: "template-form",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "toast-body",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+          style: {
+            color: 'red'
+          },
+          children: (_errors$name = errors.name) === null || _errors$name === void 0 ? void 0 : _errors$name.message
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+          htmlFor: "",
+          children: "Enter Template Name"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", _objectSpread(_objectSpread({}, register("name")), {}, {
+          value: template.name,
+          name: "name",
+          type: "text",
+          onChange: function onChange(e) {
+            return setTemplate({
+              name: e.target.value
+            });
+          }
+        })), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "mt-2 pt-2 border-top",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+            type: "submit",
+            className: "btn btn-primary btn-sm",
+            children: "Submit"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+            onClick: function onClick() {
+              return setClick(false);
+            },
+            type: "button",
+            className: "btn btn-secondary btn-sm",
+            "data-bs-dismiss": "toast",
+            children: "Close"
+          })]
+        })]
+      })
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SaveTemplate);
 
 /***/ }),
 
@@ -12806,7 +12954,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n\r\n.input{\r\n    display:flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    padding-left:3rem;\r\n    margin:1rem;\r\n}\r\n\r\n\r\n.input input{\r\n    margin-right:4rem;\r\n}\r\n\r\n/* .form-group{\r\n    display: flex;\r\n    flex-direction: column;\r\n    width:700px;\r\n    margin-left:4rem;\r\n} */\r\n.form-group{\r\n    max-width: 700px;\r\n    margin-left:4rem;\r\n    margin-top:1rem;\r\n}\r\n\r\n.text-area label{\r\n    margin-top:1.5rem;\r\n}\r\n\r\nbutton{\r\n    float:right;\r\n    padding:2rem;\r\n    margin-top: 1rem;\r\n    margin-right:2rem;\r\n    text-align: center;\r\n}\r\n\r\nform{\r\n    padding-top:2rem;\r\n    margin-bottom:3rem;\r\n    background: #C7CCC5;\r\n    padding-bottom:7rem;\r\n}\r\n\r\ntable{\r\n    text-align: center;\r\n}\r\n\r\nselect{\r\n    width:50px\r\n}\r\n\r\nlabel{\r\n    font-weight: 600;\r\n}\r\n\r\n.ck-editor__editable\r\n {\r\n    min-height:800px !important;\r\n }\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n\r\n.input{\r\n    display:flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    padding-left:3rem;\r\n    margin:1rem;\r\n}\r\n\r\n\r\n.input input{\r\n    margin-right:4rem;\r\n}\r\n\r\n/* .form-group{\r\n    display: flex;\r\n    flex-direction: column;\r\n    width:700px;\r\n    margin-left:4rem;\r\n} */\r\n.form-group{\r\n    max-width: 700px;\r\n    margin-left:4rem;\r\n    margin-top:1rem;\r\n}\r\n\r\n.text-area label{\r\n    margin-top:1.5rem;\r\n}\r\n\r\n#send{\r\n    float:right;\r\n    margin-top: 1rem;\r\n    margin-right:2rem;\r\n    text-align: center;\r\n}\r\n\r\n#form-group{\r\n    padding-top:2rem;\r\n    margin-bottom:3rem;\r\n    background: #C7CCC5;\r\n    padding-bottom:7rem;\r\n}\r\n\r\n\r\ntable{\r\n    text-align: center;\r\n}\r\n\r\nselect{\r\n    width:50px\r\n}\r\n\r\nlabel{\r\n    font-weight: 600;\r\n}\r\n\r\n.ck-editor__editable\r\n {\r\n    min-height:800px !important;\r\n }\r\n\r\n .notice{\r\n     color:grey;\r\n }\r\n\r\n#template-form{\r\n    margin-left:4rem;\r\n}\r\n\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

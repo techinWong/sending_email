@@ -29,20 +29,20 @@
     margin-top:1.5rem;
 }
 
-button{
+#send{
     float:right;
-    padding:2rem;
     margin-top: 1rem;
     margin-right:2rem;
     text-align: center;
 }
 
-form{
+#form-group{
     padding-top:2rem;
     margin-bottom:3rem;
     background: #C7CCC5;
     padding-bottom:7rem;
 }
+
 
 table{
     text-align: center;
@@ -60,3 +60,13 @@ label{
  {
     min-height:800px !important;
  }
+
+ .notice{
+     color:grey;
+ }
+
+#template-form{
+    margin-left:4rem;
+}
+
+

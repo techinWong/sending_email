@@ -29,3 +29,5 @@ Route::get('mailsender',[EmailController::class,'getEmailSender']);
 Route::get('mail/all',[EmailController::class,'getEmailAll']);
 
 Route::post('send',[EmailController::class,'saveHistory']);
+
+Route::post('savetemplate',[EmailController::class,'saveTemplate']);

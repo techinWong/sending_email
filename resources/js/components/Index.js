@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import SaveTemplate from './SaveTemplate';
 import ReactHtmlParser from 'react-html-parser';
 // import Editor from 'ckeditor5-custom-build/build/ckeditor';
 
@@ -37,6 +38,7 @@ const Index = () => {
     const [mailGroup , setMailGroup] = useState([]);
     const [resData , setResData] = useState([]);
     const [waitData , setWaitData] = useState(false);
+    const [isClickSaveTemplate , setIsClickSaveTemplate] = useState(false);
 
     const { register, handleSubmit, setValue,formState:{ errors } } = useForm({
         resolver: yupResolver(schema)
@@ -142,7 +144,7 @@ const Index = () => {
                         }
                         
                         <div className="card-body">
-                            <form onSubmit={handleSubmit(formSubmit)}>
+                            <form onSubmit={handleSubmit(formSubmit)} id='form-group'>
                                 <div className="input">
                                     <label htmlFor="formControlInput" className="form-label">ผู้ส่ง</label>
                                     <div className="col-md-4">
@@ -180,9 +182,20 @@ const Index = () => {
                                     ></textarea>
                                 </div>
 
+                                {isClickSaveTemplate && 
+                                    <SaveTemplate setClick={setIsClickSaveTemplate}/>
+                                }
+
                                 <div className="form-group">
                                     <label>เนื้อหาในเมลล์</label>
                                     <p style={{color:'red'}}>{errors.detail?.message}</p>
+                                    <h6 className="notice">*การใช้ link กรุณาใส่ https:// ด้วย เช่น https://www.google.com</h6>
+                                    <div className="template-form">
+                                        
+                                        <button type="button" className="btn btn-warning">Select Template</button>
+                                        <button onClick={() => setIsClickSaveTemplate(true)}type="button" className="btn btn-primary">Save Template</button>
+
+                                    </div>
                                     <CKEditor 
                                         editor ={ClassicEditor}
                                         config={editorConfiguration}
@@ -194,6 +207,7 @@ const Index = () => {
                                             setValue('detail',data);
                                         }}
                                     />
+                                    
                                 </div>
                                 {/* <div className="form-group">
                                     <label>เนื้อหาในเมลล์</label>
@@ -222,7 +236,7 @@ const Index = () => {
 
                                 
 
-                                <button type="submit" className="btn btn-secondary">SEND</button>
+                                <button type="submit" className="btn btn-secondary" id="send">SEND</button>
 
                                 
 
