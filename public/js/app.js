@@ -5477,13 +5477,23 @@ var Index = function Index() {
 
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState6 = _slicedToArray(_useState5, 2),
-      resData = _useState6[0],
-      setResData = _useState6[1];
+      template = _useState6[0],
+      setTemplate = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
       _useState8 = _slicedToArray(_useState7, 2),
-      waitData = _useState8[0],
-      setWaitData = _useState8[1];
+      templateSelect = _useState8[0],
+      setTemplateSelect = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState10 = _slicedToArray(_useState9, 2),
+      resData = _useState10[0],
+      setResData = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState12 = _slicedToArray(_useState11, 2),
+      waitData = _useState12[0],
+      setWaitData = _useState12[1];
 
   var _useForm = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_5__.useForm)({
     resolver: (0,_hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_6__.yupResolver)(schema)
@@ -5493,7 +5503,7 @@ var Index = function Index() {
       setValue = _useForm.setValue,
       errors = _useForm.formState.errors;
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
     sender: "",
     receiver: "",
     topic: "",
@@ -5501,9 +5511,9 @@ var Index = function Index() {
     file: "" // editortest:""
 
   }),
-      _useState10 = _slicedToArray(_useState9, 2),
-      mailData = _useState10[0],
-      setMailData = _useState10[1];
+      _useState14 = _slicedToArray(_useState13, 2),
+      mailData = _useState14[0],
+      setMailData = _useState14[1];
 
   var handleFileChange = function handleFileChange(e) {
     setMailData(_objectSpread(_objectSpread({}, mailData), {}, {
@@ -5550,9 +5560,28 @@ var Index = function Index() {
     });
   };
 
+  var handleSelectChange = function handleSelectChange(e) {
+    setTemplateSelect(e.target.value);
+    console.log(template);
+    console.log(e.target.value);
+
+    if (e.target.value === '0') {
+      setMailData(_objectSpread(_objectSpread({}, mailData), {}, {
+        detail: ''
+      }));
+    } else {
+      var filterTemplate = template.filter(function (temp) {
+        return temp.id == e.target.value;
+      });
+      setMailData(_objectSpread(_objectSpread({}, mailData), {}, {
+        detail: filterTemplate[0].template_detail
+      }));
+    }
+  };
+
   var fetchData = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var mailSenderApi, mailSenderApiResult, mailGroupApi, mailGroupApiResult;
+      var mailSenderApi, mailSenderApiResult, mailGroupApi, mailGroupApiResult, templateApi, templateApiResult;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -5577,10 +5606,21 @@ var Index = function Index() {
 
             case 11:
               mailGroupApiResult = _context.sent;
-              setMailSender(mailSenderApiResult);
-              setMailGroup(mailGroupApiResult);
+              _context.next = 14;
+              return fetch('api/template');
 
             case 14:
+              templateApi = _context.sent;
+              _context.next = 17;
+              return templateApi.json();
+
+            case 17:
+              templateApiResult = _context.sent;
+              setMailSender(mailSenderApiResult);
+              setMailGroup(mailGroupApiResult);
+              setTemplate(templateApiResult);
+
+            case 21:
             case "end":
               return _context.stop();
           }
@@ -5761,6 +5801,30 @@ var Index = function Index() {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h6", {
                   className: "notice",
                   children: "*\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49 link \u0E01\u0E23\u0E38\u0E13\u0E32\u0E43\u0E2A\u0E48 https:// \u0E14\u0E49\u0E27\u0E22 \u0E40\u0E0A\u0E48\u0E19 https://www.google.com"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                  className: "form-floating",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("select", {
+                    onChange: function onChange(e) {
+                      return handleSelectChange(e);
+                    },
+                    value: templateSelect,
+                    className: "form-select",
+                    id: "floatingSelect",
+                    "aria-label": "Floating label select example",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("option", {
+                      selected: true,
+                      value: "0",
+                      children: "None"
+                    }), template.map(function (temp) {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("option", {
+                        value: temp.id,
+                        children: temp.template_name
+                      }, temp.id);
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", {
+                    htmlFor: "floatingSelect",
+                    children: "Template"
+                  })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_7__.CKEditor, {
                   editor: (_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_8___default()),
                   config: editorConfiguration,

@@ -9,6 +9,7 @@ use App\Models\MailSender;
 use App\Models\MailAll;
 use App\Models\logMail;
 use App\Models\MailGroup;
+use App\Models\template;
 use App\Models\files;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
@@ -20,11 +21,20 @@ use Illuminate\Http\Request;
 
 class EmailController extends Controller
 {
-    
+
+    public function showTemplate(){
+        return template::all();
+    }
+
     public function saveTemplate(Request $request){
+
+        $template = new template;
+        $template->template_name = $request->input('name');
+        $template->template_detail = $request->input('detail');
+        $template->save();
+
         return response()->json([
-            'name' => $request->input('name'),
-            'detail' => $request->input('detail')
+            'message' => 'Template Save Succesfully'
         ]);
     }
 

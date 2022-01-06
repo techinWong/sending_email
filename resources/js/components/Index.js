@@ -34,6 +34,8 @@ const schema = yup.object({
 const Index = () => {
     const [mailSender , setMailSender] = useState([]);
     const [mailGroup , setMailGroup] = useState([]);
+    const [template , setTemplate] = useState([]);
+    const [templateSelect , setTemplateSelect] = useState(0);
     const [resData , setResData] = useState([]);
     const [waitData , setWaitData] = useState(false);
 
@@ -87,6 +89,20 @@ const Index = () => {
         
     }
     
+    const handleSelectChange = e => {
+        setTemplateSelect(e.target.value)
+        console.log(template)
+        console.log(e.target.value)
+        if(e.target.value === '0'){
+            setMailData({...mailData , detail:''})
+        }
+        else{
+            const filterTemplate = template.filter(temp => temp.id == e.target.value)
+            setMailData({...mailData , detail:filterTemplate[0].template_detail})
+        }
+    }
+
+    
 
     const fetchData = async () => {
         const mailSenderApi = await fetch('api/mailsender')
@@ -95,12 +111,17 @@ const Index = () => {
         const mailGroupApi = await fetch('api/mailgroup')
         const mailGroupApiResult = await mailGroupApi.json();
 
+        const templateApi = await fetch('api/template')
+        const templateApiResult = await templateApi.json();
+
         setMailSender(mailSenderApiResult);
         setMailGroup(mailGroupApiResult);
+        setTemplate(templateApiResult);
+        
     }
 
-   
 
+   
     useEffect(() => {
         fetchData();
     },[]);
@@ -186,6 +207,18 @@ const Index = () => {
                                     <label>เนื้อหาในเมลล์</label>
                                     <p style={{color:'red'}}>{errors.detail?.message}</p>
                                     <h6 className="notice">*การใช้ link กรุณาใส่ https:// ด้วย เช่น https://www.google.com</h6>
+
+                                    <div className="form-floating">
+                                        <select onChange={e => handleSelectChange(e)} value={templateSelect} className="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                            <option selected value="0">None</option>
+                                            {template.map(temp => {
+                                               return <option value={temp.id} key={temp.id}>{temp.template_name}</option>
+                                            })}
+                                        </select>
+                                        <label htmlFor="floatingSelect">Template</label>
+                                    </div>
+
+
                                     <CKEditor 
                                         editor ={ClassicEditor}
                                         config={editorConfiguration}
