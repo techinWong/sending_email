@@ -21,8 +21,11 @@ use Illuminate\Http\Request;
 class EmailController extends Controller
 {
     
-    public function saveTemplate(){
-        
+    public function saveTemplate(Request $request){
+        return response()->json([
+            'name' => $request->input('name'),
+            'detail' => $request->input('detail')
+        ]);
     }
 
 

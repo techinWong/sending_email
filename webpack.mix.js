@@ -17,3 +17,6 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.js('resources/js/pages/mailHistory.js', 'public/js')
     .react()
+
+mix.js('resources/js/pages/createTemplate.js', 'public/js')
+    .react()

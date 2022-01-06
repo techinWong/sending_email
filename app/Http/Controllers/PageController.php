@@ -15,6 +15,9 @@ class PageController extends Controller
         return view('history');
     }
 
+    public function createTemplate(){
+        return view('template');
+    }
     
     
 }

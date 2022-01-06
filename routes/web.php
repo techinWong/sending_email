@@ -22,6 +22,6 @@ Route::get('/',[PageController::class,'index']);
 
 Route::get('/history',[PageController::class,'showHistory']);
 
-
+Route::get('/createtemplate',[PageController::class,'createTemplate']);
 
 

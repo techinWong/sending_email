@@ -56,8 +56,9 @@ const History = () => {
                         </button>
                         <div className="collapse navbar-collapse show" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
-                            <a className="nav-link active" aria-current="page" href="http://127.0.0.1:8000/">Home</a>
-                            <a className="nav-link" href="http://127.0.0.1:8000/history">History</a>
+                            <a className="nav-link" aria-current="page" href="http://127.0.0.1:8000/">Home</a>
+                            <a className="nav-link active" href="/history">History</a>
+                            <a className="nav-link" href="/createtemplate">Create Template</a>
                          </div>
                         </div>
                      </div>

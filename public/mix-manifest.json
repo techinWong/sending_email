@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/mailHistory.js": "/js/mailHistory.js",
+    "/js/createTemplate.js": "/js/createTemplate.js",
     "/css/app.css": "/css/app.css"
 }
