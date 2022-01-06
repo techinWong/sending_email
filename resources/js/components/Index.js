@@ -8,6 +8,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 // import Editor from 'ckeditor5-custom-build/build/ckeditor';
 
+
 const schema = yup.object({
     sender:yup.string().required("กรุณาเลือกกลุ่มผู้ส่ง"),
     receiver:yup.string().required("กรุณาเลือกกลุ่มผู้รับ"),
@@ -20,15 +21,6 @@ const schema = yup.object({
   const editorConfiguration = {
     removePlugins:["EasyImage","ImageUpload","MediaEmbed"],
     height:'350px'
-   
-    // toolbar: [ 'bold', 'italic' , 'link', 'bulletedList', 'numberedList', 'blockQuote' ] ,
-    // heading: {
-    //     options: [
-    //         { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-    //         { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-    //         { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
-    //     ]
-    // }
     }
 
 const Index = () => {

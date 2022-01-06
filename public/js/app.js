@@ -5451,15 +5451,7 @@ var schema = yup__WEBPACK_IMPORTED_MODULE_4__.object({
 }).required();
 var editorConfiguration = {
   removePlugins: ["EasyImage", "ImageUpload", "MediaEmbed"],
-  height: '350px' // toolbar: [ 'bold', 'italic' , 'link', 'bulletedList', 'numberedList', 'blockQuote' ] ,
-  // heading: {
-  //     options: [
-  //         { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-  //         { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-  //         { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
-  //     ]
-  // }
-
+  height: '350px'
 };
 
 var Index = function Index() {
