@@ -82,7 +82,6 @@ const SaveTemplate = () => {
                                 <form onSubmit={handleSubmit(formSubmit)}>
                                     <label id='create-template-label'>Create Template</label>
                                     
-                                    <h6 className="notice">*การใช้ link กรุณาใส่ https:// ด้วย เช่น https://www.google.com</h6>
                                     <div>
                                         <div id='template-name-form'>
                                             <label htmlFor="formControlInput" className="form-label">Template Name</label>
@@ -106,6 +105,7 @@ const SaveTemplate = () => {
 
                                     <div id='template-form-style'>
                                         <label htmlFor="formControlInput" className="form-label">Template Style</label>
+
                                         <p style={{color:'red'}}>{errors.detail?.message}</p>
                                     </div>   
                                         <CKEditor 
@@ -119,6 +119,8 @@ const SaveTemplate = () => {
                                                 setValue('detail',data);
                                             }}
                                         />
+                                        <h6 className="notice">*การใช้ link กรุณาใส่ https:// ด้วย เช่น https://www.google.com</h6>
+
                                      
                                     <br />
 

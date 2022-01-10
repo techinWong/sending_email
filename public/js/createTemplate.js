@@ -5506,9 +5506,6 @@ var SaveTemplate = function SaveTemplate() {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("label", {
                   id: "create-template-label",
                   children: "Create Template"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h6", {
-                  className: "notice",
-                  children: "*\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49 link \u0E01\u0E23\u0E38\u0E13\u0E32\u0E43\u0E2A\u0E48 https:// \u0E14\u0E49\u0E27\u0E22 \u0E40\u0E0A\u0E48\u0E19 https://www.google.com"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                     id: "template-name-form",
@@ -5558,6 +5555,9 @@ var SaveTemplate = function SaveTemplate() {
                     }));
                     setValue('detail', data);
                   }
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h6", {
+                  className: "notice",
+                  children: "*\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49 link \u0E01\u0E23\u0E38\u0E13\u0E32\u0E43\u0E2A\u0E48 https:// \u0E14\u0E49\u0E27\u0E22 \u0E40\u0E0A\u0E48\u0E19 https://www.google.com"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
                   type: "submit",
                   className: "btn btn-primary",
