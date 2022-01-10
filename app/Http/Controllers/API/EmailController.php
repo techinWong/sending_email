@@ -21,6 +21,20 @@ use Illuminate\Http\Request;
 
 class EmailController extends Controller
 {
+    public function saveEditTemplate(Request $request){
+        $id = $request->input('id');
+        $template = template::find($id);
+
+        $template->template_name = $request->input('template_name');
+        $template->template_detail = $request->input('template_detail');
+        $template->save();
+
+    }
+
+    public function editTemplate(Request $request){
+        $id = $request->input('id');
+        return DB::table('templates')->where('id',$id)->get();
+    }
 
     public function showTemplate(){
         return template::all();

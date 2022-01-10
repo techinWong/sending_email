@@ -33,3 +33,7 @@ Route::post('send',[EmailController::class,'saveHistory']);
 Route::post('savetemplate',[EmailController::class,'saveTemplate']);
 
 Route::get('template',[EmailController::class,'showTemplate']);
+
+Route::post('edittemplate',[EmailController::class,'editTemplate']);
+
+Route::post('saveedittemplate',[EmailController::class,'saveEditTemplate']);

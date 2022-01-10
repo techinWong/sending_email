@@ -1,12 +1,10 @@
-import React , {useEffect,useState} from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
+import React,{useState,useEffect} from 'react'
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import Popup from 'reactjs-popup';
+import axios from 'axios';
 
 
 const schema = yup.object({
@@ -14,9 +12,12 @@ const schema = yup.object({
     detail:yup.string().required("กรุณาป้อนลักษณะ Template"),
   }).required();
 
+const EditTemplate = ({template,handleEditClick}) => {
 
-const SaveTemplate = () => {
+    const [editTemplate , setEditTemplate] = useState(...template)
+
     
+
     const editorConfiguration = {
         removePlugins:["EasyImage","ImageUpload","MediaEmbed"],
         height:'100px'
@@ -26,29 +27,20 @@ const SaveTemplate = () => {
         resolver: yupResolver(schema)
       });
 
-    const [template , setTemplate] = useState({
-        name:"",
-        detail:""
-    })
-
-    const [waitSave , setWaitSave] = useState({
-        status:false,
-        message:''
-    })
+    // setValue('data',template.template_detail)
 
     const formSubmit = () => {
-        setWaitSave({message:'Template are on pending ! Please wait for a sec'})
-        axios.post('api/savetemplate',template)
-        .then(  res => {
-           console.log(res)
-            setWaitSave({status:true , message:'Template have been save !'})
-        })
-
-        setTemplate({name:'',detail:''})
+        axios.post('api/saveedittemplate',editTemplate)
+        .then(res => console.log(res))
     }
 
+    useEffect(() => {
+        setValue('detail',editTemplate.template_detail)
+    },[])
 
     return (
+
+        
         <div className="container">
             <div className="row justify-content-center">
 
@@ -72,13 +64,6 @@ const SaveTemplate = () => {
                     <div className="card">
                         <div className="card-header">Email Form</div>
 
-                        
-                          {waitSave.message.length > 0 &&
-                                    <div className={waitSave.status ? "alert alert-success " : "alert alert-warning"} role="alert">
-                                    {waitSave.message}
-                                  </div>
-                        }
-
                         <div className="form-group">
                             <div className="card-body">
                                 <form onSubmit={handleSubmit(formSubmit)}>
@@ -97,9 +82,9 @@ const SaveTemplate = () => {
                                         className="form-control" 
                                         id="formControlInput" 
                                         placeholder="Enter Template Name" 
-                                        value={template.name}
+                                        value={editTemplate.template_name}
                                         onChange={e => {
-                                            setTemplate({...template,name:e.target.value})                                            
+                                            setEditTemplate({...editTemplate,template_name:e.target.value})                                            
                                             }}
                                         />
                                         
@@ -113,11 +98,12 @@ const SaveTemplate = () => {
                                         <CKEditor 
                                             editor ={ClassicEditor}
                                             config={editorConfiguration}
-                                            data={template.detail}
+                                            value={editTemplate.template_detail}
+                                            data={editTemplate.template_detail}
                                             name="detail"
                                             onChange={(event,editor) => {
                                                 const data = editor.getData();
-                                                setTemplate({...template, detail:data})
+                                                setEditTemplate({...editTemplate, template_detail:data})
                                                 setValue('detail',data);
                                             }}
                                         />
@@ -127,6 +113,7 @@ const SaveTemplate = () => {
                                     <br />
 
                                     <button type="submit" className="btn btn-primary" id="create">Save Template</button>
+                                    <button onClick={() => handleEditClick(false)}type="button" className="btn btn-danger" id="create">Cancel</button>
                                     
 
                                 </form>
@@ -136,16 +123,13 @@ const SaveTemplate = () => {
                         </div>
 
 
-
-
                     </div>
             </div>
 
+
             </div>
         </div>
-
-
     )
 }
 
-export default SaveTemplate
+export default EditTemplate

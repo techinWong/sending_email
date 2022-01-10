@@ -1,9 +1,27 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
+import EditTemplate from './EditTemplate';
 
 const Template = () => {
 
     const [template , setTemplate] = useState([]);
+
+    const [templateData , setTemplateData] = useState([]);
+
+    const [editClick , setEditClick] = useState(false);
+
+    const editTemplate = async id => {
+        console.log(id)
+        
+        await axios.post('api/edittemplate',{
+            id:id
+        })
+        .then(res => {
+            console.log(res.data)
+            setTemplateData(res.data)
+            setEditClick(true)
+        })
+    }
 
     const fetchData = async() => {
         const templateApi = await fetch('api/template')
@@ -17,6 +35,8 @@ const Template = () => {
 
 
     return (
+
+        (editClick ? <EditTemplate template={templateData} handleEditClick={setEditClick}/> : 
 
         <div className="container">
             <div className="row justify-content-center">
@@ -42,24 +62,29 @@ const Template = () => {
                 <thead>
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
+                    <th scope="col">Template Name</th>
                     <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     {template.map((temp,i) => (
-                        <tr key={i}>
+                        <tr key={temp.id}>
                             <th scope="row">{i+1}</th>
                             <td>{temp.template_name}</td>
-                            <td><button type="button" className="btn btn-warning">Warning</button></td>
+                            <td><button type="button" className="btn btn-warning" onClick={() => editTemplate(temp.id)}>แก้ไข</button></td>
                         </tr>
                     ))}
                 </tbody>
+                <br />
             </table>
+            <a href="/createtemplate"><button type="button" className="btn btn-primary" >Add Template</button></a>
+
 
 
             </div>
         </div>
+        )
+        
     )
 }
 
