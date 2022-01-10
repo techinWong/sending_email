@@ -198,7 +198,7 @@ const Index = () => {
                                 <div className="form-group">
                                     <label>เนื้อหาในเมลล์</label>
                                     <p style={{color:'red'}}>{errors.detail?.message}</p>
-                                    <h6 className="notice">*การใช้ link กรุณาใส่ https:// ด้วย เช่น https://www.google.com</h6>
+                                    
 
                                     <div className="form-floating">
                                         <select onChange={e => handleSelectChange(e)} value={templateSelect} className="form-select" id="floatingSelect" aria-label="Floating label select example">
@@ -209,7 +209,12 @@ const Index = () => {
                                         </select>
                                         <label htmlFor="floatingSelect">Template</label>
                                     </div>
-
+                                    
+                                    <h6 className="notice">*สามารถเลือก template ที่สร้างไว้ได้เพียงหนึ่ง template</h6>
+                                    <br />
+                                    
+                                   
+                                    
 
                                     <CKEditor 
                                         editor ={ClassicEditor}
@@ -222,6 +227,7 @@ const Index = () => {
                                             setValue('detail',data);
                                         }}
                                     />
+                                    <h6 className="notice">*การใช้ link กรุณาใส่ https:// ด้วย เช่น https://www.google.com</h6>
                                     
                                 </div>
                                 {/* <div className="form-group">
