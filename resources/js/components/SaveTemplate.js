@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import Popup from 'reactjs-popup';
+
 
 const schema = yup.object({
     name:yup.string().required("กรุณาป้อนชื่อ Template"),

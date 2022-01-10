@@ -18,6 +18,10 @@ class PageController extends Controller
     public function createTemplate(){
         return view('template');
     }
+
+    public function template(){
+        return view('templatepage');
+    }
     
     
 }

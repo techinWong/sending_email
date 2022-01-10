@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import Popup from 'reactjs-popup';
+
 // import Editor from 'ckeditor5-custom-build/build/ckeditor';
 
 
@@ -121,6 +123,8 @@ const Index = () => {
 
     
     return (
+        
+
         <div className="container">
             <div className="row justify-content-center">
 
@@ -135,6 +139,7 @@ const Index = () => {
                             <a className="nav-link active" aria-current="page" href="#">Home</a>
                             <a className="nav-link" href="/history">History</a>
                             <a className="nav-link" href="/createtemplate">Create Template</a>
+                            <a className="nav-link" href="/template">Template</a>
                          </div>
                         </div>
                      </div>
@@ -199,6 +204,8 @@ const Index = () => {
                                     <label>เนื้อหาในเมลล์</label>
                                     <p style={{color:'red'}}>{errors.detail?.message}</p>
                                     
+                                    <a href="/createtemplate" target="_blank"><button type="button" className="btn btn-dark">Add Template</button></a>
+
 
                                     <div className="form-floating">
                                         <select onChange={e => handleSelectChange(e)} value={templateSelect} className="form-select" id="floatingSelect" aria-label="Floating label select example">
@@ -208,14 +215,14 @@ const Index = () => {
                                             })}
                                         </select>
                                         <label htmlFor="floatingSelect">Template</label>
+
                                     </div>
+
                                     
                                     <h6 className="notice">*สามารถเลือก template ที่สร้างไว้ได้เพียงหนึ่ง template</h6>
                                     <br />
                                     
                                    
-                                    
-
                                     <CKEditor 
                                         editor ={ClassicEditor}
                                         config={editorConfiguration}
@@ -243,6 +250,9 @@ const Index = () => {
                                     ></textarea>
                                 </div> */}
                                 
+
+                                
+
 
                                 <div className="form-group">
                                     <label htmlFor="formFile" className="form-label">เพิ่มไฟล์</label>

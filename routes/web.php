@@ -24,4 +24,6 @@ Route::get('/history',[PageController::class,'showHistory']);
 
 Route::get('/createtemplate',[PageController::class,'createTemplate']);
 
+Route::get('/template',[PageController::class,'template']);
+
 
