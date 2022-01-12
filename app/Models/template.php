@@ -13,6 +13,7 @@ class template extends Model
     use softDeletes;
 
     protected $fillable = [
+        'template_id',
         'template_name',
         'template_detail'
     ];

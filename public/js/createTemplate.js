@@ -5482,8 +5482,8 @@ var SaveTemplate = function SaveTemplate() {
                 children: "History"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("a", {
                 className: "nav-link active",
-                href: "/createtemplate",
-                children: "Create Template"
+                href: "/template",
+                children: "Template"
               })]
             })
           })]

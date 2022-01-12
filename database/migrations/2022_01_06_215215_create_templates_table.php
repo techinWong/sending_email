@@ -14,7 +14,7 @@ class CreateTemplatesTable extends Migration
     public function up()
     {
         Schema::create('templates', function (Blueprint $table) {
-            $table->id();
+            $table->id('template_id');
             $table->timestamps();
 
             $table->string('template_name');

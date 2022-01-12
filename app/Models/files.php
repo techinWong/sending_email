@@ -12,12 +12,12 @@ class files extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'page',
-        'name',
-        'size',
-        'type',
-        'path',
-        'hash',
+        'file_page',
+        'file_name',
+        'file_size',
+        'file_type',
+        'file_path',
+        'file_hash',
         'owner_id',
         'agent_id',
         'admin_id',

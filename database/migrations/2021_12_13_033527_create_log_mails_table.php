@@ -14,14 +14,14 @@ class CreateLogMailsTable extends Migration
     public function up()
     {
         Schema::create('log_mails', function (Blueprint $table) {
-            $table->id('id_log_mail');
-            $table->integer('id_user')->nullable();
-            $table->integer('id_mail_sender')->nullable();
-            $table->integer('id_group')->nullable();
-            $table->string('sender_mail');
+            $table->id('log_mail_id');
+            $table->integer('user_id')->nullable();
+            $table->integer('mail_sender_id')->nullable();
+            $table->integer('group_id')->nullable();
+            $table->string('mail_sender');
             $table->string('group_name')->nullable();
-            $table->string('topic_mail');
-            $table->string('detail_mail');
+            $table->string('mail_topic');
+            $table->string('mail_detail');
             $table->integer('file_id')->nullable();
             $table->string('user_send');
             $table->string('status')->nullable();

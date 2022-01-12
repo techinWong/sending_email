@@ -12,13 +12,13 @@ class logMail extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'id_user',
-        'id_mail_sender',
-        'id_group',
-        'sender_mail',
+        'user_id',
+        'mail_sender_id',
+        'group_id',
+        'mail_sender',
         'group_name',
-        'topic_mail',
-        'detail_mail',
+        'mail_topic',
+        'mail_detail',
         'user_send',
         'status'
     ];

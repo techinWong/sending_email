@@ -14,16 +14,16 @@ class CreateFilesTable extends Migration
     public function up()
     {
         Schema::create('files', function (Blueprint $table) {
-            $table->id();
+            $table->id('file_id');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->string('page')->default('');
-            $table->string('name')->default('');
-            $table->unsignedInteger('size')->default(0);
-            $table->string('type')->default('');
-            $table->string('path')->default('');
-            $table->text('hash')->nullable();
+            $table->string('file_page')->default('');
+            $table->string('file_name')->default('');
+            $table->unsignedInteger('file_size')->default(0);
+            $table->string('file_type')->default('');
+            $table->string('file_path')->default('');
+            $table->text('file_hash')->nullable();
 
             $table->foreignId('owner_id');
             $table->foreignId('agent_id')->nullable();

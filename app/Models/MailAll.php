@@ -12,7 +12,7 @@ class MailAll extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'id_mail_all',
+        'mail_all_id',
         'mail_name',
         'mail_send',
         'mail_type'

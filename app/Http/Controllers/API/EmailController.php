@@ -22,18 +22,18 @@ use Illuminate\Http\Request;
 class EmailController extends Controller
 {
     public function saveEditTemplate(Request $request){
-        $id = $request->input('id');
-        $template = template::find($id);
-
-        $template->template_name = $request->input('template_name');
-        $template->template_detail = $request->input('template_detail');
-        $template->save();
-
+        $id = $request->input('template_id');
+        // $template1 = template::find($id);
+        $template = DB::table('templates')->where('template_id',$id)->update([
+            'template_name' => $request->input('template_name'),
+            'template_detail' => $request->input('template_detail')
+        ]);
+       
     }
 
     public function editTemplate(Request $request){
         $id = $request->input('id');
-        return DB::table('templates')->where('id',$id)->get();
+        return DB::table('templates')->where('template_id',$id)->get();
     }
 
     public function showTemplate(){
@@ -96,11 +96,11 @@ class EmailController extends Controller
             $hash = hash_file('sha256', Storage::path('public/uploads/' . $fileName));
             $fileCheck = true;
 
-            $files->name = $fileName;
-            $files->size = $fileSize;
-            $files->type = $fileType;
-            $files->path = $filePath;
-            $files->hash = $hash;
+            $files->file_name = $fileName;
+            $files->file_size = $fileSize;
+            $files->file_type = $fileType;
+            $files->file_path = $filePath;
+            $files->file_hash = $hash;
             $files->owner_id = '0';
             $files->save();
         }
@@ -146,18 +146,19 @@ class EmailController extends Controller
         }
         
         $logMail = new logMail;
-        $logMail->sender_mail = DB::table('mail_senders')->where('id_mail_sender',$id_sender)->pluck('mail_sender_send')->first();
-        $logMail->group_name = DB::table('mail_senders')->where('id_mail_sender',$id_sender)->pluck('mail_sender_name')->first();
+        $logMail->mail_sender = DB::table('mail_senders')->where('mail_sender_id',$id_sender)->pluck('mail_sender_send')->first();
+        $logMail->group_name = DB::table('mail_senders')->where('mail_sender_id',$id_sender)->pluck('mail_sender_name')->first();
 
         // $logMail->user_send = $receiver;
-        $logMail->user_send = DB::table('mail_groups')->where('id_group',$id_receiver)->pluck('group_name')->first();
-        $logMail->topic_mail = $request->input('topic');
-        $logMail->detail_mail = $request->input('detail');
-        $logMail->id_mail_sender = $id_sender;
-        $logMail->id_group = $id_receiver;
+        $logMail->user_send = DB::table('mail_groups')->where('group_id',$id_receiver)->pluck('group_name')->first();
+        $logMail->mail_topic = $request->input('topic');
+        $logMail->mail_detail = $request->input('detail');
+        $logMail->mail_sender_id = $id_sender;
+        $logMail->group_id = $id_receiver;
         $logMail->status = '200';
+
         if($fileCheck === true){
-            $logMail->file_id = DB::table('files')->where('name',$fileName)->pluck('id')->first();
+            $logMail->file_id = DB::table('files')->where('file_name',$fileName)->pluck('file_id')->first();
         }
         $logMail->save();
 

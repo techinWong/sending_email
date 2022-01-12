@@ -58,7 +58,7 @@ const History = () => {
                         <div className="navbar-nav">
                             <a className="nav-link" aria-current="page" href="http://127.0.0.1:8000/">Home</a>
                             <a className="nav-link active" href="/history">History</a>
-                            <a className="nav-link" href="/createtemplate">Create Template</a>
+                            <a className="nav-link" href="/template">Template</a>
                          </div>
                         </div>
                      </div>
@@ -150,7 +150,7 @@ const History = () => {
                                 <td>{moment(item.created_at).format('DD-MM-YYYY')}</td>
                                 <td>{item.group_name}</td>
                                 <td>{item.user_send}</td>
-                                <td>{item.topic_mail}</td>
+                                <td>{item.mail_topic}</td>
                                 <td>จำนวนที่ส่ง</td>
                                 <td>{item.status === '200' ? 'success' : 'failed'}</td>
                                 <td>{item.status}</td>

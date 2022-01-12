@@ -5443,6 +5443,7 @@ var EditTemplate = function EditTemplate(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     setValue('detail', editTemplate.template_detail);
   }, []);
+  console.log(editTemplate);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
     className: "container",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
@@ -5482,8 +5483,8 @@ var EditTemplate = function EditTemplate(_ref) {
                 children: "History"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("a", {
                 className: "nav-link active",
-                href: "/createtemplate",
-                children: "Create Template"
+                href: "/template",
+                children: "Template"
               })]
             })
           })]
@@ -5747,10 +5748,6 @@ var Template = function Template() {
                 href: "/history",
                 children: "History"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
-                className: "nav-link",
-                href: "/createtemplate",
-                children: "Create Template"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
                 className: "nav-link active",
                 href: "/template",
                 children: "Template"
@@ -5785,12 +5782,12 @@ var Template = function Template() {
                   type: "button",
                   className: "btn btn-warning",
                   onClick: function onClick() {
-                    return editTemplate(temp.id);
+                    return editTemplate(temp.template_id);
                   },
                   children: "\u0E41\u0E01\u0E49\u0E44\u0E02"
                 })
               })]
-            }, temp.id);
+            }, temp.template_id);
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {})]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {

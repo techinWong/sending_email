@@ -62,11 +62,13 @@ const SaveTemplate = () => {
                         <div className="navbar-nav">
                             <a className="nav-link" aria-current="page" href="http://127.0.0.1:8000/">Home</a>
                             <a className="nav-link" href="/history">History</a>
-                            <a className="nav-link active" href="/createtemplate">Create Template</a>
+                            <a className="nav-link active" href="/template">Template</a>
                          </div>
                         </div>
                      </div>
             </nav>
+
+            
 
             <div className="col-md-8">
                     <div className="card">

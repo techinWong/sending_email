@@ -91,7 +91,7 @@ const Index = () => {
             setMailData({...mailData , detail:''})
         }
         else{
-            const filterTemplate = template.filter(temp => temp.id == e.target.value)
+            const filterTemplate = template.filter(temp => temp.template_id == e.target.value)
             setMailData({...mailData , detail:filterTemplate[0].template_detail})
         }
     }
@@ -138,7 +138,6 @@ const Index = () => {
                         <div className="navbar-nav">
                             <a className="nav-link active" aria-current="page" href="#">Home</a>
                             <a className="nav-link" href="/history">History</a>
-                            <a className="nav-link" href="/createtemplate">Create Template</a>
                             <a className="nav-link" href="/template">Template</a>
                          </div>
                         </div>
@@ -167,7 +166,7 @@ const Index = () => {
                                         <select {...register("sender")}id="sender" name="sender" style={{width:'50'}} className="form-select form-select-sm" aria-label="Small select" value={mailData.sender} onChange={e => handleChange(e)}>
                                         <option value=""> -- select an E-mail -- </option>
                                             {mailSender.map(sender => (
-                                                <option key={sender.mail_sender_name} value={sender.id_mail_sender}>{sender.mail_sender_name}</option>
+                                                <option key={sender.mail_sender_name} value={sender.mail_sender_id}>{sender.mail_sender_name}</option>
                                             ))}
                                         </select>
                                     </div>
@@ -179,7 +178,7 @@ const Index = () => {
                                         <select {...register("receiver")} id="receiver" name="receiver" className="form-select form-select-sm" aria-label="Small select" value={mailData.receiver} onChange={e => handleChange(e)}>
                                         <option value=""> -- select an E-mail -- </option>
                                             {mailGroup.map(mail => (
-                                                <option key={mail.group_name} value={mail.id_group}>{mail.group_name}</option>
+                                                <option key={mail.group_name} value={mail.group_id}>{mail.group_name}</option>
                                             ))}
                                         </select>
                                     </div>
@@ -211,7 +210,7 @@ const Index = () => {
                                         <select onChange={e => handleSelectChange(e)} value={templateSelect} className="form-select" id="floatingSelect" aria-label="Floating label select example">
                                             <option selected value="0">None</option>
                                             {template.map(temp => {
-                                               return <option value={temp.id} key={temp.id}>{temp.template_name}</option>
+                                               return <option value={temp.template_id} key={temp.template_id}>{temp.template_name}</option>
                                             })}
                                         </select>
                                         <label htmlFor="floatingSelect">Template</label>

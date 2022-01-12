@@ -14,7 +14,7 @@ class CreateMailGroupsTable extends Migration
     public function up()
     {
         Schema::create('mail_groups', function (Blueprint $table) {
-            $table->id('id_group');
+            $table->id('group_id');
             $table->string('group_name');
             $table->timestamps();
             $table->softDeletes();

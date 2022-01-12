@@ -5565,7 +5565,7 @@ var Index = function Index() {
       }));
     } else {
       var filterTemplate = template.filter(function (temp) {
-        return temp.id == e.target.value;
+        return temp.template_id == e.target.value;
       });
       setMailData(_objectSpread(_objectSpread({}, mailData), {}, {
         detail: filterTemplate[0].template_detail
@@ -5669,10 +5669,6 @@ var Index = function Index() {
                 children: "History"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("a", {
                 className: "nav-link",
-                href: "/createtemplate",
-                children: "Create Template"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("a", {
-                className: "nav-link",
                 href: "/template",
                 children: "Template"
               })]
@@ -5720,7 +5716,7 @@ var Index = function Index() {
                       children: " -- select an E-mail -- "
                     }), mailSender.map(function (sender) {
                       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
-                        value: sender.id_mail_sender,
+                        value: sender.mail_sender_id,
                         children: sender.mail_sender_name
                       }, sender.mail_sender_name);
                     })]
@@ -5754,7 +5750,7 @@ var Index = function Index() {
                       children: " -- select an E-mail -- "
                     }), mailGroup.map(function (mail) {
                       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
-                        value: mail.id_group,
+                        value: mail.group_id,
                         children: mail.group_name
                       }, mail.group_name);
                     })]
@@ -5820,9 +5816,9 @@ var Index = function Index() {
                       children: "None"
                     }), template.map(function (temp) {
                       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
-                        value: temp.id,
+                        value: temp.template_id,
                         children: temp.template_name
-                      }, temp.id);
+                      }, temp.template_id);
                     })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
                     htmlFor: "floatingSelect",

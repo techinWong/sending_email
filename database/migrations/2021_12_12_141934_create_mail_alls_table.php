@@ -14,7 +14,7 @@ class CreateMailAllsTable extends Migration
     public function up()
     {
         Schema::create('mail_alls', function (Blueprint $table) {
-            $table->id('id_mail_all');
+            $table->id('mail_all_id');
             $table->string('mail_name');
             $table->string('mail_send');
             $table->string('mail_type');

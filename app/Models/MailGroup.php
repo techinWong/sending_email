@@ -12,7 +12,7 @@ class MailGroup extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'id_group',
+        'group_id',
         'group_name'
     ];
 }

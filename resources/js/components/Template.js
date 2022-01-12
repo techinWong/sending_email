@@ -51,7 +51,6 @@ const Template = () => {
                         <div className="navbar-nav">
                             <a className="nav-link" aria-current="page" href="/">Home</a>
                             <a className="nav-link" href="/history">History</a>
-                            <a className="nav-link" href="/createtemplate">Create Template</a>
                             <a className="nav-link active" href="/template">Template</a>
                          </div>
                         </div>
@@ -68,10 +67,10 @@ const Template = () => {
                 </thead>
                 <tbody>
                     {template.map((temp,i) => (
-                        <tr key={temp.id}>
+                        <tr key={temp.template_id}>
                             <th scope="row">{i+1}</th>
                             <td>{temp.template_name}</td>
-                            <td><button type="button" className="btn btn-warning" onClick={() => editTemplate(temp.id)}>แก้ไข</button></td>
+                            <td><button type="button" className="btn btn-warning" onClick={() => editTemplate(temp.template_id)}>แก้ไข</button></td>
                         </tr>
                     ))}
                 </tbody>
