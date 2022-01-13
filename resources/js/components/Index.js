@@ -186,10 +186,9 @@ const Index = () => {
                                     <label>เนื้อหาในเมลล์</label>
                                     <p style={{color:'red'}}>{errors.detail?.message}</p>
                                     
-                                    <a href="/createtemplate" target="_blank"><button type="button" className="btn btn-dark">Add Template</button></a>
 
 
-                                    <div className="form-floating">
+                                    <div style={{display:'flex'}} className="form-floating">
                                         <select onChange={e => handleSelectChange(e)} value={templateSelect} className="form-select" id="floatingSelect" aria-label="Floating label select example">
                                             <option selected value="0">None</option>
                                             {template.map(temp => {
@@ -197,7 +196,7 @@ const Index = () => {
                                             })}
                                         </select>
                                         <label htmlFor="floatingSelect">Template</label>
-
+                                        <a href="/createtemplate" target="_blank"><button type="button" className="btn btn-secondary">Add Template</button></a>
                                     </div>
 
                                     

@@ -5755,15 +5755,10 @@ var Index = function Index() {
                     color: 'red'
                   },
                   children: (_errors$detail = errors.detail) === null || _errors$detail === void 0 ? void 0 : _errors$detail.message
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("a", {
-                  href: "/createtemplate",
-                  target: "_blank",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-                    type: "button",
-                    className: "btn btn-dark",
-                    children: "Add Template"
-                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+                  style: {
+                    display: 'flex'
+                  },
                   className: "form-floating",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("select", {
                     onChange: function onChange(e) {
@@ -5786,6 +5781,14 @@ var Index = function Index() {
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("label", {
                     htmlFor: "floatingSelect",
                     children: "Template"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("a", {
+                    href: "/createtemplate",
+                    target: "_blank",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+                      type: "button",
+                      className: "btn btn-secondary",
+                      children: "Add Template"
+                    })
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h6", {
                   className: "notice",
