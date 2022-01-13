@@ -8,6 +8,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Navbar from './Navbar';
 import Popup from 'reactjs-popup';
+import SendMailDialog from './SendMailDialog';
 
 // import Editor from 'ckeditor5-custom-build/build/ckeditor';
 
@@ -46,6 +47,7 @@ const Index = () => {
         file:"",
         // editortest:""
     });
+
 
     const handleFileChange = e => {
         setMailData({...mailData , file:e.target.files[0]})
@@ -247,11 +249,11 @@ const Index = () => {
                                 </div>
 
                                 
-
-                                <button type="submit" className="btn btn-secondary" id="send">SEND</button>
-
+                                <SendMailDialog onFormSubmit={handleSubmit(formSubmit)} />
+                                {/* <button type="submit" className="btn btn-secondary" id="send">SEND</button> */}
                                 
 
+                                
                             </form>
                         </div>
                     </div>
