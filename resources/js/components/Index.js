@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import Navbar from './Navbar';
 import Popup from 'reactjs-popup';
 
 // import Editor from 'ckeditor5-custom-build/build/ckeditor';
@@ -128,7 +129,7 @@ const Index = () => {
         <div className="container">
             <div className="row justify-content-center">
 
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className="container-fluid">
                         <a className="navbar-brand" href="#">Email Form</a>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -142,7 +143,8 @@ const Index = () => {
                          </div>
                         </div>
                      </div>
-            </nav>
+            </nav> */}
+            <Navbar Home='active'/>
 
             
 

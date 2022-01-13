@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 import EditTemplate from './EditTemplate';
+import Navbar from './Navbar';
 
 const Template = () => {
 
@@ -41,7 +42,7 @@ const Template = () => {
         <div className="container">
             <div className="row justify-content-center">
 
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className="container-fluid">
                         <a className="navbar-brand" href="#">Email Form</a>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +56,8 @@ const Template = () => {
                          </div>
                         </div>
                      </div>
-            </nav>
+            </nav> */}
+            <Navbar Template='active'/>
 
             <table className="table table-striped">
                 <thead>

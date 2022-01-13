@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Popup from 'reactjs-popup';
+import Navbar from './Navbar';
 
 
 const schema = yup.object({
@@ -52,7 +53,7 @@ const SaveTemplate = () => {
         <div className="container">
             <div className="row justify-content-center">
 
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className="container-fluid">
                         <a className="navbar-brand" href="#">Email Form</a>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +67,9 @@ const SaveTemplate = () => {
                          </div>
                         </div>
                      </div>
-            </nav>
+            </nav> */}
+
+            <Navbar Template='active'/>
 
             
 

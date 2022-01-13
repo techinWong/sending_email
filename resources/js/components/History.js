@@ -9,6 +9,7 @@ import {
     DatePicker,
     MuiPickersUtilsProvider,
   } from '@material-ui/pickers';
+  import Navbar from './Navbar';
 
 
 
@@ -48,7 +49,7 @@ const History = () => {
         <div className="container">
             <div className="row justify-content-center">
 
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className="container-fluid">
                         <a className="navbar-brand" href="#">Email Form</a>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +63,9 @@ const History = () => {
                          </div>
                         </div>
                      </div>
-            </nav>
+            </nav> */}
+
+            <Navbar History='active'/>
 
             <div>
             <div className="form-check">

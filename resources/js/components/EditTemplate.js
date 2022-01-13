@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from 'axios';
+import Navbar from './Navbar';
 
 
 const schema = yup.object({
@@ -46,7 +47,7 @@ const EditTemplate = ({template,handleEditClick}) => {
         <div className="container">
             <div className="row justify-content-center">
 
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className="container-fluid">
                         <a className="navbar-brand" href="#">Email Form</a>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +61,8 @@ const EditTemplate = ({template,handleEditClick}) => {
                          </div>
                         </div>
                      </div>
-            </nav>
+            </nav> */}
+            <Navbar Template='active'/>
 
             <div className="col-md-8">
                     <div className="card">
