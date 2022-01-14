@@ -5,6 +5,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import SendIcon from '@mui/icons-material/Send';
+
 
 export default function SendMailDialog({onFormSubmit}) {
   const [open, setOpen] = React.useState(false);
@@ -25,7 +27,7 @@ export default function SendMailDialog({onFormSubmit}) {
 
   return (
     <div>
-      <Button id="send"  variant="outlined" onClick={handleClickOpen}>
+      <Button id="send"  variant="contained"  endIcon={<SendIcon />} onClick={handleClickOpen}>
         SEND
       </Button>
 

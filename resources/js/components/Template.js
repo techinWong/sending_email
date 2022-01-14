@@ -2,6 +2,8 @@ import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 import EditTemplate from './EditTemplate';
 import Navbar from './Navbar';
+import CreateTemplateDialog from './CreateTemplateDialog';
+import PreviewTemplateDialog from './PreviewTemplateDialog';
 
 const Template = () => {
 
@@ -57,13 +59,14 @@ const Template = () => {
                         <tr key={temp.template_id}>
                             <th scope="row">{i+1}</th>
                             <td>{temp.template_name}</td>
-                            <td><button type="button" className="btn btn-warning" onClick={() => editTemplate(temp.template_id)}>แก้ไข</button></td>
+                            <td><button type="button" className="btn btn-warning" onClick={() => editTemplate(temp.template_id)}>แก้ไข</button><PreviewTemplateDialog templateId={temp.template_id}/></td>
                         </tr>
                     ))}
                 </tbody>
                 <br />
             </table>
-            <a href="/createtemplate"><button type="button" className="btn btn-primary" >Add Template</button></a>
+            {/* <a href="/createtemplate"><button type="button" className="btn btn-primary" >Add Template</button></a> */}
+            <CreateTemplateDialog />
 
 
 

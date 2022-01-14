@@ -53,7 +53,7 @@ const SaveTemplate = () => {
         <div className="container">
             <div className="row justify-content-center">
 
-            <Navbar Template='active'/>
+            {/* <Navbar Template='active'/> */}
 
             <div className="col-md-8">
                     <div className="card">
@@ -113,7 +113,7 @@ const SaveTemplate = () => {
                                      
                                     <br />
 
-                                    <button type="submit" className="btn btn-primary" id="create">Save Template</button>
+                                    <button type="button" onClick={handleSubmit(formSubmit)} className="btn btn-primary" id="create">Save Template</button>
                                     
 
                                 </form>

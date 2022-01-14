@@ -9,6 +9,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Navbar from './Navbar';
 import Popup from 'reactjs-popup';
 import SendMailDialog from './SendMailDialog';
+import CreateTemplateDialog from './CreateTemplateDialog';
 
 // import Editor from 'ckeditor5-custom-build/build/ckeditor';
 
@@ -198,7 +199,8 @@ const Index = () => {
                                             })}
                                         </select>
                                         <label htmlFor="floatingSelect">Template</label>
-                                        <a href="/createtemplate" target="_blank"><button type="button" className="btn btn-secondary">Add Template</button></a>
+                                        {/* <a href="/createtemplate" target="_blank"><button type="button" className="btn btn-secondary">Add Template</button></a> */}
+                                        <CreateTemplateDialog/>
                                     </div>
 
                                     
