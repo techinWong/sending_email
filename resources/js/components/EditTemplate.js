@@ -6,6 +6,8 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from 'axios';
 import Navbar from './Navbar';
+import Button from '@mui/material/Button';
+
 
 
 const schema = yup.object({
@@ -57,7 +59,7 @@ const EditTemplate = ({template,handleEditClick}) => {
                         <div className="form-group">
                             <div className="card-body">
                                 <form onSubmit={handleSubmit(formSubmit)}>
-                                    <label id='create-template-label'>Create Template</label>
+                                    <label id='create-template-label'>Edit Template</label>
                                     
                                     <div>
                                         <div id='template-name-form'>
@@ -101,13 +103,15 @@ const EditTemplate = ({template,handleEditClick}) => {
 
                                      
                                     <br />
-
-                                    <button type="submit" className="btn btn-primary" id="create">Save Template</button>
-                                    <button onClick={() => handleEditClick(false)}type="button" className="btn btn-danger" id="create">Cancel</button>
+                                    <div style={{float:'right'}}>
+                                    <Button onClick={() => handleEditClick(false)} type="Button"  id="cancel">Cancel</Button>
+                                    <Button type="submit"  variant="contained">Save Template</Button>
                                     
+                                    </div>
 
+                                           
                                 </form>
-
+                                
                             </div>
                                     
                         </div>

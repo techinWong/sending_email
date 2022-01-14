@@ -21,14 +21,7 @@ export default function CreateTemplateDialog({templateId}) {
   const [fullWidth, setFullWidth] = React.useState(true);
   const [maxWidth, setMaxWidth] = React.useState('xl');
 
-  const [previewTemplate , setPreviewTemplate] = useState([])
-
-  const fetchData = async () => {
-    await axios.post('api/edittemplate',{
-        id:templateId
-    })
-    .then(res => setPreviewTemplate(res.data))
-  }
+  
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -38,10 +31,7 @@ export default function CreateTemplateDialog({templateId}) {
     setOpen(false);
   };
 
-  useEffect(() => {
-      fetchData();
-  },[])
-
+  
 
 
   return (
@@ -56,7 +46,7 @@ export default function CreateTemplateDialog({templateId}) {
         onClose={handleClose}
       >
         <DialogTitle>Preview Template</DialogTitle>
-          <PreviewTemplate previewTemplate={previewTemplate}/>
+          <PreviewTemplate templateId={templateId}/>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
         </DialogActions>

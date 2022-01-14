@@ -5,41 +5,32 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from 'axios';
-import Navbar from './Navbar';
 
 
-const schema = yup.object({
-    name:yup.string().required("กรุณาป้อนชื่อ Template"),
-    detail:yup.string().required("กรุณาป้อนลักษณะ Template"),
-  }).required();
 
-const PreviewTemplate= ({previewTemplate}) => {
+const PreviewTemplate= ({templateId}) => {
 
-    const [editTemplate , setEditTemplate] = useState(...previewTemplate)
+    const [editTemplate , setEditTemplate] = useState([])
 
-    
+
+    const fetchData = async () => {
+        await axios.post('api/edittemplate',{
+        id:templateId
+        })
+        .then(res => {
+            setEditTemplate(res.data[0])
+        })
+    }
 
     const editorConfiguration = {
         removePlugins:["EasyImage","ImageUpload","MediaEmbed"],
         height:'100px'
     }
 
-    const { register, handleSubmit, setValue,formState:{ errors } } = useForm({
-        resolver: yupResolver(schema)
-      });
-
-    // setValue('data',template.template_detail)
-
-    const formSubmit = () => {
-        axios.post('api/saveedittemplate',editTemplate)
-        .then(res => console.log(res))
-    }
-
-    useEffect(() => {
-        setValue('detail',editTemplate.template_detail)
+    useEffect( () => {
+         fetchData();
     },[])
 
-    console.log(editTemplate);
 
     return (
 
@@ -54,27 +45,22 @@ const PreviewTemplate= ({previewTemplate}) => {
 
                         <div className="form-group">
                             <div className="card-body">
-                                <form onSubmit={handleSubmit(formSubmit)}>
+                                <form>
                                     <label id='create-template-label'>Preview Template</label>
                                     
                                     <div>
                                         <div id='template-name-form'>
                                             <label htmlFor="formControlInput" className="form-label">Template Name</label>
-                                            <p style={{color:'red'}}>{errors.name?.message}</p>
                                         </div>
                                         </div>
                                         
                                         <input 
                                         disabled
-                                        {...register("name")}
                                         type="text" 
                                         className="form-control" 
                                         id="formControlInput" 
                                         placeholder="Enter Template Name" 
                                         value={editTemplate.template_name}
-                                        onChange={e => {
-                                            setEditTemplate({...editTemplate,template_name:e.target.value})                                            
-                                            }}
                                         />
                                         
                                         <br />
@@ -82,7 +68,7 @@ const PreviewTemplate= ({previewTemplate}) => {
                                     <div id='template-form-style'>
                                         <label htmlFor="formControlInput" className="form-label">Template Style</label>
 
-                                        <p style={{color:'red'}}>{errors.detail?.message}</p>
+                            
                                     </div>   
                                         <CKEditor 
                                             disabled
@@ -91,11 +77,6 @@ const PreviewTemplate= ({previewTemplate}) => {
                                             value={editTemplate.template_detail}
                                             data={editTemplate.template_detail}
                                             name="detail"
-                                            onChange={(event,editor) => {
-                                                const data = editor.getData();
-                                                setEditTemplate({...editTemplate, template_detail:data})
-                                                setValue('detail',data);
-                                            }}
                                         />
                                         <h6 className="notice">*การใช้ link กรุณาใส่ https:// ด้วย เช่น https://www.google.com</h6>
 

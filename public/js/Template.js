@@ -17542,6 +17542,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Navbar */ "./resources/js/components/Navbar.js");
+/* harmony import */ var _mui_material_Button__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/material/Button */ "./node_modules/@mui/material/Button/Button.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -17568,6 +17569,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -17640,7 +17642,7 @@ var EditTemplate = function EditTemplate(_ref) {
                 onSubmit: handleSubmit(formSubmit),
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("label", {
                   id: "create-template-label",
-                  children: "Create Template"
+                  children: "Edit Template"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                     id: "template-name-form",
@@ -17694,19 +17696,22 @@ var EditTemplate = function EditTemplate(_ref) {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h6", {
                   className: "notice",
                   children: "*\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49 link \u0E01\u0E23\u0E38\u0E13\u0E32\u0E43\u0E2A\u0E48 https:// \u0E14\u0E49\u0E27\u0E22 \u0E40\u0E0A\u0E48\u0E19 https://www.google.com"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
-                  type: "submit",
-                  className: "btn btn-primary",
-                  id: "create",
-                  children: "Save Template"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
-                  onClick: function onClick() {
-                    return handleEditClick(false);
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                  style: {
+                    "float": 'right'
                   },
-                  type: "button",
-                  className: "btn btn-danger",
-                  id: "create",
-                  children: "Cancel"
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_mui_material_Button__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    onClick: function onClick() {
+                      return handleEditClick(false);
+                    },
+                    type: "Button",
+                    id: "cancel",
+                    children: "Cancel"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_mui_material_Button__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    type: "submit",
+                    variant: "contained",
+                    children: "Save Template"
+                  })]
                 })]
               })
             })
@@ -17801,31 +17806,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
-/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.mjs");
-/* harmony import */ var _hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @hookform/resolvers/yup */ "./node_modules/@hookform/resolvers/yup/dist/yup.module.js");
-/* harmony import */ var _ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-react */ "./node_modules/@ckeditor/ckeditor5-react/dist/ckeditor.js");
-/* harmony import */ var _ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
-/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Navbar */ "./resources/js/components/Navbar.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
+/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.mjs");
+/* harmony import */ var _hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @hookform/resolvers/yup */ "./node_modules/@hookform/resolvers/yup/dist/yup.module.js");
+/* harmony import */ var _ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ckeditor/ckeditor5-react */ "./node_modules/@ckeditor/ckeditor5-react/dist/ckeditor.js");
+/* harmony import */ var _ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -17849,45 +17847,47 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var schema = yup__WEBPACK_IMPORTED_MODULE_1__.object({
-  name: yup__WEBPACK_IMPORTED_MODULE_1__.string().required("กรุณาป้อนชื่อ Template"),
-  detail: yup__WEBPACK_IMPORTED_MODULE_1__.string().required("กรุณาป้อนลักษณะ Template")
-}).required();
-
 var PreviewTemplate = function PreviewTemplate(_ref) {
-  var _errors$name, _errors$detail;
+  var templateId = _ref.templateId;
 
-  var previewTemplate = _ref.previewTemplate;
-
-  var _useState = react__WEBPACK_IMPORTED_MODULE_0__.useState.apply(void 0, _toConsumableArray(previewTemplate)),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       editTemplate = _useState2[0],
       setEditTemplate = _useState2[1];
+
+  var fetchData = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_7___default().post('api/edittemplate', {
+                id: templateId
+              }).then(function (res) {
+                setEditTemplate(res.data[0]);
+              });
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function fetchData() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
 
   var editorConfiguration = {
     removePlugins: ["EasyImage", "ImageUpload", "MediaEmbed"],
     height: '100px'
   };
-
-  var _useForm = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_2__.useForm)({
-    resolver: (0,_hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_3__.yupResolver)(schema)
-  }),
-      register = _useForm.register,
-      handleSubmit = _useForm.handleSubmit,
-      setValue = _useForm.setValue,
-      errors = _useForm.formState.errors; // setValue('data',template.template_detail)
-
-
-  var formSubmit = function formSubmit() {
-    axios__WEBPACK_IMPORTED_MODULE_6___default().post('api/saveedittemplate', editTemplate).then(function (res) {
-      return console.log(res);
-    });
-  };
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    setValue('detail', editTemplate.template_detail);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    fetchData();
   }, []);
-  console.log(editTemplate);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
     className: "container",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
@@ -17904,63 +17904,39 @@ var PreviewTemplate = function PreviewTemplate(_ref) {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
               className: "card-body",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("form", {
-                onSubmit: handleSubmit(formSubmit),
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("label", {
                   id: "create-template-label",
                   children: "Preview Template"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                     id: "template-name-form",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("label", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("label", {
                       htmlFor: "formControlInput",
                       className: "form-label",
                       children: "Template Name"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                      style: {
-                        color: 'red'
-                      },
-                      children: (_errors$name = errors.name) === null || _errors$name === void 0 ? void 0 : _errors$name.message
-                    })]
+                    })
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", _objectSpread(_objectSpread({
-                  disabled: true
-                }, register("name")), {}, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", {
+                  disabled: true,
                   type: "text",
                   className: "form-control",
                   id: "formControlInput",
                   placeholder: "Enter Template Name",
-                  value: editTemplate.template_name,
-                  onChange: function onChange(e) {
-                    setEditTemplate(_objectSpread(_objectSpread({}, editTemplate), {}, {
-                      template_name: e.target.value
-                    }));
-                  }
-                })), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                  value: editTemplate.template_name
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                   id: "template-form-style",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("label", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("label", {
                     htmlFor: "formControlInput",
                     className: "form-label",
                     children: "Template Style"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                    style: {
-                      color: 'red'
-                    },
-                    children: (_errors$detail = errors.detail) === null || _errors$detail === void 0 ? void 0 : _errors$detail.message
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_4__.CKEditor, {
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_5__.CKEditor, {
                   disabled: true,
-                  editor: (_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_5___default()),
+                  editor: (_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_6___default()),
                   config: editorConfiguration,
                   value: editTemplate.template_detail,
                   data: editTemplate.template_detail,
-                  name: "detail",
-                  onChange: function onChange(event, editor) {
-                    var data = editor.getData();
-                    setEditTemplate(_objectSpread(_objectSpread({}, editTemplate), {}, {
-                      template_detail: data
-                    }));
-                    setValue('detail', data);
-                  }
+                  name: "detail"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h6", {
                   className: "notice",
                   children: "*\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49 link \u0E01\u0E23\u0E38\u0E13\u0E32\u0E43\u0E2A\u0E48 https:// \u0E14\u0E49\u0E27\u0E22 \u0E40\u0E0A\u0E48\u0E19 https://www.google.com"
@@ -17989,23 +17965,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ CreateTemplateDialog)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _mui_material_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material/Button */ "./node_modules/@mui/material/Button/Button.js");
-/* harmony import */ var _mui_material_Dialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/Dialog */ "./node_modules/@mui/material/Dialog/Dialog.js");
-/* harmony import */ var _mui_material_DialogActions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material/DialogActions */ "./node_modules/@mui/material/DialogActions/DialogActions.js");
-/* harmony import */ var _mui_material_DialogTitle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material/DialogTitle */ "./node_modules/@mui/material/DialogTitle/DialogTitle.js");
-/* harmony import */ var _PreviewTemplate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PreviewTemplate */ "./resources/js/components/PreviewTemplate.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _mui_material_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material/Button */ "./node_modules/@mui/material/Button/Button.js");
+/* harmony import */ var _mui_material_Dialog__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material/Dialog */ "./node_modules/@mui/material/Dialog/Dialog.js");
+/* harmony import */ var _mui_material_DialogActions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material/DialogActions */ "./node_modules/@mui/material/DialogActions/DialogActions.js");
+/* harmony import */ var _mui_material_DialogTitle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/DialogTitle */ "./node_modules/@mui/material/DialogTitle/DialogTitle.js");
+/* harmony import */ var _PreviewTemplate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PreviewTemplate */ "./resources/js/components/PreviewTemplate.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -18040,51 +18008,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function CreateTemplateDialog(_ref) {
   var templateId = _ref.templateId;
 
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState(false),
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       open = _React$useState2[0],
       setOpen = _React$useState2[1];
 
-  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1__.useState(true),
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(true),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
       fullWidth = _React$useState4[0],
       setFullWidth = _React$useState4[1];
 
-  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_1__.useState('xl'),
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState('xl'),
       _React$useState6 = _slicedToArray(_React$useState5, 2),
       maxWidth = _React$useState6[0],
       setMaxWidth = _React$useState6[1];
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      previewTemplate = _useState2[0],
-      setPreviewTemplate = _useState2[1];
-
-  var fetchData = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('api/edittemplate', {
-                id: templateId
-              }).then(function (res) {
-                return setPreviewTemplate(res.data);
-              });
-
-            case 2:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    return function fetchData() {
-      return _ref2.apply(this, arguments);
-    };
-  }();
 
   var handleClickOpen = function handleClickOpen() {
     setOpen(true);
@@ -18094,26 +18031,23 @@ function CreateTemplateDialog(_ref) {
     setOpen(false);
   };
 
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    fetchData();
-  }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
       id: "previewTemplate",
       variant: "contained",
       onClick: handleClickOpen,
       children: "\u0E14\u0E39\u0E15\u0E31\u0E27\u0E2D\u0E22\u0E48\u0E32\u0E07"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material_Dialog__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_mui_material_Dialog__WEBPACK_IMPORTED_MODULE_5__["default"], {
       fullWidth: fullWidth,
       maxWidth: maxWidth,
       open: open,
       onClose: handleClose,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material_DialogTitle__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material_DialogTitle__WEBPACK_IMPORTED_MODULE_6__["default"], {
         children: "Preview Template"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_PreviewTemplate__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        previewTemplate: previewTemplate
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material_DialogActions__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_PreviewTemplate__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        templateId: templateId
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material_DialogActions__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
           onClick: handleClose,
           children: "Close"
         })
@@ -23611,7 +23545,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n\r\n.input{\r\n    display:flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    padding-left:3rem;\r\n    margin:1rem;\r\n}\r\n\r\n\r\n.input input{\r\n    margin-right:4rem;\r\n}\r\n\r\n/* .form-group{\r\n    display: flex;\r\n    flex-direction: column;\r\n    width:700px;\r\n    margin-left:4rem;\r\n} */\r\n.form-group{\r\n    max-width: 700px;\r\n    margin-left:4rem;\r\n    margin-top:1rem;\r\n}\r\n\r\n.text-area label{\r\n    margin-top:1.5rem;\r\n}\r\n\r\n#send{\r\n    float:right;\r\n    margin-top: 1rem;\r\n    margin-right:2rem;\r\n    text-align: center;\r\n}\r\n\r\n#form-group{\r\n    padding-top:2rem;\r\n    margin-bottom:3rem;\r\n    background: #C7CCC5;\r\n    padding-bottom:7rem;\r\n}\r\n\r\n\r\ntable{\r\n    text-align: center;\r\n}\r\n\r\nselect{\r\n    width:50px\r\n}\r\n\r\nlabel{\r\n    font-weight: 600;\r\n}\r\n\r\n.ck-editor__editable\r\n {\r\n    /* max-height:400px !important; */\r\n    min-height: 300px;\r\n    max-height: 300px;\r\n    overflow: scroll;\r\n }\r\n\r\n .notice{\r\n     color:grey;\r\n }\r\n\r\n#template-form{\r\n    margin-left:4rem;\r\n}\r\n\r\n#create-template-label{\r\n    font-size: large;\r\n}\r\n\r\n#create{\r\n    width:100%;\r\n}\r\n\r\n#template-name-form{\r\n    display: flex;\r\n}\r\n\r\n#template-name-form p{\r\n    margin-left:2rem;\r\n}\r\n\r\n#template-form-style{\r\n    display: flex;\r\n}\r\n\r\n#template-form-style p{\r\n    margin-left:2rem;\r\n}\r\n\r\n#previewTemplate{\r\n    display: inline-block;\r\n    font-weight: 400;\r\n    line-height: 1.6;\r\n    color: white;\r\n    text-align: center;\r\n    text-decoration: none;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    border: 1px solid transparent;\r\n    padding: 0.375rem 0.75rem;\r\n    font-size: 0.9rem;\r\n    border-radius: 0.25rem;\r\n    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\r\n    margin-left:0.5rem;\r\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n\r\n.input{\r\n    display:flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    padding-left:3rem;\r\n    margin:1rem;\r\n}\r\n\r\n\r\n.input input{\r\n    margin-right:4rem;\r\n}\r\n\r\n/* .form-group{\r\n    display: flex;\r\n    flex-direction: column;\r\n    width:700px;\r\n    margin-left:4rem;\r\n} */\r\n.form-group{\r\n    max-width: 700px;\r\n    margin-left:4rem;\r\n    margin-top:1rem;\r\n    padding-bottom: 1rem;\r\n}\r\n\r\n.text-area label{\r\n    margin-top:1.5rem;\r\n}\r\n\r\n#send{\r\n    float:right;\r\n    margin-top: 1rem;\r\n    margin-right:2rem;\r\n    text-align: center;\r\n}\r\n\r\n#form-group{\r\n    padding-top:2rem;\r\n    margin-bottom:3rem;\r\n    background: #C7CCC5;\r\n    padding-bottom:7rem;\r\n}\r\n\r\n\r\ntable{\r\n    text-align: center;\r\n}\r\n\r\nselect{\r\n    width:50px\r\n}\r\n\r\nlabel{\r\n    font-weight: 600;\r\n}\r\n\r\n.ck-editor__editable\r\n {\r\n    /* max-height:400px !important; */\r\n    min-height: 300px;\r\n    max-height: 300px;\r\n    overflow: scroll;\r\n }\r\n\r\n .notice{\r\n     color:grey;\r\n }\r\n\r\n#template-form{\r\n    margin-left:4rem;\r\n}\r\n\r\n#create-template-label{\r\n    font-size: large;\r\n}\r\n\r\n#create{\r\n    width:100%;\r\n}\r\n\r\n#template-name-form{\r\n    display: flex;\r\n}\r\n\r\n#template-name-form p{\r\n    margin-left:2rem;\r\n}\r\n\r\n#template-form-style{\r\n    display: flex;\r\n}\r\n\r\n#template-form-style p{\r\n    margin-left:2rem;\r\n}\r\n\r\n#previewTemplate{\r\n    display: inline-block;\r\n    font-weight: 400;\r\n    line-height: 1.6;\r\n    color: white;\r\n    text-align: center;\r\n    text-decoration: none;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    border: 1px solid transparent;\r\n    padding: 0.375rem 0.75rem;\r\n    font-size: 0.9rem;\r\n    border-radius: 0.25rem;\r\n    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\r\n    margin-left:0.5rem;\r\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
