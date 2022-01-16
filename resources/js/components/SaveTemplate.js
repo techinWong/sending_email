@@ -16,7 +16,7 @@ const schema = yup.object({
   }).required();
 
 
-const SaveTemplate = () => {
+const SaveTemplate = ({setOpen}) => {
     
     const editorConfiguration = {
         removePlugins:["EasyImage","ImageUpload","MediaEmbed"],
@@ -46,6 +46,7 @@ const SaveTemplate = () => {
         })
 
         setTemplate({name:'',detail:''})
+        setOpen(false)
     }
 
 

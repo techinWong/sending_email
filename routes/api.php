@@ -37,3 +37,5 @@ Route::get('template',[EmailController::class,'showTemplate']);
 Route::post('edittemplate',[EmailController::class,'editTemplate']);
 
 Route::post('saveedittemplate',[EmailController::class,'saveEditTemplate']);
+
+Route::post('deletetemplate',[EmailController::class,'deleteTemplate']);

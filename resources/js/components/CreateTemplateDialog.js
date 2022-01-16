@@ -41,7 +41,7 @@ export default function CreateTemplateDialog() {
         onClose={handleClose}
       >
         <DialogTitle>Create Template</DialogTitle>
-          <SaveTemplate />
+          <SaveTemplate setOpen={setOpen}/>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
         </DialogActions>

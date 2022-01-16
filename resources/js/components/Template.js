@@ -4,6 +4,8 @@ import EditTemplate from './EditTemplate';
 import Navbar from './Navbar';
 import CreateTemplateDialog from './CreateTemplateDialog';
 import PreviewTemplateDialog from './PreviewTemplateDialog';
+import Button from '@mui/material/Button';
+
 
 const Template = () => {
 
@@ -26,6 +28,15 @@ const Template = () => {
         })
     }
 
+    const handleDeleteTemplate = async id => {
+        await axios.post('api/deletetemplate',{
+            id:id
+        })
+        .then(res => {
+            setTemplate(res.data)
+        })
+    }
+
     const fetchData = async() => {
         const templateApi = await fetch('api/template')
         const templateApiResult = await templateApi.json();
@@ -34,7 +45,7 @@ const Template = () => {
 
     useEffect(() => {
         fetchData();
-    },[])
+    },[]) //เช็คตรงนี้
 
 
     return (
@@ -59,7 +70,11 @@ const Template = () => {
                         <tr key={temp.template_id}>
                             <th scope="row">{i+1}</th>
                             <td>{temp.template_name}</td>
-                            <td><button type="button" className="btn btn-warning" onClick={() => editTemplate(temp.template_id)}>แก้ไข</button><PreviewTemplateDialog templateId={temp.template_id}/></td>
+                            <td><button type="button" className="btn btn-warning" onClick={() => editTemplate(temp.template_id)}>แก้ไข</button>
+                            <Button onClick={() => handleDeleteTemplate(temp.template_id)} variant="contained" color="error" id="delete">
+                            ลบ
+                            </Button>
+                            <PreviewTemplateDialog templateId={temp.template_id}/></td>
                         </tr>
                     ))}
                 </tbody>

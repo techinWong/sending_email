@@ -62,6 +62,7 @@ const Index = () => {
     
     const resetForm = () => {
        setMailData({sender:'',topic:'',receiver:'',detail:'',file:''})
+       setValue({});
     }
 
     

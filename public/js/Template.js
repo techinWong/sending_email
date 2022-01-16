@@ -17508,7 +17508,9 @@ function CreateTemplateDialog() {
       onClose: handleClose,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material_DialogTitle__WEBPACK_IMPORTED_MODULE_5__["default"], {
         children: "Create Template"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SaveTemplate__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material_DialogActions__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SaveTemplate__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        setOpen: setOpen
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material_DialogActions__WEBPACK_IMPORTED_MODULE_6__["default"], {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
           onClick: handleClose,
           children: "Close"
@@ -18118,9 +18120,10 @@ var schema = yup__WEBPACK_IMPORTED_MODULE_3__.object({
   detail: yup__WEBPACK_IMPORTED_MODULE_3__.string().required("กรุณาป้อนลักษณะ Template")
 }).required();
 
-var SaveTemplate = function SaveTemplate() {
+var SaveTemplate = function SaveTemplate(_ref) {
   var _errors$name, _errors$detail;
 
+  var setOpen = _ref.setOpen;
   var editorConfiguration = {
     removePlugins: ["EasyImage", "ImageUpload", "MediaEmbed"],
     height: '100px'
@@ -18165,6 +18168,7 @@ var SaveTemplate = function SaveTemplate() {
       name: '',
       detail: ''
     });
+    setOpen(false);
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
@@ -18283,6 +18287,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Navbar */ "./resources/js/components/Navbar.js");
 /* harmony import */ var _CreateTemplateDialog__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CreateTemplateDialog */ "./resources/js/components/CreateTemplateDialog.js");
 /* harmony import */ var _PreviewTemplateDialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./PreviewTemplateDialog */ "./resources/js/components/PreviewTemplateDialog.js");
+/* harmony import */ var _mui_material_Button__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material/Button */ "./node_modules/@mui/material/Button/Button.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -18301,6 +18306,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -18356,26 +18362,20 @@ var Template = function Template() {
     };
   }();
 
-  var fetchData = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      var templateApi, templateApiResult;
+  var handleDeleteTemplate = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(id) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return fetch('api/template');
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('api/deletetemplate', {
+                id: id
+              }).then(function (res) {
+                setTemplate(res.data);
+              });
 
             case 2:
-              templateApi = _context2.sent;
-              _context2.next = 5;
-              return templateApi.json();
-
-            case 5:
-              templateApiResult = _context2.sent;
-              setTemplate(templateApiResult);
-
-            case 7:
             case "end":
               return _context2.stop();
           }
@@ -18383,14 +18383,47 @@ var Template = function Template() {
       }, _callee2);
     }));
 
-    return function fetchData() {
+    return function handleDeleteTemplate(_x2) {
       return _ref2.apply(this, arguments);
+    };
+  }();
+
+  var fetchData = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      var templateApi, templateApiResult;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return fetch('api/template');
+
+            case 2:
+              templateApi = _context3.sent;
+              _context3.next = 5;
+              return templateApi.json();
+
+            case 5:
+              templateApiResult = _context3.sent;
+              setTemplate(templateApiResult);
+
+            case 7:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function fetchData() {
+      return _ref3.apply(this, arguments);
     };
   }();
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchData();
-  }, []);
+  }, []); //เช็คตรงนี้
+
   return editClick ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_EditTemplate__WEBPACK_IMPORTED_MODULE_3__["default"], {
     template: templateData,
     handleEditClick: setEditClick
@@ -18430,6 +18463,14 @@ var Template = function Template() {
                     return editTemplate(temp.template_id);
                   },
                   children: "\u0E41\u0E01\u0E49\u0E44\u0E02"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_mui_material_Button__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  onClick: function onClick() {
+                    return handleDeleteTemplate(temp.template_id);
+                  },
+                  variant: "contained",
+                  color: "error",
+                  id: "delete",
+                  children: "\u0E25\u0E1A"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_PreviewTemplateDialog__WEBPACK_IMPORTED_MODULE_6__["default"], {
                   templateId: temp.template_id
                 })]
@@ -23545,7 +23586,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n\r\n.input{\r\n    display:flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    padding-left:3rem;\r\n    margin:1rem;\r\n}\r\n\r\n\r\n.input input{\r\n    margin-right:4rem;\r\n}\r\n\r\n/* .form-group{\r\n    display: flex;\r\n    flex-direction: column;\r\n    width:700px;\r\n    margin-left:4rem;\r\n} */\r\n.form-group{\r\n    max-width: 700px;\r\n    margin-left:4rem;\r\n    margin-top:1rem;\r\n    padding-bottom: 1rem;\r\n}\r\n\r\n.text-area label{\r\n    margin-top:1.5rem;\r\n}\r\n\r\n#send{\r\n    float:right;\r\n    margin-top: 1rem;\r\n    margin-right:2rem;\r\n    text-align: center;\r\n}\r\n\r\n#form-group{\r\n    padding-top:2rem;\r\n    margin-bottom:3rem;\r\n    background: #C7CCC5;\r\n    padding-bottom:7rem;\r\n}\r\n\r\n\r\ntable{\r\n    text-align: center;\r\n}\r\n\r\nselect{\r\n    width:50px\r\n}\r\n\r\nlabel{\r\n    font-weight: 600;\r\n}\r\n\r\n.ck-editor__editable\r\n {\r\n    /* max-height:400px !important; */\r\n    min-height: 300px;\r\n    max-height: 300px;\r\n    overflow: scroll;\r\n }\r\n\r\n .notice{\r\n     color:grey;\r\n }\r\n\r\n#template-form{\r\n    margin-left:4rem;\r\n}\r\n\r\n#create-template-label{\r\n    font-size: large;\r\n}\r\n\r\n#create{\r\n    width:100%;\r\n}\r\n\r\n#template-name-form{\r\n    display: flex;\r\n}\r\n\r\n#template-name-form p{\r\n    margin-left:2rem;\r\n}\r\n\r\n#template-form-style{\r\n    display: flex;\r\n}\r\n\r\n#template-form-style p{\r\n    margin-left:2rem;\r\n}\r\n\r\n#previewTemplate{\r\n    display: inline-block;\r\n    font-weight: 400;\r\n    line-height: 1.6;\r\n    color: white;\r\n    text-align: center;\r\n    text-decoration: none;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    border: 1px solid transparent;\r\n    padding: 0.375rem 0.75rem;\r\n    font-size: 0.9rem;\r\n    border-radius: 0.25rem;\r\n    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\r\n    margin-left:0.5rem;\r\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n\r\n.input{\r\n    display:flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    padding-left:3rem;\r\n    margin:1rem;\r\n}\r\n\r\n\r\n.input input{\r\n    margin-right:4rem;\r\n}\r\n\r\n/* .form-group{\r\n    display: flex;\r\n    flex-direction: column;\r\n    width:700px;\r\n    margin-left:4rem;\r\n} */\r\n.form-group{\r\n    max-width: 700px;\r\n    margin-left:4rem;\r\n    margin-top:1rem;\r\n    padding-bottom: 1rem;\r\n}\r\n\r\n.text-area label{\r\n    margin-top:1.5rem;\r\n}\r\n\r\n#send{\r\n    float:right;\r\n    margin-top: 1rem;\r\n    margin-right:2rem;\r\n    text-align: center;\r\n}\r\n\r\n#form-group{\r\n    padding-top:2rem;\r\n    margin-bottom:3rem;\r\n    background: #C7CCC5;\r\n    padding-bottom:7rem;\r\n}\r\n\r\n\r\ntable{\r\n    text-align: center;\r\n}\r\n\r\nselect{\r\n    width:50px\r\n}\r\n\r\nlabel{\r\n    font-weight: 600;\r\n}\r\n\r\n.ck-editor__editable\r\n {\r\n    /* max-height:400px !important; */\r\n    min-height: 300px;\r\n    max-height: 300px;\r\n    overflow: scroll;\r\n }\r\n\r\n .notice{\r\n     color:grey;\r\n }\r\n\r\n#template-form{\r\n    margin-left:4rem;\r\n}\r\n\r\n#create-template-label{\r\n    font-size: large;\r\n}\r\n\r\n#create{\r\n    width:100%;\r\n}\r\n\r\n#template-name-form{\r\n    display: flex;\r\n}\r\n\r\n#template-name-form p{\r\n    margin-left:2rem;\r\n}\r\n\r\n#template-form-style{\r\n    display: flex;\r\n}\r\n\r\n#template-form-style p{\r\n    margin-left:2rem;\r\n}\r\n\r\n#previewTemplate{\r\n    display: inline-block;\r\n    font-weight: 400;\r\n    line-height: 1.6;\r\n    color: white;\r\n    text-align: center;\r\n    text-decoration: none;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    border: 1px solid transparent;\r\n    padding: 0.375rem 0.75rem;\r\n    font-size: 0.9rem;\r\n    border-radius: 0.25rem;\r\n    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\r\n    margin-left:0.5rem;\r\n}\r\n\r\n#delete{\r\n    margin-left:0.5rem;\r\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

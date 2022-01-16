@@ -21,6 +21,14 @@ use Illuminate\Http\Request;
 
 class EmailController extends Controller
 {
+    public function deleteTemplate(Request $request){
+        $id = $request->input('id');
+
+        $template = DB::table('templates')->where('template_id',$id)->delete();
+        $template->save();
+        return $template;
+    }
+
     public function saveEditTemplate(Request $request){
         $id = $request->input('template_id');
         // $template1 = template::find($id);
