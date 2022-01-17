@@ -9,7 +9,9 @@ import {
     DatePicker,
     MuiPickersUtilsProvider,
   } from '@material-ui/pickers';
-  import Navbar from './Navbar';
+import Navbar from './Navbar';
+import Box from '@mui/material/Box';
+
 
 
 
@@ -46,13 +48,13 @@ const History = () => {
 
  
     return (
-        <div className="container">
-            <div className="row justify-content-center">
+        <Box className="container">
+            <Box className="row justify-content-center">
 
             <Navbar History='active'/>
 
-            <div>
-            <div className="form-check">
+            <Box>
+            <Box className="form-check">
                     <input 
                     className="form-check-input" 
                     type="checkbox" 
@@ -72,9 +74,9 @@ const History = () => {
                             />
                         </LocalizationProvider>    
                     </MuiPickersUtilsProvider>
-                </div>
+                </Box>
 
-                <div className="form-check">
+                <Box className="form-check">
                     <input 
                         className="form-check-input" 
                         type="checkbox" 
@@ -110,13 +112,13 @@ const History = () => {
                     />
                     </LocalizationProvider>
                 </MuiPickersUtilsProvider>
-                </div>
+                </Box>
 
                 
-            </div>
+            </Box>
             
                     
-                <div>
+                <Box>
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -145,12 +147,12 @@ const History = () => {
                         ))}
                     </tbody>
                     </table>
-            </div>
+            </Box>
         {/* } */}
 
         
-     </div>
-     </div>
+     </Box>
+     </Box>
     )
 }
 

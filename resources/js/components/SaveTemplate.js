@@ -8,6 +8,8 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Popup from 'reactjs-popup';
 import Navbar from './Navbar';
+import Box from '@mui/material/Box';
+
 
 
 const schema = yup.object({
@@ -51,33 +53,33 @@ const SaveTemplate = ({setOpen}) => {
 
 
     return (
-        <div className="container">
-            <div className="row justify-content-center">
+        <Box className="container">
+            <Box className="row justify-content-center">
 
             {/* <Navbar Template='active'/> */}
 
-            <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">Email Form</div>
+            <Box className="col-md-8">
+                    <Box className="card">
+                        <Box className="card-header">Email Form</Box>
 
                         
                           {waitSave.message.length > 0 &&
-                                    <div className={waitSave.status ? "alert alert-success " : "alert alert-warning"} role="alert">
+                                    <Box className={waitSave.status ? "alert alert-success " : "alert alert-warning"} role="alert">
                                     {waitSave.message}
-                                  </div>
+                                  </Box>
                         }
 
-                        <div className="form-group">
-                            <div className="card-body">
+                        <Box className="form-group">
+                            <Box className="card-body">
                                 <form onSubmit={handleSubmit(formSubmit)}>
                                     <label id='create-template-label'>Create Template</label>
                                     
-                                    <div>
-                                        <div id='template-name-form'>
+                                    <Box>
+                                        <Box id='template-name-form'>
                                             <label htmlFor="formControlInput" className="form-label">Template Name</label>
                                             <p style={{color:'red'}}>{errors.name?.message}</p>
-                                        </div>
-                                        </div>
+                                        </Box>
+                                        </Box>
                                         
                                         <input 
                                         {...register("name")}
@@ -93,11 +95,11 @@ const SaveTemplate = ({setOpen}) => {
                                         
                                         <br />
 
-                                    <div id='template-form-style'>
+                                    <Box id='template-form-style'>
                                         <label htmlFor="formControlInput" className="form-label">Template Style</label>
 
                                         <p style={{color:'red'}}>{errors.detail?.message}</p>
-                                    </div>   
+                                    </Box>   
                                         <CKEditor 
                                             editor ={ClassicEditor}
                                             config={editorConfiguration}
@@ -119,18 +121,18 @@ const SaveTemplate = ({setOpen}) => {
 
                                 </form>
 
-                            </div>
+                            </Box>
                                     
-                        </div>
+                        </Box>
 
 
 
 
-                    </div>
-            </div>
+                    </Box>
+            </Box>
 
-            </div>
-        </div>
+            </Box>
+        </Box>
 
 
     )

@@ -5,6 +5,8 @@ import Navbar from './Navbar';
 import CreateTemplateDialog from './CreateTemplateDialog';
 import PreviewTemplateDialog from './PreviewTemplateDialog';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+
 
 
 const Template = () => {
@@ -52,8 +54,8 @@ const Template = () => {
 
         (editClick ? <EditTemplate template={templateData} handleEditClick={setEditClick}/> : 
 
-        <div className="container">
-            <div className="row justify-content-center">
+        <Box className="container">
+            <Box className="row justify-content-center">
 
             <Navbar Template='active'/>
 
@@ -85,8 +87,8 @@ const Template = () => {
 
 
 
-            </div>
-        </div>
+            </Box>
+        </Box>
         )
         
     )

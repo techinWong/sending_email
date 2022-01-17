@@ -5,6 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from 'axios';
+import Box from '@mui/material/Box';
+
 
 
 
@@ -35,24 +37,24 @@ const PreviewTemplate= ({templateId}) => {
     return (
 
         
-        <div className="container">
-            <div className="row justify-content-center">
+        <Box className="container">
+            <Box className="row justify-content-center">
 
             
-            <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">Email Form</div>
+            <Box className="col-md-8">
+                    <Box className="card">
+                        <Box className="card-header">Email Form</Box>
 
-                        <div className="form-group">
-                            <div className="card-body">
+                        <Box className="form-group">
+                            <Box className="card-body">
                                 <form>
                                     <label id='create-template-label'>Preview Template</label>
                                     
-                                    <div>
-                                        <div id='template-name-form'>
+                                    <Box>
+                                        <Box id='template-name-form'>
                                             <label htmlFor="formControlInput" className="form-label">Template Name</label>
-                                        </div>
-                                        </div>
+                                        </Box>
+                                        </Box>
                                         
                                         <input 
                                         disabled
@@ -65,11 +67,11 @@ const PreviewTemplate= ({templateId}) => {
                                         
                                         <br />
 
-                                    <div id='template-form-style'>
+                                    <Box id='template-form-style'>
                                         <label htmlFor="formControlInput" className="form-label">Template Style</label>
 
                             
-                                    </div>   
+                                    </Box>   
                                         <CKEditor 
                                             disabled
                                             editor ={ClassicEditor}
@@ -88,17 +90,17 @@ const PreviewTemplate= ({templateId}) => {
 
                                 </form>
 
-                            </div>
+                            </Box>
                                     
-                        </div>
+                        </Box>
 
 
-                    </div>
-            </div>
+                    </Box>
+            </Box>
 
 
-            </div>
-        </div>
+            </Box>
+        </Box>
     )
 }
 

@@ -6,6 +6,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import SendIcon from '@mui/icons-material/Send';
+import Box from '@mui/material/Box';
+
 
 
 export default function SendMailDialog({onFormSubmit}) {
@@ -26,7 +28,7 @@ export default function SendMailDialog({onFormSubmit}) {
 
 
   return (
-    <div>
+    <Box>
       <Button id="send"  variant="contained"  endIcon={<SendIcon />} onClick={handleClickOpen}>
         SEND
       </Button>
@@ -52,6 +54,6 @@ export default function SendMailDialog({onFormSubmit}) {
           </Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </Box>
   );
 }

@@ -10,6 +10,10 @@ import Navbar from './Navbar';
 import Popup from 'reactjs-popup';
 import SendMailDialog from './SendMailDialog';
 import CreateTemplateDialog from './CreateTemplateDialog';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Select from '@mui/material/Select';
+
 
 // import Editor from 'ckeditor5-custom-build/build/ckeditor';
 
@@ -130,48 +134,48 @@ const Index = () => {
     return (
         
 
-        <div className="container">
-            <div className="row justify-content-center">
+        <Box className="container">
+            <Box className="row justify-content-center">
 
             <Navbar Home='active'/>
 
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">Email Form</div>
+                <Box className="col-md-8">
+                    <Box className="card">
+                        <Box className="card-header">Email Form</Box>
 
                         {resData.length > 0 &&
-                                    <div className={waitData ? "alert alert-success " : "alert alert-warning"} role="alert">
+                                    <Box className={waitData ? "alert alert-success " : "alert alert-warning"} role="alert">
                                     {resData}
-                                  </div>
+                                  </Box>
                         }
                         
-                        <div className="card-body">
+                        <Box className="card-body">
                             <form onSubmit={handleSubmit(formSubmit)} id='form-group'>
-                                <div className="input">
+                                <Box className="input">
                                     <label htmlFor="formControlInput" className="form-label">ผู้ส่ง</label>
-                                    <div className="col-md-4">
+                                    <Box className="col-md-4">
                                         <select {...register("sender")}id="sender" name="sender" style={{width:'50'}} className="form-select form-select-sm" aria-label="Small select" value={mailData.sender} onChange={e => handleChange(e)}>
                                         <option value=""> -- select an E-mail -- </option>
                                             {mailSender.map(sender => (
                                                 <option key={sender.mail_sender_name} value={sender.mail_sender_id}>{sender.mail_sender_name}</option>
                                             ))}
                                         </select>
-                                    </div>
-                                </div>
+                                    </Box>
+                                </Box>
                                 <p style={{color:'red' , marginLeft:'4rem'}}>{errors.sender?.message}</p>
-                                <div className='input'>
+                                <Box className='input'>
                                     <label htmlFor="formControlInput" className="form-label">กลุ่มผู้ได้รับเมล์</label>
-                                    <div className="col-md-4">
+                                    <Box className="col-md-4">
                                         <select {...register("receiver")} id="receiver" name="receiver" className="form-select form-select-sm" aria-label="Small select" value={mailData.receiver} onChange={e => handleChange(e)}>
                                         <option value=""> -- select an E-mail -- </option>
                                             {mailGroup.map(mail => (
                                                 <option key={mail.group_name} value={mail.group_id}>{mail.group_name}</option>
                                             ))}
                                         </select>
-                                    </div>
-                                </div>
+                                    </Box>
+                                </Box>
                                 <p style={{color:'red' , marginLeft:'4rem'}}>{errors.receiver?.message}</p>
-                                <div className='form-group'>
+                                <Box className='form-group'>
                                     <label htmlFor="formControlInput" className="form-label">หัวเรื่อง</label>
                                     <p style={{color:'red' }}>{errors.topic?.message}</p>
                                     <textarea 
@@ -182,17 +186,17 @@ const Index = () => {
                                     cols="30" rows="1" 
                                     onChange={e => handleChange(e)}
                                     ></textarea>
-                                </div>
+                                </Box>
 
                                
 
-                                <div className="form-group">
+                                <Box className="form-group">
                                     <label>เนื้อหาในเมลล์</label>
                                     <p style={{color:'red'}}>{errors.detail?.message}</p>
                                     
 
 
-                                    <div style={{display:'flex'}} className="form-floating">
+                                    <Box style={{display:'flex'}} className="form-floating">
                                         <select onChange={e => handleSelectChange(e)} value={templateSelect} className="form-select" id="floatingSelect" aria-label="Floating label select example">
                                             <option selected value="0">None</option>
                                             {template.map(temp => {
@@ -202,7 +206,7 @@ const Index = () => {
                                         <label htmlFor="floatingSelect">Template</label>
                                         {/* <a href="/createtemplate" target="_blank"><button type="button" className="btn btn-secondary">Add Template</button></a> */}
                                         <CreateTemplateDialog/>
-                                    </div>
+                                    </Box>
 
                                     
                                     <h6 className="notice">*สามารถเลือก template ที่สร้างไว้ได้เพียงหนึ่ง template</h6>
@@ -222,8 +226,8 @@ const Index = () => {
                                     />
                                     <h6 className="notice">*การใช้ link กรุณาใส่ https:// ด้วย เช่น https://www.google.com</h6>
                                     
-                                </div>
-                                {/* <div className="form-group">
+                                </Box>
+                                {/* <Box className="form-group">
                                     <label>เนื้อหาในเมลล์</label>
                                     <p style={{color:'red'}}>{errors.detail?.message}</p>
                                     <textarea 
@@ -234,13 +238,13 @@ const Index = () => {
                                     cols="80" rows="10" 
                                     onChange={e => handleChange(e)}
                                     ></textarea>
-                                </div> */}
+                                </Box> */}
                                 
 
                                 
 
 
-                                <div className="form-group">
+                                <Box className="form-group">
                                     <label htmlFor="formFile" className="form-label">เพิ่มไฟล์</label>
                                     <input 
                                     onChange={e => handleFileChange(e)} 
@@ -249,7 +253,7 @@ const Index = () => {
                                     type="file" 
                                     id="formFile" 
                                     name="file"/>
-                                </div>
+                                </Box>
 
                                 
                                 <SendMailDialog onFormSubmit={handleSubmit(formSubmit)} />
@@ -258,11 +262,11 @@ const Index = () => {
 
                                 
                             </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        </Box>
+                    </Box>
+                </Box>
+            </Box>
+        </Box>
     );
 }
 
