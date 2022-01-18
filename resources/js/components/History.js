@@ -11,6 +11,12 @@ import {
   } from '@material-ui/pickers';
 import Navbar from './Navbar';
 import Box from '@mui/material/Box';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
 
 
 
@@ -119,34 +125,34 @@ const History = () => {
             
                     
                 <Box>
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">วันที่ส่ง</th>
-                        <th scope="col">ผู้ส่ง</th>
-                        <th scope="col">กลุ่มที่ส่ง</th>
-                        <th scope="col">หัวเรื่อง</th>
-                        <th scope="col">จำนวนที่ส่ง</th>
-                        <th scope="col">สำเร็จ/ล้มเหลว</th>
-                        <th scope="col">สถานะ</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <Table className="table table-striped">
+                    <TableHead>
+                        <TableRow>
+                        <TableCell scope="col">#</TableCell>
+                        <TableCell scope="col">วันที่ส่ง</TableCell>
+                        <TableCell scope="col">ผู้ส่ง</TableCell>
+                        <TableCell scope="col">กลุ่มที่ส่ง</TableCell>
+                        <TableCell scope="col">หัวเรื่อง</TableCell>
+                        <TableCell scope="col">จำนวนที่ส่ง</TableCell>
+                        <TableCell scope="col">สำเร็จ/ล้มเหลว</TableCell>
+                        <TableCell scope="col">สถานะ</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
                         {history.map((item,i) => (
-                            <tr>
-                                <th scope="row">{i+1}</th>
-                                <td>{moment(item.created_at).format('DD-MM-YYYY')}</td>
-                                <td>{item.group_name}</td>
-                                <td>{item.user_send}</td>
-                                <td>{item.mail_topic}</td>
-                                <td>จำนวนที่ส่ง</td>
-                                <td>{item.status === '200' ? 'success' : 'failed'}</td>
-                                <td>{item.status}</td>
-                            </tr>
+                            <TableRow>
+                                <TableCell scope="row">{i+1}</TableCell>
+                                <TableCell>{moment(item.created_at).format('DD-MM-YYYY')}</TableCell>
+                                <TableCell>{item.group_name}</TableCell>
+                                <TableCell>{item.user_send}</TableCell>
+                                <TableCell>{item.mail_topic}</TableCell>
+                                <TableCell>จำนวนที่ส่ง</TableCell>
+                                <TableCell>{item.status === '200' ? 'success' : 'failed'}</TableCell>
+                                <TableCell>{item.status}</TableCell>
+                            </TableRow>
                         ))}
-                    </tbody>
-                    </table>
+                    </TableBody>
+                    </Table>
             </Box>
         {/* } */}
 
