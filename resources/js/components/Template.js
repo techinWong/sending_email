@@ -6,6 +6,12 @@ import CreateTemplateDialog from './CreateTemplateDialog';
 import PreviewTemplateDialog from './PreviewTemplateDialog';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
 
 
 
@@ -59,29 +65,29 @@ const Template = () => {
 
             <Navbar Template='active'/>
 
-            <table className="table table-striped">
-                <thead>
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Template Name</th>
-                    <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
+            <Table className="table table-striped">
+                <TableHead>
+                    <TableRow>
+                    <TableCell  scope="col">#</TableCell >
+                    <TableCell  scope="col">Template Name</TableCell >
+                    <TableCell  scope="col"></TableCell >
+                    </TableRow>
+                </TableHead>
+                <TableBody>
                     {template.map((temp,i) => (
                         <tr key={temp.template_id}>
-                            <th scope="row">{i+1}</th>
-                            <td>{temp.template_name}</td>
-                            <td><button type="button" className="btn btn-warning" onClick={() => editTemplate(temp.template_id)}>แก้ไข</button>
+                            <TableCell scope="row">{i+1}</TableCell>
+                            <TableCell>{temp.template_name}</TableCell>
+                            <TableCell><button type="button" className="btn btn-warning" onClick={() => editTemplate(temp.template_id)}>แก้ไข</button>
                             <Button onClick={() => handleDeleteTemplate(temp.template_id)} variant="contained" color="error" id="delete">
                             ลบ
                             </Button>
-                            <PreviewTemplateDialog templateId={temp.template_id}/></td>
+                            <PreviewTemplateDialog templateId={temp.template_id}/></TableCell>
                         </tr>
                     ))}
-                </tbody>
+                </TableBody>
                 <br />
-            </table>
+            </Table>
             {/* <a href="/createtemplate"><button type="button" className="btn btn-primary" >Add Template</button></a> */}
             <CreateTemplateDialog />
 

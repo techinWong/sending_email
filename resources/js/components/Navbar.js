@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button'
 
 
+
 const Navbar = ({Home,History,Template}) => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
