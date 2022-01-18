@@ -36,12 +36,16 @@ class EmailController extends Controller
             'template_name' => $request->input('template_name'),
             'template_detail' => $request->input('template_detail')
         ]);
+
+        return response()->json([
+            "template" => $request->all()
+        ]);
        
     }
 
     public function editTemplate(Request $request){
         $id = $request->input('id');
-        return DB::table('templates')->where('template_id',$id)->get();
+        return DB::table('templates')->where('template_id',$id)->first();
     }
 
     public function showTemplate(){

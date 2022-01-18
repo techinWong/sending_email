@@ -20,7 +20,7 @@ const PreviewTemplate= ({templateId}) => {
         id:templateId
         })
         .then(res => {
-            setEditTemplate(res.data[0])
+            setEditTemplate(res.data)
         })
     }
 

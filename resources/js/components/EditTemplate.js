@@ -17,9 +17,19 @@ const schema = yup.object({
     detail:yup.string().required("กรุณาป้อนลักษณะ Template"),
   }).required();
 
-const EditTemplate = ({template,handleEditClick}) => {
+const EditTemplate = ({templateId,setOpen}) => {
 
-    const [editTemplate , setEditTemplate] = useState(...template)
+    const [editTemplate , setEditTemplate] = useState({
+        template_id:templateId,
+    })
+
+    const fetchData = async () => {
+        
+        const editTemplateApi = await axios.post('api/edittemplate',{
+            id:templateId
+        })
+        setEditTemplate(editTemplateApi.data)
+    }
 
     
 
@@ -34,17 +44,20 @@ const EditTemplate = ({template,handleEditClick}) => {
 
     // setValue('data',template.template_detail)
 
-    const formSubmit = () => {
-        axios.post('api/saveedittemplate',editTemplate)
+    const formSubmit = async () => {
+        await axios.post('api/saveedittemplate',editTemplate)
         .then(res => console.log(res))
+
+        // setOpen(false)
     }
 
     useEffect(() => {
-        setValue('detail',editTemplate.template_detail)
+        fetchData();
+        // setValue('detail',editTemplate.template_detail)
+        // setValue('name',editTemplate.template_name)
     },[])
 
-    console.log(editTemplate);
-
+    console.log(editTemplate)
     return (
 
         
@@ -78,7 +91,8 @@ const EditTemplate = ({template,handleEditClick}) => {
                                         placeholder="Enter Template Name" 
                                         value={editTemplate.template_name}
                                         onChange={e => {
-                                            setEditTemplate({...editTemplate,template_name:e.target.value})                                            
+                                            setEditTemplate({...editTemplate,template_name:e.target.value})  
+                                            setValue('name',editTemplate.template_name);                                          
                                             }}
                                         />
                                         
@@ -95,18 +109,17 @@ const EditTemplate = ({template,handleEditClick}) => {
                                             value={editTemplate.template_detail}
                                             data={editTemplate.template_detail}
                                             name="detail"
-                                            onChange={(event,editor) => {
-                                                const data = editor.getData();
-                                                setEditTemplate({...editTemplate, template_detail:data})
-                                                setValue('detail',data);
-                                            }}
+                                            // onChange={(event,editor) => {
+                                            //     const data = editor.getData();
+                                            //     setEditTemplate({...editTemplate, template_detail:data})
+                                            //     // setValue('detail',data);
+                                            // }}
                                         />
                                         <h6 className="notice">*การใช้ link กรุณาใส่ https:// ด้วย เช่น https://www.google.com</h6>
 
                                      
                                     <br />
                                     <Box style={{float:'right'}}>
-                                    <Button onClick={() => handleEditClick(false)} type="Button"  id="cancel">Cancel</Button>
                                     <Button type="submit"  variant="contained">Save Template</Button>
                                     
                                     </Box>

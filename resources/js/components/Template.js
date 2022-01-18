@@ -4,6 +4,7 @@ import EditTemplate from './EditTemplate';
 import Navbar from './Navbar';
 import CreateTemplateDialog from './CreateTemplateDialog';
 import PreviewTemplateDialog from './PreviewTemplateDialog';
+import EditTemplateDialog from './EditTemplateDialog';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
@@ -23,18 +24,7 @@ const Template = () => {
 
     const [editClick , setEditClick] = useState(false);
 
-    const editTemplate = async id => {
-        console.log(id)
-        
-        await axios.post('api/edittemplate',{
-            id:id
-        })
-        .then(res => {
-            console.log(res.data)
-            setTemplateData(res.data)
-            setEditClick(true)
-        })
-    }
+    
 
     const handleDeleteTemplate = async id => {
         await axios.post('api/deletetemplate',{
@@ -58,7 +48,6 @@ const Template = () => {
 
     return (
 
-        (editClick ? <EditTemplate template={templateData} handleEditClick={setEditClick}/> : 
 
         <Box className="container">
             <Box className="row justify-content-center">
@@ -78,7 +67,7 @@ const Template = () => {
                         <tr key={temp.template_id}>
                             <TableCell scope="row">{i+1}</TableCell>
                             <TableCell>{temp.template_name}</TableCell>
-                            <TableCell><button type="button" className="btn btn-warning" onClick={() => editTemplate(temp.template_id)}>แก้ไข</button>
+                            <TableCell><EditTemplateDialog templateId={temp.template_id}/>
                             <Button onClick={() => handleDeleteTemplate(temp.template_id)} variant="contained" color="error" id="delete">
                             ลบ
                             </Button>
@@ -95,7 +84,6 @@ const Template = () => {
 
             </Box>
         </Box>
-        )
         
     )
 }
