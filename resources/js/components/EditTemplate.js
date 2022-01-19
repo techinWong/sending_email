@@ -29,6 +29,7 @@ const EditTemplate = ({templateId,setOpen}) => {
             id:templateId
         })
         setEditTemplate(editTemplateApi.data)
+        setValue('name',editTemplateApi.data.template_name)
     }
 
     
@@ -47,6 +48,7 @@ const EditTemplate = ({templateId,setOpen}) => {
     const formSubmit = async () => {
         await axios.post('api/saveedittemplate',editTemplate)
         .then(res => console.log(res))
+        window.location.reload();
 
         // setOpen(false)
     }
@@ -54,10 +56,8 @@ const EditTemplate = ({templateId,setOpen}) => {
     useEffect(() => {
         fetchData();
         // setValue('detail',editTemplate.template_detail)
-        // setValue('name',editTemplate.template_name)
     },[])
 
-    console.log(editTemplate)
     return (
 
         
@@ -85,14 +85,11 @@ const EditTemplate = ({templateId,setOpen}) => {
                                         
                                         <input 
                                         {...register("name")}
-                                        type="text" 
                                         className="form-control" 
                                         id="formControlInput" 
-                                        placeholder="Enter Template Name" 
                                         value={editTemplate.template_name}
                                         onChange={e => {
                                             setEditTemplate({...editTemplate,template_name:e.target.value})  
-                                            setValue('name',editTemplate.template_name);                                          
                                             }}
                                         />
                                         
@@ -109,11 +106,11 @@ const EditTemplate = ({templateId,setOpen}) => {
                                             value={editTemplate.template_detail}
                                             data={editTemplate.template_detail}
                                             name="detail"
-                                            // onChange={(event,editor) => {
-                                            //     const data = editor.getData();
-                                            //     setEditTemplate({...editTemplate, template_detail:data})
-                                            //     // setValue('detail',data);
-                                            // }}
+                                            onChange={(event,editor) => {
+                                                const data = editor.getData();
+                                                setEditTemplate({...editTemplate, template_detail:data})
+                                                setValue('detail',data);
+                                            }}
                                         />
                                         <h6 className="notice">*การใช้ link กรุณาใส่ https:// ด้วย เช่น https://www.google.com</h6>
 

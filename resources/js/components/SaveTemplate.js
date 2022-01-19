@@ -49,6 +49,7 @@ const SaveTemplate = ({setOpen}) => {
 
         setTemplate({name:'',detail:''})
         setOpen(false)
+        window.location.reload();
     }
 
 

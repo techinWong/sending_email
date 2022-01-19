@@ -18750,8 +18750,9 @@ var EditTemplate = function EditTemplate(_ref) {
             case 2:
               editTemplateApi = _context.sent;
               setEditTemplate(editTemplateApi.data);
+              setValue('name', editTemplateApi.data.template_name);
 
-            case 4:
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -18790,6 +18791,9 @@ var EditTemplate = function EditTemplate(_ref) {
               });
 
             case 2:
+              window.location.reload(); // setOpen(false)
+
+            case 3:
             case "end":
               return _context2.stop();
           }
@@ -18804,9 +18808,7 @@ var EditTemplate = function EditTemplate(_ref) {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchData(); // setValue('detail',editTemplate.template_detail)
-    // setValue('name',editTemplate.template_name)
   }, []);
-  console.log(editTemplate);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_mui_material_Box__WEBPACK_IMPORTED_MODULE_10__["default"], {
     className: "container",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_mui_material_Box__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -18844,16 +18846,13 @@ var EditTemplate = function EditTemplate(_ref) {
                     })]
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", _objectSpread(_objectSpread({}, register("name")), {}, {
-                  type: "text",
                   className: "form-control",
                   id: "formControlInput",
-                  placeholder: "Enter Template Name",
                   value: editTemplate.template_name,
                   onChange: function onChange(e) {
                     setEditTemplate(_objectSpread(_objectSpread({}, editTemplate), {}, {
                       template_name: e.target.value
                     }));
-                    setValue('name', editTemplate.template_name);
                   }
                 })), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_mui_material_Box__WEBPACK_IMPORTED_MODULE_10__["default"], {
                   id: "template-form-style",
@@ -18872,12 +18871,14 @@ var EditTemplate = function EditTemplate(_ref) {
                   config: editorConfiguration,
                   value: editTemplate.template_detail,
                   data: editTemplate.template_detail,
-                  name: "detail" // onChange={(event,editor) => {
-                  //     const data = editor.getData();
-                  //     setEditTemplate({...editTemplate, template_detail:data})
-                  //     // setValue('detail',data);
-                  // }}
-
+                  name: "detail",
+                  onChange: function onChange(event, editor) {
+                    var data = editor.getData();
+                    setEditTemplate(_objectSpread(_objectSpread({}, editTemplate), {}, {
+                      template_detail: data
+                    }));
+                    setValue('detail', data);
+                  }
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h6", {
                   className: "notice",
                   children: "*\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49 link \u0E01\u0E23\u0E38\u0E13\u0E32\u0E43\u0E2A\u0E48 https:// \u0E14\u0E49\u0E27\u0E22 \u0E40\u0E0A\u0E48\u0E19 https://www.google.com"
@@ -19453,6 +19454,7 @@ var SaveTemplate = function SaveTemplate(_ref) {
       detail: ''
     });
     setOpen(false);
+    window.location.reload();
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_mui_material_Box__WEBPACK_IMPORTED_MODULE_11__["default"], {
