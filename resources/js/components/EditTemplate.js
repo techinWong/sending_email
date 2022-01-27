@@ -17,7 +17,7 @@ const schema = yup.object({
     detail:yup.string().required("กรุณาป้อนลักษณะ Template"),
   }).required();
 
-const EditTemplate = ({templateId,setOpen}) => {
+const EditTemplate = ({templateId,setOpen,handleFetchData}) => {
 
     const [editTemplate , setEditTemplate] = useState({
         template_id:templateId,
@@ -48,9 +48,10 @@ const EditTemplate = ({templateId,setOpen}) => {
     const formSubmit = async () => {
         await axios.post('api/saveedittemplate',editTemplate)
         .then(res => console.log(res))
-        window.location.reload();
-
-        // setOpen(false)
+        // window.location.reload();
+        setOpen(false)
+        handleFetchData()
+        
     }
 
     useEffect(() => {

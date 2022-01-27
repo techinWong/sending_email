@@ -15,7 +15,7 @@ import Switch from '@mui/material/Switch';
 import SaveTemplate from './SaveTemplate';
 
 
-export default function CreateTemplateDialog() {
+export default function CreateTemplateDialog({fetchData}) {
   const [open, setOpen] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(true);
   const [maxWidth, setMaxWidth] = React.useState('xl');
@@ -32,7 +32,7 @@ export default function CreateTemplateDialog() {
 
   return (
     <React.Fragment>
-      <Button variant="contained" onClick={handleClickOpen}>
+      <Button variant="contained" id="create-temp-button" onClick={handleClickOpen}  >
         Create Template
       </Button>
       <Dialog
@@ -42,7 +42,7 @@ export default function CreateTemplateDialog() {
         onClose={handleClose}
       >
         <DialogTitle>Create Template</DialogTitle>
-          <SaveTemplate setOpen={setOpen}/>
+          <SaveTemplate setOpen={setOpen} fetchData={fetchData}/>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
         </DialogActions>

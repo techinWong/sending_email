@@ -25,7 +25,7 @@ class EmailController extends Controller
         $id = $request->input('id');
 
         $template = DB::table('templates')->where('template_id',$id)->delete();
-        $template->save();
+        // $template->save();
         return $template;
     }
 

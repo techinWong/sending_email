@@ -30,9 +30,10 @@ const Template = () => {
         await axios.post('api/deletetemplate',{
             id:id
         })
-        .then(res => {
-            setTemplate(res.data)
-        })
+        // .then(res => {
+        //     setTemplate(res.data)
+        // })
+        fetchData()
     }
 
     const fetchData = async() => {
@@ -67,18 +68,18 @@ const Template = () => {
                         <tr key={temp.template_id}>
                             <TableCell scope="row">{i+1}</TableCell>
                             <TableCell>{temp.template_name}</TableCell>
-                            <TableCell><EditTemplateDialog templateId={temp.template_id}/>
+                            <TableCell><EditTemplateDialog templateId={temp.template_id} fetchData={() => fetchData()}/>
                             <Button onClick={() => handleDeleteTemplate(temp.template_id)} variant="contained" color="error" id="delete">
                             ลบ
                             </Button>
-                            <PreviewTemplateDialog templateId={temp.template_id}/></TableCell>
+                            <PreviewTemplateDialog templateId={temp.template_id} /></TableCell>
                         </tr>
                     ))}
                 </TableBody>
                 <br />
             </Table>
             {/* <a href="/createtemplate"><button type="button" className="btn btn-primary" >Add Template</button></a> */}
-            <CreateTemplateDialog />
+            <CreateTemplateDialog fetchData={() => fetchData()}/>
 
 
 

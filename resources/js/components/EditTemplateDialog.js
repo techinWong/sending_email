@@ -14,7 +14,7 @@ import Select from '@mui/material/Select';
 import Switch from '@mui/material/Switch';
 import EditTemplate from './EditTemplate';
 
-export default function EditTemplateDialog({templateId}) {
+export default function EditTemplateDialog({templateId , fetchData}) {
   const [open, setOpen] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(true);
   const [maxWidth, setMaxWidth] = React.useState('xl');
@@ -41,7 +41,7 @@ export default function EditTemplateDialog({templateId}) {
         onClose={handleClose}
       >
         <DialogTitle>Edit Template</DialogTitle>
-          <EditTemplate setOpen={setOpen} templateId={templateId}/>
+          <EditTemplate setOpen={setOpen} templateId={templateId} handleFetchData={fetchData}/>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
         </DialogActions>
